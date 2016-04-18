@@ -11,7 +11,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
      
-    <script type="text/javascript" src="validador.js"></script>
+    <script type="text/javascript" src="./js/validador.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Nombre</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="nombre">
+			<input type="text" class="form-control" name="nombre" required>
 			<br>
 		</div>
 	</div>
@@ -28,7 +28,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Apellido</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="apellido" >
+			<input type="text" class="form-control" name="apellido" required>
 			<br>
 		</div>
 	</div>
@@ -36,7 +36,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Mail</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="mail" >
+			<input type="text" class="form-control" name="mail" required>
 			<br>
 		</div>
 	</div>
@@ -44,7 +44,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Telefono</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="telefono" >
+			<input type="text" class="form-control" name="telefono" required>
 			<br>
 		</div>
 	</div>
@@ -52,7 +52,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Pais</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="pais" >
+			<input type="text" class="form-control" name="pais" required>
 			<br>
 		</div>
 	</div>
@@ -60,7 +60,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Region</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="region" >
+			<input type="text" class="form-control" name="region" required>
 			<br>
 		</div>
 	</div>
@@ -68,7 +68,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Ciudad</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="ciudad" >
+			<input type="text" class="form-control" name="ciudad" required>
 			<br>
 		</div>
 	</div>

@@ -11,7 +11,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
      
-    <script type="text/javascript" src="validador.js"></script>
+    <script type="text/javascript" src="./js/validador.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Id</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="id">
+			<input type="text" class="form-control" name="id" required>
 			<br>
 		</div>
 	</div>
@@ -27,7 +27,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">User</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="user">
+			<input type="text" class="form-control" name="user" required>
 			<br>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Password</label>
 		<div class="col-lg-3">
-			<input type="text" class="form-control" name="password" >
+			<input type="text" class="form-control" name="password" required>
 			<br>
 		</div>
 	</div>

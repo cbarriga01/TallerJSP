@@ -1,11 +1,13 @@
 /**
  * 
  */
-package capanegocio;
+package junit;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import capanegocio.Contacto;
 
 /**
  * @author Kal-El

@@ -103,23 +103,27 @@ public class Contacto {
 	public static String ingresar(Contacto contacto) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "";
-		try {
-			orm.Contacto lormContacto = orm.ContactoDAO.createContacto();
-			TallerServlet servlet = new TallerServlet();
-			// Initialize the properties of the persistent object here
-			lormContacto.setNombre(contacto.nombre);
-			lormContacto.setApellido(contacto.apellido);
-			lormContacto.setMail(contacto.mail);
-			lormContacto.setTelefono(contacto.telefono);
-			lormContacto.setPais(contacto.pais);
-			lormContacto.setRegion(contacto.region);
-			lormContacto.setCiudad(contacto.ciudad);
-			msg = "Ingreso Exitoso";
-			orm.ContactoDAO.save(lormContacto);
-			t.commit();
-		}
-		catch (Exception e) {
-			t.rollback();
+		try{
+			try {
+				orm.Contacto lormContacto = orm.ContactoDAO.createContacto();
+				TallerServlet servlet = new TallerServlet();
+				// Initialize the properties of the persistent object here
+				lormContacto.setNombre(contacto.nombre);
+				lormContacto.setApellido(contacto.apellido);
+				lormContacto.setMail(contacto.mail);
+				lormContacto.setTelefono(contacto.telefono);
+				lormContacto.setPais(contacto.pais);
+				lormContacto.setRegion(contacto.region);
+				lormContacto.setCiudad(contacto.ciudad);
+				msg = "Ingreso Exitoso";
+				orm.ContactoDAO.save(lormContacto);
+				t.commit();
+			}
+			catch (Exception e) {
+				t.rollback();
+			}
+		} catch (NullPointerException e){
+			e.printStackTrace();
 		}
 		return msg;
 		
@@ -134,23 +138,27 @@ public class Contacto {
 	public static String actualizar(Contacto contacto) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "";
-		try {
-			orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.uid);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
-			// Update the properties of the persistent object
-			System.out.println("Id = " + contacto.uid);
-			lormContacto.setNombre(contacto.nombre);
-			lormContacto.setApellido(contacto.apellido);
-			lormContacto.setMail(contacto.mail);
-			lormContacto.setTelefono(contacto.telefono);
-			lormContacto.setPais(contacto.pais);
-			lormContacto.setRegion(contacto.region);
-			lormContacto.setCiudad(contacto.ciudad);
-			msg = "Ingreso Exitoso";
-			orm.ContactoDAO.save(lormContacto);
-			t.commit();
-		}
-		catch (Exception e) {
-			t.rollback();
+		try{
+			try {
+				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.uid);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
+				// Update the properties of the persistent object
+				System.out.println("Id = " + contacto.uid);
+				lormContacto.setNombre(contacto.nombre);
+				lormContacto.setApellido(contacto.apellido);
+				lormContacto.setMail(contacto.mail);
+				lormContacto.setTelefono(contacto.telefono);
+				lormContacto.setPais(contacto.pais);
+				lormContacto.setRegion(contacto.region);
+				lormContacto.setCiudad(contacto.ciudad);
+				msg = "Ingreso Exitoso";
+				orm.ContactoDAO.save(lormContacto);
+				t.commit();
+			}
+			catch (Exception e) {
+				t.rollback();
+			}
+		} catch (NullPointerException e){
+			e.printStackTrace();
 		}
 		return msg;
 		
@@ -165,22 +173,26 @@ public class Contacto {
 	public static String borrar(Contacto contacto) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "";
-		try {
-			orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.uid);
-			// Delete the persistent object<
-			msg="Dato eliminado...";
-			orm.ContactoDAO.delete(lormContacto);
-			t.commit();
-		}
-		catch (Exception e) {
-			t.rollback();
+		try{
+			try {
+				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.uid);
+				// Delete the persistent object<
+				msg="Dato eliminado...";
+				orm.ContactoDAO.delete(lormContacto);
+				t.commit();
+			}
+			catch (Exception e) {
+				t.rollback();
+			}
+		} catch (NullPointerException e){
+			e.printStackTrace();
 		}
 		return msg;
 	}
 	
 	/**
 	 * Método que permite listar los contactos almacenados en la BD
-	 * @return
+	 * @return lista con contactos almacenados en BD
 	 * @throws PersistentException
 	 */
 	public static List <Contacto> listar() throws PersistentException {

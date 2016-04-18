@@ -50,18 +50,22 @@ public class Usuario {
 	public static String ingresar(Usuario usuario) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "";
-		try {
-			orm.Usuario lormUsuario = orm.UsuarioDAO.createUsuario();
-			TallerServlet servlet = new TallerServlet();
-			// Initialize the properties of the persistent object here
-			lormUsuario.setUser(usuario.user);
-			lormUsuario.setPassword(usuario.password);
-			msg = "Ingreso Exitoso";
-			orm.UsuarioDAO.save(lormUsuario);
-			t.commit();
-		}
-		catch (Exception e) {
-			t.rollback();
+		try{
+			try {
+				orm.Usuario lormUsuario = orm.UsuarioDAO.createUsuario();
+				TallerServlet servlet = new TallerServlet();
+				// Initialize the properties of the persistent object here
+				lormUsuario.setUser(usuario.user);
+				lormUsuario.setPassword(usuario.password);
+				msg = "Ingreso Exitoso";
+				orm.UsuarioDAO.save(lormUsuario);
+				t.commit();
+			}
+			catch (Exception e) {
+				t.rollback();
+			}
+		} catch (NullPointerException e){
+			e.printStackTrace();
 		}
 		return msg;		
 	}
@@ -75,18 +79,22 @@ public class Usuario {
 	public static String actualizar(Usuario usuario) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "";
-		try {
-			orm.Usuario lormUsuario = orm.UsuarioDAO.loadUsuarioByORMID(usuario.idusuario);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
-			// Update the properties of the persistent object
-			System.out.println("Id = " + usuario.idusuario);
-			lormUsuario.setUser(usuario.user);
-			lormUsuario.setPassword(usuario.password);
-			msg = "Ingreso Exitoso";
-			orm.UsuarioDAO.save(lormUsuario);
-			t.commit();
-		}
-		catch (Exception e) {
-			t.rollback();
+		try{
+			try {
+				orm.Usuario lormUsuario = orm.UsuarioDAO.loadUsuarioByORMID(usuario.idusuario);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
+				// Update the properties of the persistent object
+				System.out.println("Id = " + usuario.idusuario);
+				lormUsuario.setUser(usuario.user);
+				lormUsuario.setPassword(usuario.password);
+				msg = "Ingreso Exitoso";
+				orm.UsuarioDAO.save(lormUsuario);
+				t.commit();
+			}
+			catch (Exception e) {
+				t.rollback();
+			}
+		} catch (NullPointerException e){
+			e.printStackTrace();
 		}
 		return msg;
 		
@@ -101,15 +109,19 @@ public class Usuario {
 	public static String borrar(Usuario usuario) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "";
-		try {
-			orm.Usuario lormUsario = orm.UsuarioDAO.loadUsuarioByORMID(usuario.idusuario);
-			// Delete the persistent object<
-			msg="Dato eliminado...";
-			orm.UsuarioDAO.delete(lormUsario);
-			t.commit();
-		}
-		catch (Exception e) {
-			t.rollback();
+		try{
+			try {
+				orm.Usuario lormUsario = orm.UsuarioDAO.loadUsuarioByORMID(usuario.idusuario);
+				// Delete the persistent object<
+				msg="Dato eliminado...";
+				orm.UsuarioDAO.delete(lormUsario);
+				t.commit();
+			}
+			catch (Exception e) {
+				t.rollback();
+			}
+		} catch (NullPointerException e){
+			e.printStackTrace();
 		}
 		return msg;
 	}
