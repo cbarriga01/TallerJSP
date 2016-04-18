@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Usuario" table="usuario" lazy="false">
+		<id name="idusuario" column="idusuario" type="integer" unsaved-value="0">
+			<generator class="sequence">
+				<param name="sequence">seq_usuario</param>
+			</generator>
+		</id>
+		<property name="user" column="`user`" type="string" length="20" not-null="true" lazy="false"/>
+		<property name="password" column="password" type="string" length="20" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>

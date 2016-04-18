@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice" xmlns:intf="http://webservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="Eliminar">
+    <complexType>
+     <sequence>
+      <element name="uid" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="EliminarResponse">
+    <complexType>
+     <sequence>
+      <element name="EliminarReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listar">
+    <complexType/>
+   </element>
+   <element name="listarResponse">
+    <complexType>
+     <sequence>
+      <element name="listarReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="agregarContacto">
+    <complexType>
+     <sequence>
+      <element name="nombre" type="xsd:string"/>
+      <element name="apellido" type="xsd:string"/>
+      <element name="mail" type="xsd:string"/>
+      <element name="telefono" type="xsd:string"/>
+      <element name="pais" type="xsd:string"/>
+      <element name="region" type="xsd:string"/>
+      <element name="ciudad" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="agregarContactoResponse">
+    <complexType>
+     <sequence>
+      <element name="agregarContactoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="editarContactoServicioWeb">
+    <complexType>
+     <sequence>
+      <element name="uid" type="xsd:int"/>
+      <element name="nombre" type="xsd:string"/>
+      <element name="apellido" type="xsd:string"/>
+      <element name="mail" type="xsd:string"/>
+      <element name="telefono" type="xsd:string"/>
+      <element name="pais" type="xsd:string"/>
+      <element name="region" type="xsd:string"/>
+      <element name="ciudad" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="editarContactoServicioWebResponse">
+    <complexType>
+     <sequence>
+      <element name="editarContactoServicioWebReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="editarContactoServicioWebRequest">
+
+      <wsdl:part element="impl:editarContactoServicioWeb" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="EliminarResponse">
+
+      <wsdl:part element="impl:EliminarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarRequest">
+
+      <wsdl:part element="impl:listar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="EliminarRequest">
+
+      <wsdl:part element="impl:Eliminar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="agregarContactoRequest">
+
+      <wsdl:part element="impl:agregarContacto" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="agregarContactoResponse">
+
+      <wsdl:part element="impl:agregarContactoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarResponse">
+
+      <wsdl:part element="impl:listarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editarContactoServicioWebResponse">
+
+      <wsdl:part element="impl:editarContactoServicioWebResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WebServiceProveedor">
+
+      <wsdl:operation name="Eliminar">
+
+         <wsdl:input message="impl:EliminarRequest" name="EliminarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:EliminarResponse" name="EliminarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listar">
+
+         <wsdl:input message="impl:listarRequest" name="listarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listarResponse" name="listarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="agregarContacto">
+
+         <wsdl:input message="impl:agregarContactoRequest" name="agregarContactoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:agregarContactoResponse" name="agregarContactoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editarContactoServicioWeb">
+
+         <wsdl:input message="impl:editarContactoServicioWebRequest" name="editarContactoServicioWebRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:editarContactoServicioWebResponse" name="editarContactoServicioWebResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WebServiceProveedorSoapBinding" type="impl:WebServiceProveedor">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="Eliminar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="EliminarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="EliminarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="agregarContacto">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="agregarContactoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="agregarContactoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editarContactoServicioWeb">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="editarContactoServicioWebRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="editarContactoServicioWebResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WebServiceProveedorService">
+
+      <wsdl:port binding="impl:WebServiceProveedorSoapBinding" name="WebServiceProveedor">
+
+         <wsdlsoap:address location="http://localhost:8080/TallerJSP/services/WebServiceProveedor"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
