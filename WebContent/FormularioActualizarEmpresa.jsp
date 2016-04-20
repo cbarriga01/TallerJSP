@@ -13,7 +13,7 @@
      
     <script type="text/javascript" src="./js/validador.js"></script>
     
-<title>Insert title here</title>
+<title>Actualizar datos de empresa</title>
 </head>
 <body>
 	<form action="ServletActualizarEmpresa" id="ServletActualizarEmpresa" method="post" class="form-horizontal mitad" action="#">

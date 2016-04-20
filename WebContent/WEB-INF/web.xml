@@ -176,4 +176,24 @@
     <servlet-name>ServletListarEmpresa</servlet-name>
     <url-pattern>/ServletListarEmpresa</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletBuscadorSimpleCont</display-name>
+    <servlet-name>ServletBuscadorSimpleCont</servlet-name>
+    <servlet-class>taller.servlet.ServletBuscadorSimpleCont</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletBuscadorSimpleCont</servlet-name>
+    <url-pattern>/ServletBuscadorSimpleCont</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletBuscadorAvCont</display-name>
+    <servlet-name>ServletBuscadorAvCont</servlet-name>
+    <servlet-class>taller.servlet.ServletBuscadorAvCont</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletBuscadorAvCont</servlet-name>
+    <url-pattern>/ServletBuscadorAvCont</url-pattern>
+  </servlet-mapping>
 </web-app>

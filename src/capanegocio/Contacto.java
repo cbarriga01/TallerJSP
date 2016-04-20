@@ -214,4 +214,109 @@ public class Contacto {
 		
 		return listaContacto;
 	}
+	
+	public List<Contacto> busquedaSimpleCont(String busqueda) throws PersistentException {
+        List<Contacto> listaContacto = new ArrayList<Contacto>();
+        List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();
+        if (busqueda != null || !busqueda.equals("")) {
+            listaContactos = orm.ContactoDAO.queryContacto("Contacto.nombre='" + busqueda + "' or Contacto.apellido='" + 
+            		busqueda + "' or Contacto.telefono='" + busqueda + "' or Contacto.mail='" 
+            		+ busqueda + "' or Contacto.ciudad='" + busqueda+"' or Contacto.region='" + 
+            		busqueda+"' or Contacto.pais='" + busqueda+"'  ", null);
+        }
+        if (listaContactos != null) {
+            for (orm.Contacto contactoOrm : listaContactos) {
+                Contacto contactoNegocio = new Contacto();
+              //  Empresa empresaNegocio = new Empresa();
+             //   orm.Empresa empresaOrm = orm.EmpresaDAO.loadEmpresaByORMID(contactoOrm.getUid());//falta cosasa aca
+               // empresaNegocio.setNombre(empresaOrm.getNombre());
+                //empresaNegocio.setUid(empresaOrm.getUid());
+
+             //   contactoNegocio.setEmpresa(empresaNegocio);
+                contactoNegocio.setUid(contactoOrm.getUid());
+                contactoNegocio.setNombre(contactoOrm.getNombre());
+                contactoNegocio.setApellido(contactoOrm.getApellido());
+                contactoNegocio.setTelefono(contactoOrm.getTelefono());
+                contactoNegocio.setMail(contactoOrm.getMail());
+                contactoNegocio.setCiudad(contactoOrm.getCiudad());
+                contactoNegocio.setRegion(contactoOrm.getRegion());
+                contactoNegocio.setPais(contactoOrm.getPais());
+                
+                
+                
+                listaContacto.add(contactoNegocio);
+            }
+        }
+        return listaContacto;
+    }
+	
+	public List<Contacto> busquedaAvanzadaCont(Contacto contacto) throws PersistentException {
+        List<Contacto> listaContacto = new ArrayList<Contacto>();
+        List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();
+        String query = "";
+        
+        if (contacto.getNombre() != null && !contacto.getNombre().equals("")) {
+            query += "Contacto.nombre='" + contacto.getNombre() + "' ";
+        }
+        if ((contacto.getNombre() != null && !contacto.getNombre().equals("")) && 
+        		(contacto.getApellido() != null && !contacto.getApellido().equals(""))) {
+            query += "and ";
+        }
+        if (contacto.getApellido() != null && !contacto.getApellido().trim().equals("")) {
+            query += "Contacto.apellido='" + contacto.getApellido() + "' ";
+        }
+        if (((contacto.getNombre() != null && !contacto.getNombre().trim().equals("")) || 
+        		contacto.getApellido() != null && !contacto.getApellido().trim().equals("")) && 
+        		(contacto.getTelefono() != null && !contacto.getTelefono().trim().equals(""))) {
+            query += "and ";
+        }
+        if (contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("")) {
+            query += "Contacto.telefono='" + contacto.getTelefono() + "' ";
+        }
+        if (((contacto.getNombre() != null && !contacto.getNombre().trim().equals("")) || 
+        		contacto.getApellido() != null && !contacto.getApellido().trim().equals("")
+                || contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("")) && 
+                contacto.getMail() != null && !contacto.getMail().trim().equals("")) {
+            query += "and ";
+        }
+        if (contacto.getMail() != null && !contacto.getMail().trim().equals("")) {
+            query += "Contacto.mail='" + contacto.getMail() + "'";
+        }
+        if (contacto.getCiudad() != null && !contacto.getCiudad().trim().equals("")) {
+            query += "Contacto.ciudad='" + contacto.getCiudad() + "'";
+        }
+        if (contacto.getRegion() != null && !contacto.getRegion().trim().equals("")) {
+            query += "Contacto.region='" + contacto.getRegion() + "'";
+        }
+        if (contacto.getPais() != null && !contacto.getPais().trim().equals("")) {
+            query += "Contacto.pais='" + contacto.getPais() + "'";
+        }
+
+        listaContactos = orm.ContactoDAO.queryContacto(query, null);
+       
+        if (listaContactos != null) {
+            for (orm.Contacto contactoOrm : listaContactos) {
+                Contacto contactoNegocio = new Contacto();
+              // Empresa empresaNegocio = new Empresa();
+               // orm.Empresa empresaOrm = orm.EmpresaDAO.loadEmpresaByORMID(contactoOrm.getUid());//falta codigo aca?
+                //empresaNegocio.setNombre(empresaOrm.getNombre());
+                //empresaNegocio.setUid(empresaOrm.getUid());
+        
+             //   contactoNegocio.setEmpresa(empresaNegocio);
+                contactoNegocio.setUid(contactoOrm.getUid());
+                contactoNegocio.setNombre(contactoOrm.getNombre());
+                contactoNegocio.setApellido(contactoOrm.getApellido());
+                contactoNegocio.setTelefono(contactoOrm.getTelefono());
+                contactoNegocio.setMail(contactoOrm.getMail());
+                contactoNegocio.setCiudad(contactoOrm.getCiudad());
+                contactoNegocio.setRegion(contactoOrm.getRegion());
+                contactoNegocio.setPais(contactoOrm.getPais());
+                
+                
+                listaContacto.add(contactoNegocio);
+            }
+        }
+        return listaContacto;
+    }
+	
 }

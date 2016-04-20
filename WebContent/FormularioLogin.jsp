@@ -14,7 +14,7 @@
     <script type="text/javascript" src="./js/validador.js"></script>
     <link href="./css/signin.css" rel="stylesheet">
     
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 	

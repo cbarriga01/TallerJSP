@@ -12,7 +12,7 @@
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
      
     <script type="text/javascript" src="./js/validador.js"></script>
-<title>Insert title here</title>
+<title>Eliminar usuario</title>
 </head>
 <body>
 	<form action="ServletEliminarUsuario" id="ServletEliminarUsuario" method="post" class="form-horizontal mitad" action="#">

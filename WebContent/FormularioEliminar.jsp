@@ -14,7 +14,7 @@
      
     <script type="text/javascript" src="./js/validador.js"></script>
     
-<title>Insert title here</title>
+<title>Eliminar contacto</title>
 </head>
 <body>
 	<form action="ServletEliminar" id="ServletEliminar" method="post" class="form-horizontal mitad" action="#">

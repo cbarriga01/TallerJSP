@@ -12,7 +12,7 @@
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
      
     <script type="text/javascript" src="./js/validador.js"></script>
-<title>Insert title here</title>
+<title>Ingresar datos de empresa</title>
 </head>
 <body>
 	<form action="ServletRegistrarEmpresa" id="ServletRegistrarEmpresa" method="post" class="form-horizontal mitad" action="#">
