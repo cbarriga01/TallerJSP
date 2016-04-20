@@ -14,4 +14,8 @@
 package orm;
 
 public interface ORMConstants extends org.orm.util.ORMBaseConstants {
+	final int KEY_CONTACTO_EMPRESA = -982201159;
+	
+	final int KEY_EMPRESA_CONTACTO = 1968643941;
+	
 }

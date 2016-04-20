@@ -321,6 +321,39 @@ public class ContactoDAO {
 		}
 	}
 	
+	public static boolean deleteAndDissociate(orm.Contacto contacto)throws PersistentException {
+		try {
+			if(contacto.getEmpresa() != null) {
+				contacto.getEmpresa().contacto.remove(contacto);
+			}
+			
+			return delete(contacto);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public static boolean deleteAndDissociate(orm.Contacto contacto, org.orm.PersistentSession session)throws PersistentException {
+		try {
+			if(contacto.getEmpresa() != null) {
+				contacto.getEmpresa().contacto.remove(contacto);
+			}
+			
+			try {
+				session.delete(contacto);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
 	public static boolean refresh(orm.Contacto contacto) throws PersistentException {
 		try {
 			orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().refresh(contacto);

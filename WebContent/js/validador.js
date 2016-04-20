@@ -384,4 +384,152 @@ $(document).ready(function() {
             }
         }
    });
+    
+    $('#ServletRegistrarEmpresa').bootstrapValidator({
+   	 feedbackIcons: {
+   		 valid: 'glyphicon glyphicon-ok',
+   		 invalid: 'glyphicon glyphicon-remove',
+   		 validating: 'glyphicon glyphicon-refresh'
+   	 },
+   	 fields: {
+   		 nombre: {
+   			 validators: {
+   				 notEmpty: {
+   					 message: 'El nombre es requerido'
+   				 },
+                    stringLength: {
+                        max: 20,
+                        message: 'El nombre debe contener maximo 100 caracteres'
+                    }
+   			 	}
+            },
+            pais: {
+                validators: {
+                    notEmpty: {
+                        message: 'El pais es requerido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'El pais debe contener maximo 20 caracteres'
+                    }
+                }
+            },
+            ciudad: {
+                validators: {
+                    notEmpty: {
+                        message: 'La ciudad es requerida'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'La ciudad debe contener maximo 20 caracteres'
+                    }
+                }
+            },
+            direccion: {
+                validators: {
+                    notEmpty: {
+                        message: 'La direccion es requerido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'La direccion debe contener maximo 20 caracteres'
+                    }
+                }
+            }
+   	 }
+   });
+
+   $('#ServletActualizarEmpresa').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            id: {
+                validators: {
+                    notEmpty: {
+                        message: 'El id es requerido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'El id debe contener maximo 10 caracteres'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'El id solo puede contener números'
+                    }
+                }
+            },
+            nombre: {
+                validators: {
+                    notEmpty: {
+                        message: 'El nombre es requerido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'El nombre debe contener maximo 100 caracteres'
+                    }
+                }
+            },
+            pais: {
+                validators: {
+                    notEmpty: {
+                        message: 'El pais es requerido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'El pais debe contener maximo 20 caracteres'
+                    }
+                }
+            },
+            ciudad: {
+                validators: {
+                    notEmpty: {
+                        message: 'La ciudad es requerida'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'La ciudad debe contener maximo 20 caracteres'
+                    }
+                }
+            },
+            direccion: {
+                validators: {
+                    notEmpty: {
+                        message: 'La direccion es requerido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'La direccion debe contener maximo 20 caracteres'
+                    }
+                }
+            }
+        }
+   });
+
+   $('#ServletEliminarEmpresa').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            id: {
+                validators: {
+                    notEmpty: {
+                        message: 'El id es requerido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'El id debe contener maximo 10 caracteres'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'El id solo puede contener números'
+                    }
+                }
+            }
+        }
+   });
 });

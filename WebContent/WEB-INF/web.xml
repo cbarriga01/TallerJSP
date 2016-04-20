@@ -136,4 +136,44 @@
     <servlet-name>ServletListarUsuario</servlet-name>
     <url-pattern>/ServletListarUsuario</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletRegistrarEmpresa</display-name>
+    <servlet-name>ServletRegistrarEmpresa</servlet-name>
+    <servlet-class>taller.servlet.ServletRegistrarEmpresa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarEmpresa</servlet-name>
+    <url-pattern>/ServletRegistrarEmpresa</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletActualizarEmpresa</display-name>
+    <servlet-name>ServletActualizarEmpresa</servlet-name>
+    <servlet-class>taller.servlet.ServletActualizarEmpresa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarEmpresa</servlet-name>
+    <url-pattern>/ServletActualizarEmpresa</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletEliminarEmpresa</display-name>
+    <servlet-name>ServletEliminarEmpresa</servlet-name>
+    <servlet-class>taller.servlet.ServletEliminarEmpresa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEliminarEmpresa</servlet-name>
+    <url-pattern>/ServletEliminarEmpresa</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletListarEmpresa</display-name>
+    <servlet-name>ServletListarEmpresa</servlet-name>
+    <servlet-class>taller.servlet.ServletListarEmpresa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletListarEmpresa</servlet-name>
+    <url-pattern>/ServletListarEmpresa</url-pattern>
+  </servlet-mapping>
 </web-app>

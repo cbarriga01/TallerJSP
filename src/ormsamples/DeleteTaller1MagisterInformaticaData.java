@@ -15,6 +15,9 @@ public class DeleteTaller1MagisterInformaticaData {
 			orm.Usuario lormUsuario = orm.UsuarioDAO.loadUsuarioByQuery(null, null);
 			// Delete the persistent object
 			orm.UsuarioDAO.delete(lormUsuario);
+			orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByQuery(null, null);
+			// Delete the persistent object
+			orm.EmpresaDAO.delete(lormEmpresa);
 			t.commit();
 		}
 		catch (Exception e) {

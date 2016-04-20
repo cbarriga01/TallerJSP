@@ -96,8 +96,8 @@ public class Contacto {
 	
 	/**
 	 * Método que permite ingresar un contacto a la BD
-	 * @param contacto
-	 * @return
+	 * @param contacto Contacto, 
+	 * @return 
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Contacto contacto) throws PersistentException {

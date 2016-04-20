@@ -25,6 +25,14 @@ public class ListTaller1MagisterInformaticaData {
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
+		System.out.println("Listing Empresa...");
+		orm.Empresa[] ormEmpresas = orm.EmpresaDAO.listEmpresaByQuery(null, null);
+		length = Math.min(ormEmpresas.length, ROW_COUNT);
+		for (int i = 0; i < length; i++) {
+			System.out.println(ormEmpresas[i]);
+		}
+		System.out.println(length + " record(s) retrieved.");
+		
 	}
 	
 	public void listByCriteria() throws PersistentException {
@@ -51,6 +59,18 @@ public class ListTaller1MagisterInformaticaData {
 			 System.out.println(ormUsuarios[i]);
 		}
 		System.out.println(length + " Usuario record(s) retrieved."); 
+		
+		System.out.println("Listing Empresa by Criteria...");
+		orm.EmpresaCriteria lormEmpresaCriteria = new orm.EmpresaCriteria();
+		// Please uncomment the follow line and fill in parameter(s) 
+		//lormEmpresaCriteria.id.eq();
+		lormEmpresaCriteria.setMaxResults(ROW_COUNT);
+		orm.Empresa[] ormEmpresas = lormEmpresaCriteria.listEmpresa();
+		length =ormEmpresas== null ? 0 : Math.min(ormEmpresas.length, ROW_COUNT); 
+		for (int i = 0; i < length; i++) {
+			 System.out.println(ormEmpresas[i]);
+		}
+		System.out.println(length + " Empresa record(s) retrieved."); 
 		
 	}
 	
