@@ -40,13 +40,6 @@ public class ServletActualizarEmpresa extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		PersistentTransaction t = null;
 		PrintWriter out= response.getWriter();
 		
@@ -87,6 +80,13 @@ public class ServletActualizarEmpresa extends HttpServlet {
 		}catch(NullPointerException e){
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 */
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 	}
 	
 	/**
