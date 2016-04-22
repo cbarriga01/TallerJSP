@@ -14,6 +14,10 @@ $(document).ready(function() {
                      stringLength: {
                          max: 100,
                          message: 'El nombre debe contener maximo 100 caracteres'
+                     },
+                     regexp: {
+                         regexp: /^[a-zA-Z]+$/,
+                         message: 'El teléfono solo puede contener números'
                      }
     			 }
     		 },

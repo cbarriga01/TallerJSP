@@ -126,12 +126,12 @@ public class Usuario {
 		return msg;
 	}
 	
-/**
- * Método que permite listar los usuarios almacenados en la BD
- * @return
- * @throws PersistentException
- */
-public static List <Usuario> listar() throws PersistentException {
+	/**
+	 * Método que permite listar los usuarios almacenados en la BD
+	 * @return
+	 * @throws PersistentException
+	 */
+	public static List <Usuario> listar() throws PersistentException {
 		
 		List <orm.Usuario> listaUsuarioOrm = orm.UsuarioDAO.queryUsuario(null, null);
 		List <Usuario> listaUsuario = new ArrayList<>();
@@ -146,19 +146,36 @@ public static List <Usuario> listar() throws PersistentException {
 		return listaUsuario;
 	}
 	
-public static List <Usuario> buscarUsuario() throws PersistentException {
-	Usuario usuario = new Usuario();
-	List <orm.Usuario> listaUsuarioOrm = orm.UsuarioDAO.queryUsuario("Usuario.user='"+usuario.getUser()+"'& Usuario.password='"+usuario.getPassword()+"'", null);
-	List <Usuario> listaUsuario = new ArrayList<>();
-	
-	for (orm.Usuario usuarioOrm:listaUsuarioOrm) {
-		//Usuario usuario= new Usuario();
-		usuario.setUser(usuarioOrm.getUser());
-		usuario.setPassword(usuarioOrm.getPassword());
-		listaUsuario.add(usuario);
+	public static List <Usuario> buscarUsuario() throws PersistentException {
+		Usuario usuario = new Usuario();
+		List <orm.Usuario> listaUsuarioOrm = orm.UsuarioDAO.queryUsuario("Usuario.user='"+usuario.getUser()+"'& Usuario.password='"+usuario.getPassword()+"'", null);
+		List <Usuario> listaUsuario = new ArrayList<>();
+		
+		for (orm.Usuario usuarioOrm:listaUsuarioOrm) {
+			//Usuario usuario= new Usuario();
+			usuario.setUser(usuarioOrm.getUser());
+			usuario.setPassword(usuarioOrm.getPassword());
+			listaUsuario.add(usuario);
+		}
+		
+		return listaUsuario;
 	}
-	
-	return listaUsuario;
-}
+
+	public static Usuario busquedaUsuario(Usuario usuarioRec) throws PersistentException {
+		Usuario usuario=new Usuario();
+		try{
+		orm.Usuario usuarioOrm = orm.UsuarioDAO.loadUsuarioByQuery("Usuario.user='"+usuarioRec.getUser()+"'AND Usuario.password='"+usuarioRec.getPassword()+"'", null);
+		
+			usuario.setUser(usuarioOrm.getUser());
+			usuario.setPassword(usuarioOrm.getPassword());
+		
+		System.out.println(" record(s) retrieved.");
+		return usuario;
+		}catch(NullPointerException e){
+			e.printStackTrace();
+			
+			return usuario;
+		}
+	}
 
 }

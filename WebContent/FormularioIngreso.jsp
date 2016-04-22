@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"></link>
-    <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
     
-    <script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-     
-    <script type="text/javascript" src="./js/validador.js"></script>
+    <jsp:include page="Menu.jsp"></jsp:include>
+    
 <title>Ingresar datos de contacto</title>
 </head>
 <body>
@@ -75,6 +70,14 @@
 	<div class="form-group">
 		<div class="col-lg-9 col-lg-offset-3">
 			<button type="submit" class="btn btn-success left">Enviar</button>
+		</div>
+	</div>
+	</form>
+	
+	<form action="ServletLogin" id="ServletLogin" method="get" class="form-horizontal mitad" action="#">
+	<div class="form-group">
+		<div class="col-lg-9 col-lg-offset-3">
+			<button type="submit" class="btn btn-success left">Logout</button>
 		</div>
 	</div>
 	</form>

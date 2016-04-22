@@ -8,6 +8,10 @@ import org.orm.PersistentTransaction;
 
 import taller.servlet.TallerServlet;
 
+/*
+ * Clase de negocio de contacto
+ * @author: César Barriga
+ */
 public class Contacto {
 	public Contacto() {
 	}
@@ -29,6 +33,8 @@ public class Contacto {
 	private String region;
 	
 	private String ciudad;
+	
+	private int eid;
 
 	public int getUid() {
 		return uid;
@@ -94,10 +100,18 @@ public class Contacto {
 		this.ciudad = ciudad;
 	}
 	
+	public int getEid() {
+		return eid;
+	}
+
+	public void setEid(int eid) {
+		this.eid = eid;
+	}
+
 	/**
 	 * Método que permite ingresar un contacto a la BD
 	 * @param contacto Contacto, 
-	 * @return 
+	 * @return mensaje de so al ingreso fue exitoso o no
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Contacto contacto) throws PersistentException {
@@ -131,7 +145,7 @@ public class Contacto {
 	
 	/**
 	 * Método que permite actualizar un contacto en la BD
-	 * @param contacto
+	 * @param contacto de tipo Contacto, 
 	 * @return
 	 * @throws PersistentException
 	 */
@@ -166,8 +180,8 @@ public class Contacto {
 	
 	/**
 	 * Método que permite eliminar un contacto de la BD
-	 * @param contacto
-	 * @return
+	 * @param contacto de tipo Contacto
+	 * @return mensaje de si la eliminación fué exitosa o no
 	 * @throws PersistentException
 	 */
 	public static String borrar(Contacto contacto) throws PersistentException {
@@ -215,6 +229,12 @@ public class Contacto {
 		return listaContacto;
 	}
 	
+	/**
+	 * Método de busqueda simple de contacto empresarial
+	 * @param busqueda de tipo String que es el criterio a buscar
+	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la búsqueda
+	 * @throws PersistentException
+	 */
 	public List<Contacto> busquedaSimpleCont(String busqueda) throws PersistentException {
         List<Contacto> listaContacto = new ArrayList<Contacto>();
         List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();
@@ -250,6 +270,12 @@ public class Contacto {
         return listaContacto;
     }
 	
+	/**
+	 * Método de busqueda simple de contacto empresarial
+	 * @param contacto de tipo Contacto
+	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la búsqueda
+	 * @throws PersistentException
+	 */
 	public List<Contacto> busquedaAvanzadaCont(Contacto contacto) throws PersistentException {
         List<Contacto> listaContacto = new ArrayList<Contacto>();
         List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();

@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.orm.PersistentException;
+
+import capanegocio.Usuario;
+
 /**
  * Servlet implementation class ServletLogin
  */
@@ -24,38 +28,79 @@ public class ServletLogin extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Metodo utilizado para desloguear
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		//me llega la url "proyecto/login/out"
+        // String action=(request.getPathInfo()!=null?request.getPathInfo():"");
+        HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("user")!= null){
+            sesion.invalidate();
+            response.sendRedirect("FormularioLogin.jsp");
+        }
+		
 		//me llega la url "TallerJSP/login/out"
-        String action=(request.getPathInfo()!=null?request.getPathInfo():"");
+        /*String action=(request.getPathInfo()!=null?request.getPathInfo():"");
         HttpSession sesion = request.getSession();
         if(action.equals("/out")){
             sesion.invalidate();
             response.sendRedirect("/FormularioIngreso.jsp");
         }else{
         	
-        }
+        }*/
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Metodo encargado de logear
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		HttpSession sesion = request.getSession();
+        String usu, pass;
+        usu = request.getParameter("user");
+        pass = request.getParameter("password");
+        Usuario usuario=new Usuario();
+        usuario.setUser(usu);
+        usuario.setPassword(pass);
+        
+        try {
+			usuario=Usuario.busquedaUsuario(usuario);
+			if(!usuario.getUser().equals("")){
+	        	sesion.setAttribute("user", "password");
+	        	response.sendRedirect("FormularioIngreso.jsp");
+	        }else{
+	        	response.sendRedirect("LoginFallido.jsp");
+	        }
+			
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}
+		
+		
+		/*
 		HttpSession sesion = request.getSession();
         String user, password;
         user = request.getParameter("user");
-        password = request.getParameter("password");
+        password = request.getParameter("password");*/
         //deberíamos buscar el usuario en la base de datos, pero dado que se escapa de este tema, ponemos un ejemplo en el mismo código
-        if(user.equals("admin") && password.equals("admin")/* && sesion.getAttribute("usuario") == null*/){
+        //if(user.equals("admin") && password.equals("admin")/* && sesion.getAttribute("usuario") == null*/){
             //si coincide usuario y password y además no hay sesión iniciada
-            sesion.setAttribute("usuario", user);
+            //sesion.setAttribute("usuario", user);
             //redirijo a página con información de login exitoso
-            response.sendRedirect("LoginExito.jsp");
-        }else{
-        	response.sendRedirect("LoginFallido.jsp");
-        }
+            //response.sendRedirect("LoginExito.jsp");
+        //}else{
+        	//response.sendRedirect("LoginFallido.jsp");
+        //}
+        
 	}
 
 	/**
