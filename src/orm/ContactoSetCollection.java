@@ -70,14 +70,16 @@ public class ContactoSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>uid</li>
-	 * <li>nombre</li>
-	 * <li>apellido</li>
-	 * <li>mail</li>
-	 * <li>telefono</li>
-	 * <li>pais</li>
-	 * <li>region</li>
-	 * <li>ciudad</li>
+	 * <li>idContacto</li>
+	 * <li>run</li>
+	 * <li>nombreContacto</li>
+	 * <li>apellidoContacto</li>
+	 * <li>mailContacto</li>
+	 * <li>telefonoContacto</li>
+	 * <li>paisContacto</li>
+	 * <li>regionContacto</li>
+	 * <li>ciudadContacto</li>
+	 * <li>direccion</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -88,14 +90,16 @@ public class ContactoSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>uid</li>
-	 * <li>nombre</li>
-	 * <li>apellido</li>
-	 * <li>mail</li>
-	 * <li>telefono</li>
-	 * <li>pais</li>
-	 * <li>region</li>
-	 * <li>ciudad</li>
+	 * <li>idContacto</li>
+	 * <li>run</li>
+	 * <li>nombreContacto</li>
+	 * <li>apellidoContacto</li>
+	 * <li>mailContacto</li>
+	 * <li>telefonoContacto</li>
+	 * <li>paisContacto</li>
+	 * <li>regionContacto</li>
+	 * <li>ciudadContacto</li>
+	 * <li>direccion</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

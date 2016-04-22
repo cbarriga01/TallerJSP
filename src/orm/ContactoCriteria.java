@@ -19,29 +19,33 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ContactoCriteria extends AbstractORMCriteria {
-	public final IntegerExpression uid;
-	public final StringExpression nombre;
-	public final StringExpression apellido;
-	public final StringExpression mail;
-	public final StringExpression telefono;
-	public final StringExpression pais;
-	public final StringExpression region;
-	public final StringExpression ciudad;
-	public final IntegerExpression empresaId;
-	public final AssociationExpression empresa;
+	public final IntegerExpression idContacto;
+	public final StringExpression run;
+	public final StringExpression nombreContacto;
+	public final StringExpression apellidoContacto;
+	public final StringExpression mailContacto;
+	public final StringExpression telefonoContacto;
+	public final StringExpression paisContacto;
+	public final StringExpression regionContacto;
+	public final StringExpression ciudadContacto;
+	public final StringExpression direccion;
+	public final IntegerExpression idEmpresaId;
+	public final AssociationExpression idEmpresa;
 	
 	public ContactoCriteria(Criteria criteria) {
 		super(criteria);
-		uid = new IntegerExpression("uid", this);
-		nombre = new StringExpression("nombre", this);
-		apellido = new StringExpression("apellido", this);
-		mail = new StringExpression("mail", this);
-		telefono = new StringExpression("telefono", this);
-		pais = new StringExpression("pais", this);
-		region = new StringExpression("region", this);
-		ciudad = new StringExpression("ciudad", this);
-		empresaId = new IntegerExpression("empresa.id", this);
-		empresa = new AssociationExpression("empresa", this);
+		idContacto = new IntegerExpression("idContacto", this);
+		run = new StringExpression("run", this);
+		nombreContacto = new StringExpression("nombreContacto", this);
+		apellidoContacto = new StringExpression("apellidoContacto", this);
+		mailContacto = new StringExpression("mailContacto", this);
+		telefonoContacto = new StringExpression("telefonoContacto", this);
+		paisContacto = new StringExpression("paisContacto", this);
+		regionContacto = new StringExpression("regionContacto", this);
+		ciudadContacto = new StringExpression("ciudadContacto", this);
+		direccion = new StringExpression("direccion", this);
+		idEmpresaId = new IntegerExpression("idEmpresa.idEmpresa", this);
+		idEmpresa = new AssociationExpression("idEmpresa", this);
 	}
 	
 	public ContactoCriteria(PersistentSession session) {
@@ -52,8 +56,8 @@ public class ContactoCriteria extends AbstractORMCriteria {
 		this(orm.Taller1MagisterInformaticaPersistentManager.instance().getSession());
 	}
 	
-	public EmpresaCriteria createEmpresaCriteria() {
-		return new EmpresaCriteria(createCriteria("empresa"));
+	public EmpresaCriteria createIdEmpresaCriteria() {
+		return new EmpresaCriteria(createCriteria("idEmpresa"));
 	}
 	
 	public Contacto uniqueContacto() {

@@ -18,7 +18,9 @@ public class Contacto {
 	
 	private static final int ROW_COUNT = 100;
 	
-	private int uid;
+	private int idContacto;
+	
+	private String run;
 	
 	private String nombre;
 	
@@ -34,14 +36,32 @@ public class Contacto {
 	
 	private String ciudad;
 	
+	private String direccion;
+	
 	private int eid;
 
-	public int getUid() {
-		return uid;
+	public int getIdContacto() {
+		return idContacto;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setIdContacto(int idContacto) {
+		this.idContacto = idContacto;
+	}
+
+		public String getRun() {
+		return run;
+	}
+
+	public void setRun(String run) {
+		this.run = run;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public String getNombre() {
@@ -111,7 +131,7 @@ public class Contacto {
 	/**
 	 * Método que permite ingresar un contacto a la BD
 	 * @param contacto Contacto, 
-	 * @return mensaje de so al ingreso fue exitoso o no
+	 * @return mensaje de si el ingreso fue exitoso o no
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Contacto contacto) throws PersistentException {
@@ -122,13 +142,15 @@ public class Contacto {
 				orm.Contacto lormContacto = orm.ContactoDAO.createContacto();
 				TallerServlet servlet = new TallerServlet();
 				// Initialize the properties of the persistent object here
-				lormContacto.setNombre(contacto.nombre);
-				lormContacto.setApellido(contacto.apellido);
-				lormContacto.setMail(contacto.mail);
-				lormContacto.setTelefono(contacto.telefono);
-				lormContacto.setPais(contacto.pais);
-				lormContacto.setRegion(contacto.region);
-				lormContacto.setCiudad(contacto.ciudad);
+				lormContacto.setRun(contacto.run);
+				lormContacto.setNombreContacto(contacto.nombre);
+				lormContacto.setApellidoContacto(contacto.apellido);
+				lormContacto.setMailContacto(contacto.mail);
+				lormContacto.setTelefonoContacto(contacto.telefono);
+				lormContacto.setPaisContacto(contacto.pais);
+				lormContacto.setRegionContacto(contacto.region);
+				lormContacto.setCiudadContacto(contacto.ciudad);
+				lormContacto.setDireccion(contacto.direccion);
 				msg = "Ingreso Exitoso";
 				orm.ContactoDAO.save(lormContacto);
 				t.commit();
@@ -145,8 +167,8 @@ public class Contacto {
 	
 	/**
 	 * Método que permite actualizar un contacto en la BD
-	 * @param contacto de tipo Contacto, 
-	 * @return
+	 * @param contacto de tipo Contacto,
+	 * @return mensaje de si la actualización fue exitosa o no
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Contacto contacto) throws PersistentException {
@@ -154,16 +176,18 @@ public class Contacto {
 		String msg = "";
 		try{
 			try {
-				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.uid);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
+				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.idContacto);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
 				// Update the properties of the persistent object
-				System.out.println("Id = " + contacto.uid);
-				lormContacto.setNombre(contacto.nombre);
-				lormContacto.setApellido(contacto.apellido);
-				lormContacto.setMail(contacto.mail);
-				lormContacto.setTelefono(contacto.telefono);
-				lormContacto.setPais(contacto.pais);
-				lormContacto.setRegion(contacto.region);
-				lormContacto.setCiudad(contacto.ciudad);
+				System.out.println("Id = " + contacto.idContacto);
+				lormContacto.setRun(contacto.run);
+				lormContacto.setNombreContacto(contacto.nombre);
+				lormContacto.setApellidoContacto(contacto.apellido);
+				lormContacto.setMailContacto(contacto.mail);
+				lormContacto.setTelefonoContacto(contacto.telefono);
+				lormContacto.setPaisContacto(contacto.pais);
+				lormContacto.setRegionContacto(contacto.region);
+				lormContacto.setCiudadContacto(contacto.ciudad);
+				lormContacto.setDireccion(contacto.direccion);
 				msg = "Ingreso Exitoso";
 				orm.ContactoDAO.save(lormContacto);
 				t.commit();
@@ -189,7 +213,7 @@ public class Contacto {
 		String msg = "";
 		try{
 			try {
-				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.uid);
+				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.idContacto);
 				// Delete the persistent object<
 				msg="Dato eliminado...";
 				orm.ContactoDAO.delete(lormContacto);
@@ -216,13 +240,15 @@ public class Contacto {
 		
 		for (orm.Contacto contactoOrm:listaContactoOrm) {
 			Contacto contacto= new Contacto();
-			contacto.setNombre(contactoOrm.getNombre());
-			contacto.setApellido(contactoOrm.getApellido());
-			contacto.setMail(contactoOrm.getMail());
-			contacto.setTelefono(contactoOrm.getTelefono());
-			contacto.setPais(contactoOrm.getPais());
-			contacto.setRegion(contactoOrm.getRegion());
-			contacto.setCiudad(contactoOrm.getCiudad());
+			contacto.setRun(contactoOrm.getRun());
+			contacto.setNombre(contactoOrm.getNombreContacto());
+			contacto.setApellido(contactoOrm.getApellidoContacto());
+			contacto.setMail(contactoOrm.getMailContacto());
+			contacto.setTelefono(contactoOrm.getTelefonoContacto());
+			contacto.setPais(contactoOrm.getPaisContacto());
+			contacto.setRegion(contactoOrm.getRegionContacto());
+			contacto.setCiudad(contactoOrm.getCiudadContacto());
+			contacto.setDireccion(contactoOrm.getDireccion());
 			listaContacto.add(contacto);
 		}
 		
@@ -239,10 +265,12 @@ public class Contacto {
         List<Contacto> listaContacto = new ArrayList<Contacto>();
         List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();
         if (busqueda != null || !busqueda.equals("")) {
-            listaContactos = orm.ContactoDAO.queryContacto("Contacto.nombre='" + busqueda + "' or Contacto.apellido='" + 
-            		busqueda + "' or Contacto.telefono='" + busqueda + "' or Contacto.mail='" 
-            		+ busqueda + "' or Contacto.ciudad='" + busqueda+"' or Contacto.region='" + 
-            		busqueda+"' or Contacto.pais='" + busqueda+"'  ", null);
+            listaContactos = orm.ContactoDAO.queryContacto("Contacto.run='" + busqueda + 
+            		"Contacto.nombre='" + busqueda + "' or Contacto.apellido='" + 
+            		busqueda + "' or Contacto.mail='" + busqueda + "' or Contacto.telefono='" 
+            		+ busqueda + "' or Contacto.pais='" + busqueda+"' or Contacto.region='" + 
+            		busqueda+"' or Contacto.ciudad='" + busqueda+"' or Contacto.direccion='" 
+            		+ busqueda+"'  ", null);
         }
         if (listaContactos != null) {
             for (orm.Contacto contactoOrm : listaContactos) {
@@ -253,16 +281,16 @@ public class Contacto {
                 //empresaNegocio.setUid(empresaOrm.getUid());
 
              //   contactoNegocio.setEmpresa(empresaNegocio);
-                contactoNegocio.setUid(contactoOrm.getUid());
-                contactoNegocio.setNombre(contactoOrm.getNombre());
-                contactoNegocio.setApellido(contactoOrm.getApellido());
-                contactoNegocio.setTelefono(contactoOrm.getTelefono());
-                contactoNegocio.setMail(contactoOrm.getMail());
-                contactoNegocio.setCiudad(contactoOrm.getCiudad());
-                contactoNegocio.setRegion(contactoOrm.getRegion());
-                contactoNegocio.setPais(contactoOrm.getPais());
-                
-                
+                contactoNegocio.setIdContacto(contactoOrm.getIdContacto());
+                contactoNegocio.setRun(contactoOrm.getRun());
+                contactoNegocio.setNombre(contactoOrm.getNombreContacto());
+                contactoNegocio.setApellido(contactoOrm.getApellidoContacto());
+                contactoNegocio.setMail(contactoOrm.getMailContacto());
+                contactoNegocio.setTelefono(contactoOrm.getTelefonoContacto());
+                contactoNegocio.setPais(contactoOrm.getPaisContacto());
+                contactoNegocio.setRegion(contactoOrm.getRegionContacto());
+                contactoNegocio.setCiudad(contactoOrm.getCiudadContacto());
+                contactoNegocio.setDireccion(contactoOrm.getDireccion());
                 
                 listaContacto.add(contactoNegocio);
             }
@@ -329,14 +357,16 @@ public class Contacto {
                 //empresaNegocio.setUid(empresaOrm.getUid());
         
              //   contactoNegocio.setEmpresa(empresaNegocio);
-                contactoNegocio.setUid(contactoOrm.getUid());
-                contactoNegocio.setNombre(contactoOrm.getNombre());
-                contactoNegocio.setApellido(contactoOrm.getApellido());
-                contactoNegocio.setTelefono(contactoOrm.getTelefono());
-                contactoNegocio.setMail(contactoOrm.getMail());
-                contactoNegocio.setCiudad(contactoOrm.getCiudad());
-                contactoNegocio.setRegion(contactoOrm.getRegion());
-                contactoNegocio.setPais(contactoOrm.getPais());
+                contactoNegocio.setIdContacto(contactoOrm.getIdContacto());
+                contactoNegocio.setRun(contactoOrm.getRun());
+                contactoNegocio.setNombre(contactoOrm.getNombreContacto());
+                contactoNegocio.setApellido(contactoOrm.getApellidoContacto());
+                contactoNegocio.setMail(contactoOrm.getMailContacto());
+                contactoNegocio.setTelefono(contactoOrm.getTelefonoContacto());
+                contactoNegocio.setPais(contactoOrm.getPaisContacto());
+                contactoNegocio.setRegion(contactoOrm.getRegionContacto());
+                contactoNegocio.setCiudad(contactoOrm.getCiudadContacto());
+                contactoNegocio.setDireccion(contactoOrm.getDireccion());
                 
                 
                 listaContacto.add(contactoNegocio);

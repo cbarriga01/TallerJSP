@@ -2,7 +2,7 @@
 
 <Model quotesql="1" tablecharset="" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
   <Entity name="contacto">
-    <Column name="uid">
+    <Column name="idContacto">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -14,95 +14,117 @@
       <Comment>Clave Primara</Comment>
       <UserTypes/>
     </Column>
-    <Column name="nombre">
+    <Column name="run">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
-      <Length>100</Length>
-      <Nullable>true</Nullable>
+      <Length>12</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>true</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="nombreContacto">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>50</Length>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <Comment>Nombre</Comment>
       <UserTypes/>
     </Column>
-    <Column name="apellido">
+    <Column name="apellidoContacto">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
-      <Length>100</Length>
-      <Nullable>true</Nullable>
+      <Length>50</Length>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <Comment>Apellido</Comment>
       <UserTypes/>
     </Column>
-    <Column name="mail">
+    <Column name="mailContacto">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
-      <Length>50</Length>
-      <Nullable>true</Nullable>
+      <Length>20</Length>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <Comment>Mail</Comment>
       <UserTypes/>
     </Column>
-    <Column name="telefono">
+    <Column name="telefonoContacto">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>20</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <Comment>Telefono</Comment>
       <UserTypes/>
     </Column>
-    <Column name="pais">
+    <Column name="paisContacto">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>20</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="region">
+    <Column name="regionContacto">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>20</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ciudad">
+    <Column name="ciudadContacto">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>20</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="Empresaid">
+    <Column name="direccion">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>30</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="idEmpresa">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Empresa.id</ReferencedColumn>
+      <ReferencedColumn>empresa.idEmpresa</ReferencedColumn>
       <Type>9</Type>
       <Length>0</Length>
       <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
+      <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
@@ -127,7 +149,7 @@
       <Length>20</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
+      <Unique>true</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
@@ -143,8 +165,8 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="Empresa">
-    <Column name="id">
+  <Entity name="empresa">
+    <Column name="idEmpresa">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -155,7 +177,51 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="nombre">
+    <Column name="rut">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>12</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>true</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="razonSocial">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>30</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="nombreEmpresa">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>30</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="representante">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>50</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="mailEmpresa">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
@@ -166,7 +232,7 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="pais">
+    <Column name="telefonoEmpresa">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
@@ -177,7 +243,7 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ciudad">
+    <Column name="paisEmpresa">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
@@ -188,11 +254,33 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="direccion">
+    <Column name="regionEmpresa">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>20</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="ciudadEmpresa">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>20</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="domicilio">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>30</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -200,14 +288,14 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <ForeignKey name="FKcontacto517306">
+  <ForeignKey name="FKcontacto524306">
     <ReferenceTable>contacto</ReferenceTable>
-    <ReferencedTable>Empresa</ReferencedTable>
+    <ReferencedTable>empresa</ReferencedTable>
     <Columns>
-      <Column>Empresaid</Column>
+      <Column>idEmpresa</Column>
     </Columns>
     <RefColumns>
-      <Column>id</Column>
+      <Column>idEmpresa</Column>
     </RefColumns>
   </ForeignKey>
 </Model>

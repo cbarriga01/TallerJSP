@@ -15,54 +15,115 @@ public class Empresa {
 	
 private static final int ROW_COUNT = 100;
 	
-	private int id;
+	private int idEmpresa;
 	
-	private String nombre;
+	private String rut;
 	
-	private String pais;
+	private String razonSocial;
 	
-	private String ciudad;
+	private String nombreEmpresa;
 	
-	private String direccion;
+	private String representante;
 	
-	public int getId() {
-		return id;
+	private String mailEmpresa;
+	
+	private String telefonoEmpresa;
+	
+	private String paisEmpresa;
+	
+	private String regionEmpresa;
+	
+	private String ciudadEmpresa;
+	
+	private String domicilio;
+	
+
+	public int getIdEmpresa() {
+		return idEmpresa;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdEmpresa(int idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getRut() {
+		return rut;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setRut(String rut) {
+		this.rut = rut;
 	}
 
-	public String getPais() {
-		return pais;
+	public String getRazonSocial() {
+		return razonSocial;
 	}
 
-	public void setPais(String pais) {
-		this.pais = pais;
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
 	}
 
-	public String getCiudad() {
-		return ciudad;
+	public String getNombreEmpresa() {
+		return nombreEmpresa;
 	}
 
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	public void setNombreEmpresa(String nombreEmpresa) {
+		this.nombreEmpresa = nombreEmpresa;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getRepresentante() {
+		return representante;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setRepresentante(String representante) {
+		this.representante = representante;
+	}
+
+	public String getMailEmpresa() {
+		return mailEmpresa;
+	}
+
+	public void setMailEmpresa(String mailEmpresa) {
+		this.mailEmpresa = mailEmpresa;
+	}
+
+	public String getTelefonoEmpresa() {
+		return telefonoEmpresa;
+	}
+
+	public void setTelefonoEmpresa(String telefonoEmpresa) {
+		this.telefonoEmpresa = telefonoEmpresa;
+	}
+
+	public String getPaisEmpresa() {
+		return paisEmpresa;
+	}
+
+	public void setPaisEmpresa(String paisEmpresa) {
+		this.paisEmpresa = paisEmpresa;
+	}
+
+	public String getRegionEmpresa() {
+		return regionEmpresa;
+	}
+
+	public void setRegionEmpresa(String regionEmpresa) {
+		this.regionEmpresa = regionEmpresa;
+	}
+
+	public String getCiudadEmpresa() {
+		return ciudadEmpresa;
+	}
+
+	public void setCiudadEmpresa(String ciudadEmpresa) {
+		this.ciudadEmpresa = ciudadEmpresa;
+	}
+
+	public String getDomicilio() {
+		return domicilio;
+	}
+
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
 	}
 
 	/**
@@ -79,10 +140,16 @@ private static final int ROW_COUNT = 100;
 				orm.Empresa lormEmpresa = orm.EmpresaDAO.createEmpresa();
 				TallerServlet Empresa = new TallerServlet();
 				// Initialize the properties of the persistent object here
-				lormEmpresa.setNombre(empresa.nombre);
-				lormEmpresa.setPais(empresa.pais);
-				lormEmpresa.setCiudad(empresa.ciudad);
-				lormEmpresa.setDireccion(empresa.direccion);
+				lormEmpresa.setRut(empresa.rut);
+				lormEmpresa.setRazonSocial(empresa.razonSocial);
+				lormEmpresa.setNombreEmpresa(empresa.nombreEmpresa);
+				lormEmpresa.setRepresentante(empresa.representante);
+				lormEmpresa.setMailEmpresa(empresa.mailEmpresa);
+				lormEmpresa.setTelefonoEmpresa(empresa.telefonoEmpresa);
+				lormEmpresa.setPaisEmpresa(empresa.paisEmpresa);
+				lormEmpresa.setRegionEmpresa(empresa.regionEmpresa);
+				lormEmpresa.setCiudadEmpresa(empresa.ciudadEmpresa);
+				lormEmpresa.setDomicilio(empresa.domicilio);
 				msg = "Ingreso Exitoso";
 				orm.EmpresaDAO.save(lormEmpresa);
 				t.commit();
@@ -107,13 +174,19 @@ private static final int ROW_COUNT = 100;
 		String msg = "Error de conexion";
 		try{
 			try {
-				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.id);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
+				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.idEmpresa);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
 				// Update the properties of the persistent object
-				System.out.println("Id = " + empresa.id);
-				lormEmpresa.setNombre(empresa.nombre);
-				lormEmpresa.setPais(empresa.pais);
-				lormEmpresa.setCiudad(empresa.ciudad);
-				lormEmpresa.setDireccion(empresa.direccion);
+				System.out.println("Id = " + empresa.idEmpresa);
+				lormEmpresa.setRut(empresa.rut);
+				lormEmpresa.setRazonSocial(empresa.razonSocial);
+				lormEmpresa.setNombreEmpresa(empresa.nombreEmpresa);
+				lormEmpresa.setRepresentante(empresa.representante);
+				lormEmpresa.setMailEmpresa(empresa.mailEmpresa);
+				lormEmpresa.setTelefonoEmpresa(empresa.telefonoEmpresa);
+				lormEmpresa.setPaisEmpresa(empresa.paisEmpresa);
+				lormEmpresa.setRegionEmpresa(empresa.regionEmpresa);
+				lormEmpresa.setCiudadEmpresa(empresa.ciudadEmpresa);
+				lormEmpresa.setDomicilio(empresa.domicilio);
 				msg = "Ingreso Exitoso";
 				orm.EmpresaDAO.save(lormEmpresa);
 				t.commit();
@@ -139,7 +212,7 @@ private static final int ROW_COUNT = 100;
 		String msg = "";
 		try{
 			try {
-				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.id);
+				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.idEmpresa);
 				// Delete the persistent object<
 				msg="Dato eliminado...";
 				orm.EmpresaDAO.delete(lormEmpresa);
@@ -166,10 +239,16 @@ private static final int ROW_COUNT = 100;
 		
 		for (orm.Empresa empresaOrm:listaEmpresaOrm) {
 			Empresa empresa= new Empresa();
-			empresa.setNombre(empresaOrm.getNombre());
-			empresa.setPais(empresaOrm.getPais());
-			empresa.setCiudad(empresaOrm.getCiudad());
-			empresa.setDireccion(empresaOrm.getDireccion());
+			empresa.setRut(empresaOrm.getRut());
+			empresa.setRazonSocial(empresaOrm.getRazonSocial());
+			empresa.setNombreEmpresa(empresaOrm.getNombreEmpresa());
+			empresa.setRepresentante(empresaOrm.getRepresentante());
+			empresa.setMailEmpresa(empresaOrm.getMailEmpresa());
+			empresa.setTelefonoEmpresa(empresaOrm.getTelefonoEmpresa());
+			empresa.setPaisEmpresa(empresaOrm.getPaisEmpresa());
+			empresa.setRegionEmpresa(empresaOrm.getRegionEmpresa());
+			empresa.setCiudadEmpresa(empresaOrm.getCiudadEmpresa());
+			empresa.setDomicilio(empresaOrm.getDomicilio());
 			listaEmpresa.add(empresa);
 		}
 		

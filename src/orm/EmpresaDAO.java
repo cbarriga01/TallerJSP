@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class EmpresaDAO {
-	public static Empresa loadEmpresaByORMID(int id) throws PersistentException {
+	public static Empresa loadEmpresaByORMID(int idEmpresa) throws PersistentException {
 		try {
 			PersistentSession session = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession();
-			return loadEmpresaByORMID(session, id);
+			return loadEmpresaByORMID(session, idEmpresa);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class EmpresaDAO {
 		}
 	}
 	
-	public static Empresa getEmpresaByORMID(int id) throws PersistentException {
+	public static Empresa getEmpresaByORMID(int idEmpresa) throws PersistentException {
 		try {
 			PersistentSession session = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession();
-			return getEmpresaByORMID(session, id);
+			return getEmpresaByORMID(session, idEmpresa);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class EmpresaDAO {
 		}
 	}
 	
-	public static Empresa loadEmpresaByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Empresa loadEmpresaByORMID(int idEmpresa, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession();
-			return loadEmpresaByORMID(session, id, lockMode);
+			return loadEmpresaByORMID(session, idEmpresa, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class EmpresaDAO {
 		}
 	}
 	
-	public static Empresa getEmpresaByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Empresa getEmpresaByORMID(int idEmpresa, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession();
-			return getEmpresaByORMID(session, id, lockMode);
+			return getEmpresaByORMID(session, idEmpresa, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class EmpresaDAO {
 		}
 	}
 	
-	public static Empresa loadEmpresaByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Empresa loadEmpresaByORMID(PersistentSession session, int idEmpresa) throws PersistentException {
 		try {
-			return (Empresa) session.load(orm.Empresa.class, new Integer(id));
+			return (Empresa) session.load(orm.Empresa.class, new Integer(idEmpresa));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class EmpresaDAO {
 		}
 	}
 	
-	public static Empresa getEmpresaByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Empresa getEmpresaByORMID(PersistentSession session, int idEmpresa) throws PersistentException {
 		try {
-			return (Empresa) session.get(orm.Empresa.class, new Integer(id));
+			return (Empresa) session.get(orm.Empresa.class, new Integer(idEmpresa));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class EmpresaDAO {
 		}
 	}
 	
-	public static Empresa loadEmpresaByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Empresa loadEmpresaByORMID(PersistentSession session, int idEmpresa, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Empresa) session.load(orm.Empresa.class, new Integer(id), lockMode);
+			return (Empresa) session.load(orm.Empresa.class, new Integer(idEmpresa), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class EmpresaDAO {
 		}
 	}
 	
-	public static Empresa getEmpresaByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Empresa getEmpresaByORMID(PersistentSession session, int idEmpresa, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Empresa) session.get(orm.Empresa.class, new Integer(id), lockMode);
+			return (Empresa) session.get(orm.Empresa.class, new Integer(idEmpresa), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -325,7 +325,7 @@ public class EmpresaDAO {
 		try {
 			orm.Contacto[] lContactos = empresa.contacto.toArray();
 			for(int i = 0; i < lContactos.length; i++) {
-				lContactos[i].setEmpresa(null);
+				lContactos[i].setIdEmpresa(null);
 			}
 			return delete(empresa);
 		}
@@ -339,7 +339,7 @@ public class EmpresaDAO {
 		try {
 			orm.Contacto[] lContactos = empresa.contacto.toArray();
 			for(int i = 0; i < lContactos.length; i++) {
-				lContactos[i].setEmpresa(null);
+				lContactos[i].setIdEmpresa(null);
 			}
 			try {
 				session.delete(empresa);

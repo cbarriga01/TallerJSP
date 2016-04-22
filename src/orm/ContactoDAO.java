@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class ContactoDAO {
-	public static Contacto loadContactoByORMID(int uid) throws PersistentException {
+	public static Contacto loadContactoByORMID(int idContacto) throws PersistentException {
 		try {
 			PersistentSession session = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession();
-			return loadContactoByORMID(session, uid);
+			return loadContactoByORMID(session, idContacto);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class ContactoDAO {
 		}
 	}
 	
-	public static Contacto getContactoByORMID(int uid) throws PersistentException {
+	public static Contacto getContactoByORMID(int idContacto) throws PersistentException {
 		try {
 			PersistentSession session = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession();
-			return getContactoByORMID(session, uid);
+			return getContactoByORMID(session, idContacto);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class ContactoDAO {
 		}
 	}
 	
-	public static Contacto loadContactoByORMID(int uid, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Contacto loadContactoByORMID(int idContacto, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession();
-			return loadContactoByORMID(session, uid, lockMode);
+			return loadContactoByORMID(session, idContacto, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class ContactoDAO {
 		}
 	}
 	
-	public static Contacto getContactoByORMID(int uid, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Contacto getContactoByORMID(int idContacto, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession();
-			return getContactoByORMID(session, uid, lockMode);
+			return getContactoByORMID(session, idContacto, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class ContactoDAO {
 		}
 	}
 	
-	public static Contacto loadContactoByORMID(PersistentSession session, int uid) throws PersistentException {
+	public static Contacto loadContactoByORMID(PersistentSession session, int idContacto) throws PersistentException {
 		try {
-			return (Contacto) session.load(orm.Contacto.class, new Integer(uid));
+			return (Contacto) session.load(orm.Contacto.class, new Integer(idContacto));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class ContactoDAO {
 		}
 	}
 	
-	public static Contacto getContactoByORMID(PersistentSession session, int uid) throws PersistentException {
+	public static Contacto getContactoByORMID(PersistentSession session, int idContacto) throws PersistentException {
 		try {
-			return (Contacto) session.get(orm.Contacto.class, new Integer(uid));
+			return (Contacto) session.get(orm.Contacto.class, new Integer(idContacto));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class ContactoDAO {
 		}
 	}
 	
-	public static Contacto loadContactoByORMID(PersistentSession session, int uid, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Contacto loadContactoByORMID(PersistentSession session, int idContacto, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Contacto) session.load(orm.Contacto.class, new Integer(uid), lockMode);
+			return (Contacto) session.load(orm.Contacto.class, new Integer(idContacto), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class ContactoDAO {
 		}
 	}
 	
-	public static Contacto getContactoByORMID(PersistentSession session, int uid, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Contacto getContactoByORMID(PersistentSession session, int idContacto, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Contacto) session.get(orm.Contacto.class, new Integer(uid), lockMode);
+			return (Contacto) session.get(orm.Contacto.class, new Integer(idContacto), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -323,8 +323,8 @@ public class ContactoDAO {
 	
 	public static boolean deleteAndDissociate(orm.Contacto contacto)throws PersistentException {
 		try {
-			if(contacto.getEmpresa() != null) {
-				contacto.getEmpresa().contacto.remove(contacto);
+			if(contacto.getIdEmpresa() != null) {
+				contacto.getIdEmpresa().contacto.remove(contacto);
 			}
 			
 			return delete(contacto);
@@ -337,8 +337,8 @@ public class ContactoDAO {
 	
 	public static boolean deleteAndDissociate(orm.Contacto contacto, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if(contacto.getEmpresa() != null) {
-				contacto.getEmpresa().contacto.remove(contacto);
+			if(contacto.getIdEmpresa() != null) {
+				contacto.getIdEmpresa().contacto.remove(contacto);
 			}
 			
 			try {

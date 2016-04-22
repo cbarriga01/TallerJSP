@@ -19,20 +19,32 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class EmpresaCriteria extends AbstractORMCriteria {
-	public final IntegerExpression id;
-	public final StringExpression nombre;
-	public final StringExpression pais;
-	public final StringExpression ciudad;
-	public final StringExpression direccion;
+	public final IntegerExpression idEmpresa;
+	public final StringExpression rut;
+	public final StringExpression razonSocial;
+	public final StringExpression nombreEmpresa;
+	public final StringExpression representante;
+	public final StringExpression mailEmpresa;
+	public final StringExpression telefonoEmpresa;
+	public final StringExpression paisEmpresa;
+	public final StringExpression regionEmpresa;
+	public final StringExpression ciudadEmpresa;
+	public final StringExpression domicilio;
 	public final CollectionExpression contacto;
 	
 	public EmpresaCriteria(Criteria criteria) {
 		super(criteria);
-		id = new IntegerExpression("id", this);
-		nombre = new StringExpression("nombre", this);
-		pais = new StringExpression("pais", this);
-		ciudad = new StringExpression("ciudad", this);
-		direccion = new StringExpression("direccion", this);
+		idEmpresa = new IntegerExpression("idEmpresa", this);
+		rut = new StringExpression("rut", this);
+		razonSocial = new StringExpression("razonSocial", this);
+		nombreEmpresa = new StringExpression("nombreEmpresa", this);
+		representante = new StringExpression("representante", this);
+		mailEmpresa = new StringExpression("mailEmpresa", this);
+		telefonoEmpresa = new StringExpression("telefonoEmpresa", this);
+		paisEmpresa = new StringExpression("paisEmpresa", this);
+		regionEmpresa = new StringExpression("regionEmpresa", this);
+		ciudadEmpresa = new StringExpression("ciudadEmpresa", this);
+		domicilio = new StringExpression("domicilio", this);
 		contacto = new CollectionExpression("ORM_Contacto", this);
 	}
 	

@@ -40,10 +40,16 @@ public class ServletListarEmpresa extends HttpServlet {
 			lista=Empresa.listar();
 			PrintWriter out = response.getWriter();
 			for(Empresa empresa:lista){
-				out.println("Nombre: " + empresa.getNombre());
-				out.println("Pais: " + empresa.getPais());
-				out.println("Ciudad: " + empresa.getCiudad());
-				out.println("Direccion: " + empresa.getDireccion());
+				out.println("Rut: " + empresa.getRut());
+				out.println("Razon Social: " + empresa.getRazonSocial());
+				out.println("Nombre: " + empresa.getNombreEmpresa());
+				out.println("Representante: " + empresa.getRepresentante());
+				out.println("Mail: " + empresa.getMailEmpresa());
+				out.println("Telefono: " + empresa.getTelefonoEmpresa());
+				out.println("Pais: " + empresa.getPaisEmpresa());
+				out.println("Region: " + empresa.getRegionEmpresa());
+				out.println("Ciudad: " + empresa.getCiudadEmpresa());
+				out.println("Domicilio: " + empresa.getDomicilio());
 			}
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block

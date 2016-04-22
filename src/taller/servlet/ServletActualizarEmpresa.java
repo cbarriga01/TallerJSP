@@ -46,29 +46,45 @@ public class ServletActualizarEmpresa extends HttpServlet {
 		
 		try{
 			int id= Integer.parseInt(request.getParameter("id"));
+			String rut= request.getParameter("rut");
+			String razonSocial= request.getParameter("razonSocial");
 			String nombre= request.getParameter("nombre");
+			String representante= request.getParameter("representante");
+			String mail= request.getParameter("mail");
+			String telefono= request.getParameter("telefono");
 			String pais= request.getParameter("pais");
+			String region= request.getParameter("region");
 			String ciudad= request.getParameter("ciudad");
-			String direccion= request.getParameter("direccion");
+			String domicilio= request.getParameter("domicilio");
 			
 			ServletActualizarEmpresa refrescar = new ServletActualizarEmpresa();
 			refrescar.validarId(id);
 			
 			Empresa actualizar = new Empresa();
-			if(id < 0 || nombre.trim().equals("")|| pais.trim().equals("")||ciudad.trim().equals("")||
-					direccion.trim().equals("")){
+			if(id < 0 || rut.trim().equals("") || razonSocial.trim().equals("") || nombre.trim().equals("") ||
+					representante.trim().equals("") || mail.trim().equals("") || telefono.trim().equals("") || 
+					pais.trim().equals("") || region.trim().equals("") || ciudad.trim().equals("") || 
+					domicilio.trim().equals("")){
 				System.out.println("variable vacia");
 				
 			} else {
 				
-				if (nombre.length() <=20 && pais.length() <= 20 && ciudad.length() <= 20 && 
-						direccion.length() <= 20){
+				if (rut.length() <=12 && razonSocial.length() <=30 && nombre.length() <=30 && 
+						representante.length() <=50 && mail.length() <= 20 && telefono.length() <= 20 &&
+						pais.length() <= 20 && region.length() <= 20 && ciudad.length() <= 20 && 
+						domicilio.length() <= 30){
 					out.println(" Hola tu id es "+ id+ ". Saludos!!!");
-					actualizar.setId(id);
-					actualizar.setNombre(nombre);
-					actualizar.setPais(pais);
-					actualizar.setCiudad(ciudad);
-					actualizar.setDireccion(direccion);
+					actualizar.setIdEmpresa(id);
+					actualizar.setRut(rut);
+					actualizar.setRazonSocial(razonSocial);
+					actualizar.setNombreEmpresa(nombre);
+					actualizar.setRepresentante(representante);
+					actualizar.setMailEmpresa(mail);
+					actualizar.setTelefonoEmpresa(telefono);
+					actualizar.setPaisEmpresa(pais);
+					actualizar.setRegionEmpresa(region);
+					actualizar.setCiudadEmpresa(ciudad);
+					actualizar.setDomicilio(domicilio);
 					try {
 						Empresa.actualizar(actualizar);
 					} catch (PersistentException e) {

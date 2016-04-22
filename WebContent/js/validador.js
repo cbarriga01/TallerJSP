@@ -6,18 +6,29 @@ $(document).ready(function() {
     		 validating: 'glyphicon glyphicon-refresh'
     	 },
     	 fields: {
+    		 run: {
+    			 validators: {
+    				 notEmpty: {
+    					 message: 'El run es requerido'
+    				 },
+                     stringLength: {
+                         max: 12,
+                         message: 'El run debe contener máximo 12 caracteres'
+                     }
+    			 }
+    		 },
     		 nombre: {
     			 validators: {
     				 notEmpty: {
     					 message: 'El nombre es requerido'
     				 },
                      stringLength: {
-                         max: 100,
-                         message: 'El nombre debe contener maximo 100 caracteres'
+                         max: 50,
+                         message: 'El nombre debe contener máximo 50 caracteres'
                      },
                      regexp: {
                          regexp: /^[a-zA-Z]+$/,
-                         message: 'El teléfono solo puede contener números'
+                         message: 'El nombre solo puede tener letras'
                      }
     			 }
     		 },
@@ -27,33 +38,33 @@ $(document).ready(function() {
     					 message: 'El apellido es requerido'
     				 },
                      stringLength: {
-                         max: 100,
-                         message: 'El apellido debe contener maximo 100 caracteres'
+                         max: 50,
+                         message: 'El apellido debe contener máximo 50 caracteres'
                      }
     			 }
     		 },
     		 mail: {
                  validators: {
                      notEmpty: {
-                         message: 'El correo es requerido y no puede ser vacio'
+                         message: 'El mail es requerido y no puede ser vacio'
                      },
                      emailAddress: {
-                         message: 'El correo electronico no es valido'
+                         message: 'El mail no es valido'
                      },
                      stringLength: {
-                         max: 50,
-                         message: 'El mail debe contener maximo 50 caracteres'
+                         max: 20,
+                         message: 'El mail debe contener máximo 20 caracteres'
                      }
                  }   
              },
              telefono: {
                  validators: {
                      notEmpty: {
-                         message: 'El telefono es requerido'
+                         message: 'El teléfono es requerido'
                      },
                      stringLength: {
                          max: 20,
-                         message: 'El telefono debe contener maximo 20 caracteres'
+                         message: 'El teléfono debe contener máximo 20 caracteres'
                      },
                      regexp: {
                          regexp: /^[0-9]+$/,
@@ -68,7 +79,7 @@ $(document).ready(function() {
                      },
                      stringLength: {
                          max: 20,
-                         message: 'El pais debe contener maximo 20 caracteres'
+                         message: 'El pais debe contener máximo 20 caracteres'
                      }
                  }
              },
@@ -79,21 +90,32 @@ $(document).ready(function() {
                      },
                      stringLength: {
                          max: 20,
-                         message: 'La region debe contener maximo 20 caracteres'
+                         message: 'La region debe contener máximo 20 caracteres'
                      }
                  }
              },
              ciudad: {
                  validators: {
                      notEmpty: {
-                         message: 'La ciudad es requerido'
+                         message: 'La ciudad es requerida'
                      },
                      stringLength: {
                          max: 20,
-                         message: 'La ciudad debe contener maximo 20 caracteres'
+                         message: 'La ciudad debe contener máximo 20 caracteres'
                      }
                  }
              },
+             direccion: {
+                 validators: {
+                     notEmpty: {
+                         message: 'La dirección es requerida'
+                     },
+                     stringLength: {
+                         max: 30,
+                         message: 'La direccion debe contener máximo 30 caracteres'
+                     }
+                 }
+             }
     	 }
     });
 
@@ -111,7 +133,7 @@ $(document).ready(function() {
                      },
                      stringLength: {
                          max: 20,
-                         message: 'El id debe contener maximo 10 caracteres'
+                         message: 'El id debe contener máximo 10 caracteres'
                      },
                      regexp: {
                          regexp: /^[0-9]+$/,
@@ -119,29 +141,44 @@ $(document).ready(function() {
                      }
                  }
              },
-             nombre: {
-                 validators: {
-                     notEmpty: {
-                         message: 'El nombre es requerido'
-                     },
+             run: {
+    			 validators: {
+    				 notEmpty: {
+    					 message: 'El run es requerido'
+    				 },
                      stringLength: {
-                         max: 100,
-                         message: 'El nombre debe contener maximo 100 caracteres'
+                         max: 12,
+                         message: 'El run debe contener máximo 12 caracteres'
                      }
-                 }
-             },
-             apellido: {
-                 validators: {
-                     notEmpty: {
-                         message: 'El apellido es requerido'
-                     },
+    			 }
+    		 },
+    		 nombre: {
+    			 validators: {
+    				 notEmpty: {
+    					 message: 'El nombre es requerido'
+    				 },
                      stringLength: {
-                         max: 100,
-                         message: 'El apellido debe contener maximo 100 caracteres'
+                         max: 50,
+                         message: 'El nombre debe contener máximo 50 caracteres'
+                     },
+                     regexp: {
+                         regexp: /^[a-zA-Z]+$/,
+                         message: 'El nombre solo puede tener letras'
                      }
-                 }
-             },
-             mail: {
+    			 }
+    		 },
+    		 apellido: {
+    			 validators: {
+    				 notEmpty: {
+    					 message: 'El apellido es requerido'
+    				 },
+                     stringLength: {
+                         max: 50,
+                         message: 'El apellido debe contener máximo 50 caracteres'
+                     }
+    			 }
+    		 },
+    		 mail: {
                  validators: {
                      notEmpty: {
                          message: 'El correo es requerido y no puede ser vacio'
@@ -150,19 +187,19 @@ $(document).ready(function() {
                          message: 'El correo electronico no es valido'
                      },
                      stringLength: {
-                         max: 50,
-                         message: 'El mail debe contener maximo 50 caracteres'
+                         max: 20,
+                         message: 'El correo debe contener máximo 20 caracteres'
                      }
                  }   
              },
              telefono: {
                  validators: {
                      notEmpty: {
-                         message: 'El telefono es requerido'
+                         message: 'El teléfono es requerido'
                      },
                      stringLength: {
                          max: 20,
-                         message: 'El telefono debe contener maximo 20 caracteres'
+                         message: 'El teléfono debe contener máximo 20 caracteres'
                      },
                      regexp: {
                          regexp: /^[0-9]+$/,
@@ -177,33 +214,44 @@ $(document).ready(function() {
                      },
                      stringLength: {
                          max: 20,
-                         message: 'El pais debe contener maximo 20 caracteres'
+                         message: 'El pais debe contener máximo 20 caracteres'
                      }
                  }
              },
              region: {
                  validators: {
                      notEmpty: {
-                         message: 'La region es requerida'
+                         message: 'La región es requerida'
                      },
                      stringLength: {
                          max: 20,
-                         message: 'La region debe contener maximo 20 caracteres'
+                         message: 'La región debe contener máximo 20 caracteres'
                      }
                  }
              },
              ciudad: {
                  validators: {
                      notEmpty: {
-                         message: 'La ciudad es requerido'
+                         message: 'La ciudad es requerida'
                      },
                      stringLength: {
                          max: 20,
-                         message: 'La ciudad debe contener maximo 20 caracteres'
+                         message: 'La ciudad debe contener máximo 20 caracteres'
                      }
                  }
              },
-         }
+             direccion: {
+                 validators: {
+                     notEmpty: {
+                         message: 'La dirección es requerida'
+                     },
+                     stringLength: {
+                         max: 30,
+                         message: 'La dirección debe contener máximo 30 caracteres'
+                     }
+                 }
+             }
+    	 }
     });
 
     $('#ServletEliminar').bootstrapValidator({
@@ -219,8 +267,8 @@ $(document).ready(function() {
                          message: 'El id es requerido'
                      },
                      stringLength: {
-                         max: 20,
-                         message: 'El id debe contener maximo 10 caracteres'
+                         max: 10,
+                         message: 'El id debe contener máximo 10 caracteres'
                      },
                      regexp: {
                          regexp: /^[0-9]+$/,
@@ -245,18 +293,18 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'El nombre de usuario debe contener máximo 20 caracteres'
                     }
                 }
             },
             password: {
                 validators: {
                     notEmpty: {
-                        message: 'La pass es requerida'
+                        message: 'La contraseña es requerida'
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'La contraseña debe contener máximo 20 caracteres'
                     }
                 }
             }
@@ -277,18 +325,20 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'El nombre de usuario debe contener máximo 20 caracteres',
+                        min: 2,
+                        message: 'El nombre de usuario debe contener mínimo 2 caracteres'
                     }
                 }
             },
             password: {
                 validators: {
                     notEmpty: {
-                        message: 'La pass es requerida'
+                        message: 'La contraseña es requerida'
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'La contraseña debe contener máximo 20 caracteres'
                     }
                 }
             }
@@ -309,7 +359,7 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 10,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'El id debe contener máximo 10 caracteres'
                     },
                     regexp: {
                         regexp: /^[0-9]+$/,
@@ -324,18 +374,18 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'El nombre de usuario debe contener máximo 20 caracteres'
                     }
                 }
             },
             password: {
                 validators: {
                     notEmpty: {
-                        message: 'La pass es requerida'
+                        message: 'La contraseña es requerida'
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'La contraseña debe contener máximo 20 caracteres'
                     }
                 }
             }
@@ -356,7 +406,7 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 10,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'El id debe contener máximo 10 caracteres'
                     },
                     regexp: {
                         regexp: /^[0-9]+$/,
@@ -371,18 +421,18 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'El nombre de usuario debe contener máximo 20 caracteres'
                     }
                 }
             },
             password: {
                 validators: {
                     notEmpty: {
-                        message: 'La pass es requerida'
+                        message: 'La contraseña es requerida'
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'La contraseña debe contener máximo 20 caracteres'
                     }
                 }
             }
@@ -396,16 +446,78 @@ $(document).ready(function() {
    		 validating: 'glyphicon glyphicon-refresh'
    	 },
    	 fields: {
+   		rut: {
+  			 validators: {
+  				 notEmpty: {
+  					 message: 'El rut es requerido'
+  				 },
+                   stringLength: {
+                       max: 12,
+                       message: 'El rut debe contener máximo 12 caracteres'
+                   }
+  			 	}
+         },
+         razonSocial: {
+   			 validators: {
+   				 notEmpty: {
+   					 message: 'La razón social es requerida'
+   				 },
+                    stringLength: {
+                        max: 30,
+                        message: 'La razón social debe contener máximo 30 caracteres'
+                    }
+   			 	}
+         },
    		 nombre: {
    			 validators: {
    				 notEmpty: {
    					 message: 'El nombre es requerido'
    				 },
                     stringLength: {
-                        max: 20,
-                        message: 'El nombre debe contener maximo 100 caracteres'
+                        max: 30,
+                        message: 'El nombre debe contener máximo 30 caracteres'
                     }
    			 	}
+            },
+            representante: {
+      			 validators: {
+      				 notEmpty: {
+      					 message: 'El representante es requerido'
+      				 },
+                       stringLength: {
+                           max: 50,
+                           message: 'El representante debe contener máximo 50 caracteres'
+                       }
+      			 	}
+            },
+            mail: {
+                validators: {
+                    notEmpty: {
+                        message: 'El correo electrónico es requerido y no puede ser vacio'
+                    },
+                    emailAddress: {
+                        message: 'El correo electrónico no es valido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'El correo electrónico debe contener máximo 20 caracteres'
+                    }
+                }   
+            },
+            telefono: {
+                validators: {
+                    notEmpty: {
+                        message: 'El teléfono es requerido'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'El teléfono debe contener máximo 20 caracteres'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'El teléfono solo puede contener números'
+                    }
+                }
             },
             pais: {
                 validators: {
@@ -415,6 +527,17 @@ $(document).ready(function() {
                     stringLength: {
                         max: 20,
                         message: 'El pais debe contener maximo 20 caracteres'
+                    }
+                }
+            },
+            region: {
+                validators: {
+                    notEmpty: {
+                        message: 'La región es requerida'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'La región debe contener maximo 20 caracteres'
                     }
                 }
             },
@@ -429,18 +552,18 @@ $(document).ready(function() {
                     }
                 }
             },
-            direccion: {
+            domicilio: {
                 validators: {
                     notEmpty: {
-                        message: 'La direccion es requerido'
+                        message: 'El domicilio es requerido'
                     },
                     stringLength: {
-                        max: 20,
-                        message: 'La direccion debe contener maximo 20 caracteres'
+                        max: 30,
+                        message: 'El domicilio debe contener maximo 30 caracteres'
                     }
                 }
             }
-   	 }
+   	 	}
    });
 
    $('#ServletActualizarEmpresa').bootstrapValidator({
@@ -456,7 +579,7 @@ $(document).ready(function() {
                         message: 'El id es requerido'
                     },
                     stringLength: {
-                        max: 20,
+                        max: 10,
                         message: 'El id debe contener maximo 10 caracteres'
                     },
                     regexp: {
@@ -465,51 +588,124 @@ $(document).ready(function() {
                     }
                 }
             },
-            nombre: {
-                validators: {
-                    notEmpty: {
-                        message: 'El nombre es requerido'
-                    },
-                    stringLength: {
-                        max: 20,
-                        message: 'El nombre debe contener maximo 100 caracteres'
-                    }
-                }
+            rut: {
+     			 validators: {
+     				 notEmpty: {
+     					 message: 'El rut es requerido'
+     				 },
+                      stringLength: {
+                          max: 12,
+                          message: 'El rut debe contener máximo 12 caracteres'
+                      }
+     			 	}
             },
-            pais: {
-                validators: {
-                    notEmpty: {
-                        message: 'El pais es requerido'
-                    },
-                    stringLength: {
-                        max: 20,
-                        message: 'El pais debe contener maximo 20 caracteres'
-                    }
-                }
+            razonSocial: {
+      			 validators: {
+      				 notEmpty: {
+      					 message: 'La razón social es requerida'
+      				 },
+                       stringLength: {
+                           max: 20,
+                           message: 'La razón social debe contener máximo 30 caracteres'
+                       }
+      			 	}
             },
-            ciudad: {
-                validators: {
-                    notEmpty: {
-                        message: 'La ciudad es requerida'
-                    },
-                    stringLength: {
-                        max: 20,
-                        message: 'La ciudad debe contener maximo 20 caracteres'
-                    }
-                }
-            },
-            direccion: {
-                validators: {
-                    notEmpty: {
-                        message: 'La direccion es requerido'
-                    },
-                    stringLength: {
-                        max: 20,
-                        message: 'La direccion debe contener maximo 20 caracteres'
-                    }
-                }
-            }
-        }
+      		 nombre: {
+      			 validators: {
+      				 notEmpty: {
+      					 message: 'El nombre es requerido'
+      				 },
+                       stringLength: {
+                           max: 30,
+                           message: 'El nombre debe contener máximo 30 caracteres'
+                       }
+      			 	}
+               },
+               representante: {
+         			 validators: {
+         				 notEmpty: {
+         					 message: 'El representante es requerido'
+         				 },
+                          stringLength: {
+                              max: 50,
+                              message: 'El representante debe contener máximo 50 caracteres'
+                          }
+         			 	}
+               },
+               mail: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El correo electrónico es requerido y no puede ser vacio'
+                       },
+                       emailAddress: {
+                           message: 'El correo electrónico no es valido'
+                       },
+                       stringLength: {
+                           max: 20,
+                           message: 'El correo electrónico debe contener máximo 20 caracteres'
+                       }
+                   }   
+               },
+               telefono: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El teléfono es requerido'
+                       },
+                       stringLength: {
+                           max: 20,
+                           message: 'El teléfono debe contener máximo 20 caracteres'
+                       },
+                       regexp: {
+                           regexp: /^[0-9]+$/,
+                           message: 'El teléfono solo puede contener números'
+                       }
+                   }
+               },
+               pais: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El pais es requerido'
+                       },
+                       stringLength: {
+                           max: 20,
+                           message: 'El pais debe contener maximo 20 caracteres'
+                       }
+                   }
+               },
+               region: {
+                   validators: {
+                       notEmpty: {
+                           message: 'La región es requerida'
+                       },
+                       stringLength: {
+                           max: 20,
+                           message: 'La región debe contener maximo 20 caracteres'
+                       }
+                   }
+               },
+               ciudad: {
+                   validators: {
+                       notEmpty: {
+                           message: 'La ciudad es requerida'
+                       },
+                       stringLength: {
+                           max: 20,
+                           message: 'La ciudad debe contener maximo 20 caracteres'
+                       }
+                   }
+               },
+               domicilio: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El domicilio es requerido'
+                       },
+                       stringLength: {
+                           max: 30,
+                           message: 'El domicilio debe contener maximo 30 caracteres'
+                       }
+                   }
+               }
+      	 }
    });
 
    $('#ServletEliminarEmpresa').bootstrapValidator({
@@ -525,7 +721,7 @@ $(document).ready(function() {
                         message: 'El id es requerido'
                     },
                     stringLength: {
-                        max: 20,
+                        max: 10,
                         message: 'El id debe contener maximo 10 caracteres'
                     },
                     regexp: {

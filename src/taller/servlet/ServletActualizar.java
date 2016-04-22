@@ -51,6 +51,7 @@ public class ServletActualizar extends HttpServlet {
 		
 		try{
 			int id= Integer.parseInt(request.getParameter("id"));
+			String run= request.getParameter("run");
 			String nombre= request.getParameter("nombre");
 			String apellido= request.getParameter("apellido");
 			String mail= request.getParameter("mail");
@@ -58,6 +59,7 @@ public class ServletActualizar extends HttpServlet {
 			String pais= request.getParameter("pais");
 			String region= request.getParameter("region");
 			String ciudad= request.getParameter("ciudad");
+			String direccion= request.getParameter("direccion");
 			
 			ServletActualizar refrescar = new ServletActualizar();
 			refrescar.validarId(id);
@@ -65,18 +67,19 @@ public class ServletActualizar extends HttpServlet {
 			refrescar.esEntero(telefono);
 			
 			Contacto actualizar = new Contacto();
-			if(id < 0 || nombre.trim().equals("")|| apellido.trim().equals("")||mail.trim().equals("")||
-					telefono.trim().equals("")||pais.trim().equals("")||region.trim().equals("")||
-					ciudad.trim().equals("")){
+			if(id < 0 || run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
+					mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
+					region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("")){
 				System.out.println("variable vacia");
 				
 			} else {
 				
-				if (nombre.length() <=100 && apellido.length() <=100 && mail.length() <=50 && 
+				if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 && mail.length() <=20 && 
 						telefono.length() <= 20 && pais.length() <= 20 && region.length() <= 20 && 
-						ciudad.length() <= 20){
+						ciudad.length() <= 20 && direccion.length() <= 30){
 					out.println(" Hola tu id es "+ id+ ". Saludos!!!");
-					actualizar.setUid(id);
+					actualizar.setIdContacto(id);
+					actualizar.setRun(run);
 					actualizar.setNombre(nombre);
 					actualizar.setApellido(apellido);
 					actualizar.setMail(mail);
@@ -84,6 +87,7 @@ public class ServletActualizar extends HttpServlet {
 					actualizar.setPais(pais);
 					actualizar.setRegion(region);
 					actualizar.setCiudad(ciudad);
+					actualizar.setDireccion(direccion);
 					try {
 						Contacto.actualizar(actualizar);
 					} catch (PersistentException e) {

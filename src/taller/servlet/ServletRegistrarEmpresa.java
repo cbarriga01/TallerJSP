@@ -42,32 +42,54 @@ public class ServletRegistrarEmpresa extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out= response.getWriter();
 		PersistentTransaction t = null;
+		String rut= "";
+		String razonSocial= "";
 		String nombre= "";
+		String representante= "";
+		String mail= "";
+		String telefono= "";
 		String pais= "";
+		String region= "";
 		String ciudad= "";
-		String direccion= "";
+		String domicilio= "";
 		ServletRegistrarEmpresa ingreso = new ServletRegistrarEmpresa();
 		
 		try{
+			rut= request.getParameter("rut");
+			razonSocial= request.getParameter("razonSocial");
 			nombre= request.getParameter("nombre");
+			representante= request.getParameter("representante");
+			mail= request.getParameter("mail");
+			telefono= request.getParameter("telefono");
 			pais= request.getParameter("pais");
+			region= request.getParameter("region");
 			ciudad= request.getParameter("ciudad");
-			direccion= request.getParameter("direccion");
+			domicilio= request.getParameter("domicilio");
 			
-			if(nombre.trim().equals("")|| pais.trim().equals("")||ciudad.trim().equals("")||
-					direccion.trim().equals("")){
+			if(rut.trim().equals("") || razonSocial.trim().equals("") || nombre.trim().equals("") ||
+					representante.trim().equals("") || mail.trim().equals("") || telefono.trim().equals("") || 
+					pais.trim().equals("") || region.trim().equals("") || ciudad.trim().equals("") || 
+					domicilio.trim().equals("")){
 				System.out.println("variable vacia");
 				
 			}else{
-				if (nombre.length() <=20 && pais.length() <= 20 && ciudad.length() <= 20 && 
-						direccion.length() <= 20){
+				if (rut.length() <=12 && razonSocial.length() <=30 && nombre.length() <=30 && 
+						representante.length() <=50 && mail.length() <= 20 && telefono.length() <= 20 &&
+						pais.length() <= 20 && region.length() <= 20 && ciudad.length() <= 20 && 
+						domicilio.length() <= 30){
 					out.println(" Hola tu nombre es "+ nombre+ ". Saludos!!!");
 					
 					Empresa ingresar = new Empresa();
-					ingresar.setNombre(nombre);
-					ingresar.setPais(pais);
-					ingresar.setCiudad(ciudad);
-					ingresar.setDireccion(direccion);
+					ingresar.setRut(rut);
+					ingresar.setRazonSocial(razonSocial);
+					ingresar.setNombreEmpresa(nombre);
+					ingresar.setRepresentante(representante);
+					ingresar.setMailEmpresa(mail);
+					ingresar.setTelefonoEmpresa(telefono);
+					ingresar.setPaisEmpresa(pais);
+					ingresar.setRegionEmpresa(region);
+					ingresar.setCiudadEmpresa(ciudad);
+					ingresar.setDomicilio(domicilio);
 					try {
 						Empresa.ingresar(ingresar);
 					} catch (PersistentException e) {

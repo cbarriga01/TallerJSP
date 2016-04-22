@@ -32,60 +32,120 @@ public class Empresa {
 		
 	};
 	
-	private int id;
+	private int idEmpresa;
 	
-	private String nombre;
+	private String rut;
 	
-	private String pais;
+	private String razonSocial;
 	
-	private String ciudad;
+	private String nombreEmpresa;
 	
-	private String direccion;
+	private String representante;
+	
+	private String mailEmpresa;
+	
+	private String telefonoEmpresa;
+	
+	private String paisEmpresa;
+	
+	private String regionEmpresa;
+	
+	private String ciudadEmpresa;
+	
+	private String domicilio;
 	
 	private java.util.Set ORM_contacto = new java.util.HashSet();
 	
-	private void setId(int value) {
-		this.id = value;
+	private void setIdEmpresa(int value) {
+		this.idEmpresa = value;
 	}
 	
-	public int getId() {
-		return id;
+	public int getIdEmpresa() {
+		return idEmpresa;
 	}
 	
 	public int getORMID() {
-		return getId();
+		return getIdEmpresa();
 	}
 	
-	public void setNombre(String value) {
-		this.nombre = value;
+	public void setNombreEmpresa(String value) {
+		this.nombreEmpresa = value;
 	}
 	
-	public String getNombre() {
-		return nombre;
+	public String getNombreEmpresa() {
+		return nombreEmpresa;
 	}
 	
-	public void setPais(String value) {
-		this.pais = value;
+	public void setPaisEmpresa(String value) {
+		this.paisEmpresa = value;
 	}
 	
-	public String getPais() {
-		return pais;
+	public String getPaisEmpresa() {
+		return paisEmpresa;
 	}
 	
-	public void setCiudad(String value) {
-		this.ciudad = value;
+	public void setCiudadEmpresa(String value) {
+		this.ciudadEmpresa = value;
 	}
 	
-	public String getCiudad() {
-		return ciudad;
+	public String getCiudadEmpresa() {
+		return ciudadEmpresa;
 	}
 	
-	public void setDireccion(String value) {
-		this.direccion = value;
+	public void setDomicilio(String value) {
+		this.domicilio = value;
 	}
 	
-	public String getDireccion() {
-		return direccion;
+	public String getDomicilio() {
+		return domicilio;
+	}
+	
+	public void setRut(String value) {
+		this.rut = value;
+	}
+	
+	public String getRut() {
+		return rut;
+	}
+	
+	public void setRazonSocial(String value) {
+		this.razonSocial = value;
+	}
+	
+	public String getRazonSocial() {
+		return razonSocial;
+	}
+	
+	public void setRepresentante(String value) {
+		this.representante = value;
+	}
+	
+	public String getRepresentante() {
+		return representante;
+	}
+	
+	public void setMailEmpresa(String value) {
+		this.mailEmpresa = value;
+	}
+	
+	public String getMailEmpresa() {
+		return mailEmpresa;
+	}
+	
+	public void setTelefonoEmpresa(String value) {
+		this.telefonoEmpresa = value;
+	}
+	
+	public String getTelefonoEmpresa() {
+		return telefonoEmpresa;
+	}
+	
+	public void setRegionEmpresa(String value) {
+		this.regionEmpresa = value;
+	}
+	
+	public String getRegionEmpresa() {
+		return regionEmpresa;
 	}
 	
 	private void setORM_Contacto(java.util.Set value) {
@@ -96,10 +156,10 @@ public class Empresa {
 		return ORM_contacto;
 	}
 	
-	public final orm.ContactoSetCollection contacto = new orm.ContactoSetCollection(this, _ormAdapter, orm.ORMConstants.KEY_EMPRESA_CONTACTO, orm.ORMConstants.KEY_CONTACTO_EMPRESA, orm.ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final orm.ContactoSetCollection contacto = new orm.ContactoSetCollection(this, _ormAdapter, orm.ORMConstants.KEY_EMPRESA_CONTACTO, orm.ORMConstants.KEY_CONTACTO_IDEMPRESA, orm.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
-		return String.valueOf(getId());
+		return String.valueOf(getIdEmpresa());
 	}
 	
 }

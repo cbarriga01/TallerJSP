@@ -41,6 +41,7 @@ public class ServletListar extends HttpServlet {
 			lista=Contacto.listar();
 			PrintWriter out = response.getWriter();
 			for(Contacto contacto:lista){
+				out.println("Run: " + contacto.getRun());
 				out.println("Nombre: " + contacto.getNombre());
 				out.println("Apellido: " + contacto.getApellido());
 				out.println("Mail: " + contacto.getMail());
@@ -48,6 +49,7 @@ public class ServletListar extends HttpServlet {
 				out.println("Pais: " + contacto.getPais());
 				out.println("Region: " + contacto.getRegion());
 				out.println("Ciudad: " + contacto.getCiudad());
+				out.println("Direccion" + contacto.getDireccion());
 			}
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block

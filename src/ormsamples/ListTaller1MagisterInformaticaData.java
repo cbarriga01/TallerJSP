@@ -39,7 +39,7 @@ public class ListTaller1MagisterInformaticaData {
 		System.out.println("Listing Contacto by Criteria...");
 		orm.ContactoCriteria lormContactoCriteria = new orm.ContactoCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//lormContactoCriteria.uid.eq();
+		//lormContactoCriteria.idContacto.eq();
 		lormContactoCriteria.setMaxResults(ROW_COUNT);
 		orm.Contacto[] ormContactos = lormContactoCriteria.listContacto();
 		int length =ormContactos== null ? 0 : Math.min(ormContactos.length, ROW_COUNT); 
@@ -63,7 +63,7 @@ public class ListTaller1MagisterInformaticaData {
 		System.out.println("Listing Empresa by Criteria...");
 		orm.EmpresaCriteria lormEmpresaCriteria = new orm.EmpresaCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//lormEmpresaCriteria.id.eq();
+		//lormEmpresaCriteria.idEmpresa.eq();
 		lormEmpresaCriteria.setMaxResults(ROW_COUNT);
 		orm.Empresa[] ormEmpresas = lormEmpresaCriteria.listEmpresa();
 		length =ormEmpresas== null ? 0 : Math.min(ormEmpresas.length, ROW_COUNT); 

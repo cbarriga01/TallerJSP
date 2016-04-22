@@ -30,7 +30,7 @@ public class RetrieveAndUpdateTaller1MagisterInformaticaData {
 		System.out.println("Retrieving Contacto by ContactoCriteria");
 		orm.ContactoCriteria lormContactoCriteria = new orm.ContactoCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lormContactoCriteria.uid.eq();
+		//lormContactoCriteria.idContacto.eq();
 		System.out.println(lormContactoCriteria.uniqueContacto());
 		
 		System.out.println("Retrieving Usuario by UsuarioCriteria");
@@ -42,7 +42,7 @@ public class RetrieveAndUpdateTaller1MagisterInformaticaData {
 		System.out.println("Retrieving Empresa by EmpresaCriteria");
 		orm.EmpresaCriteria lormEmpresaCriteria = new orm.EmpresaCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lormEmpresaCriteria.id.eq();
+		//lormEmpresaCriteria.idEmpresa.eq();
 		System.out.println(lormEmpresaCriteria.uniqueEmpresa());
 		
 	}

@@ -28,35 +28,22 @@ public class ServletLogin extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * Metodo utilizado para desloguear
+	 * Metodo encargado de cerrar la seción del usuario
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		//me llega la url "proyecto/login/out"
-        // String action=(request.getPathInfo()!=null?request.getPathInfo():"");
         HttpSession sesion = request.getSession();
         if(sesion.getAttribute("user")!= null){
             sesion.invalidate();
-            response.sendRedirect("FormularioLogin.jsp");
+            response.sendRedirect("Login.jsp");
         }
-		
-		//me llega la url "TallerJSP/login/out"
-        /*String action=(request.getPathInfo()!=null?request.getPathInfo():"");
-        HttpSession sesion = request.getSession();
-        if(action.equals("/out")){
-            sesion.invalidate();
-            response.sendRedirect("/FormularioIngreso.jsp");
-        }else{
-        	
-        }*/
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * Metodo encargado de logear
+	 * Metodo encargado de iniciar la seción del usuario
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -73,9 +60,9 @@ public class ServletLogin extends HttpServlet {
 			usuario=Usuario.busquedaUsuario(usuario);
 			if(!usuario.getUser().equals("")){
 	        	sesion.setAttribute("user", "password");
-	        	response.sendRedirect("FormularioIngreso.jsp");
+	        	response.sendRedirect("IngresarContacto.jsp");
 	        }else{
-	        	response.sendRedirect("LoginFallido.jsp");
+	        	response.sendRedirect("Login.jsp");
 	        }
 			
 		} catch (PersistentException e) {
@@ -85,22 +72,6 @@ public class ServletLogin extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
-		/*
-		HttpSession sesion = request.getSession();
-        String user, password;
-        user = request.getParameter("user");
-        password = request.getParameter("password");*/
-        //deberíamos buscar el usuario en la base de datos, pero dado que se escapa de este tema, ponemos un ejemplo en el mismo código
-        //if(user.equals("admin") && password.equals("admin")/* && sesion.getAttribute("usuario") == null*/){
-            //si coincide usuario y password y además no hay sesión iniciada
-            //sesion.setAttribute("usuario", user);
-            //redirijo a página con información de login exitoso
-            //response.sendRedirect("LoginExito.jsp");
-        //}else{
-        	//response.sendRedirect("LoginFallido.jsp");
-        //}
-        
 	}
 
 	/**

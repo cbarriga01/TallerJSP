@@ -50,7 +50,7 @@ public class ServletEliminar extends HttpServlet {
 		if(id<0){
 			System.out.println("variable vacia");
 		} else {
-			eliminar.setUid(id);
+			eliminar.setIdContacto(id);
 			try {
 				Contacto.borrar(eliminar);
 			} catch (PersistentException e) {

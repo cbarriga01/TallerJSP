@@ -18,8 +18,8 @@ public class Contacto {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == orm.ORMConstants.KEY_CONTACTO_EMPRESA) {
-			this.empresa = (orm.Empresa) owner;
+		if (key == orm.ORMConstants.KEY_CONTACTO_IDEMPRESA) {
+			this.idEmpresa = (orm.Empresa) owner;
 		}
 	}
 	
@@ -30,148 +30,168 @@ public class Contacto {
 		
 	};
 	
-	private int uid;
+	private int idContacto;
 	
-	private String nombre;
+	private String run;
 	
-	private String apellido;
+	private String nombreContacto;
 	
-	private String mail;
+	private String apellidoContacto;
 	
-	private String telefono;
+	private String mailContacto;
 	
-	private String pais;
+	private String telefonoContacto;
 	
-	private String region;
+	private String paisContacto;
 	
-	private String ciudad;
+	private String regionContacto;
 	
-	private orm.Empresa empresa;
+	private String ciudadContacto;
+	
+	private String direccion;
+	
+	private orm.Empresa idEmpresa;
 	
 	/**
 	 * Clave Primara
 	 */
-	private void setUid(int value) {
-		this.uid = value;
+	private void setIdContacto(int value) {
+		this.idContacto = value;
 	}
 	
 	/**
 	 * Clave Primara
 	 */
-	public int getUid() {
-		return uid;
+	public int getIdContacto() {
+		return idContacto;
 	}
 	
 	public int getORMID() {
-		return getUid();
+		return getIdContacto();
 	}
 	
 	/**
 	 * Nombre
 	 */
-	public void setNombre(String value) {
-		this.nombre = value;
+	public void setNombreContacto(String value) {
+		this.nombreContacto = value;
 	}
 	
 	/**
 	 * Nombre
 	 */
-	public String getNombre() {
-		return nombre;
+	public String getNombreContacto() {
+		return nombreContacto;
 	}
 	
 	/**
 	 * Apellido
 	 */
-	public void setApellido(String value) {
-		this.apellido = value;
+	public void setApellidoContacto(String value) {
+		this.apellidoContacto = value;
 	}
 	
 	/**
 	 * Apellido
 	 */
-	public String getApellido() {
-		return apellido;
+	public String getApellidoContacto() {
+		return apellidoContacto;
 	}
 	
 	/**
 	 * Mail
 	 */
-	public void setMail(String value) {
-		this.mail = value;
+	public void setMailContacto(String value) {
+		this.mailContacto = value;
 	}
 	
 	/**
 	 * Mail
 	 */
-	public String getMail() {
-		return mail;
+	public String getMailContacto() {
+		return mailContacto;
 	}
 	
 	/**
 	 * Telefono
 	 */
-	public void setTelefono(String value) {
-		this.telefono = value;
+	public void setTelefonoContacto(String value) {
+		this.telefonoContacto = value;
 	}
 	
 	/**
 	 * Telefono
 	 */
-	public String getTelefono() {
-		return telefono;
+	public String getTelefonoContacto() {
+		return telefonoContacto;
 	}
 	
-	public void setPais(String value) {
-		this.pais = value;
+	public void setPaisContacto(String value) {
+		this.paisContacto = value;
 	}
 	
-	public String getPais() {
-		return pais;
+	public String getPaisContacto() {
+		return paisContacto;
 	}
 	
-	public void setRegion(String value) {
-		this.region = value;
+	public void setRegionContacto(String value) {
+		this.regionContacto = value;
 	}
 	
-	public String getRegion() {
-		return region;
+	public String getRegionContacto() {
+		return regionContacto;
 	}
 	
-	public void setCiudad(String value) {
-		this.ciudad = value;
+	public void setCiudadContacto(String value) {
+		this.ciudadContacto = value;
 	}
 	
-	public String getCiudad() {
-		return ciudad;
+	public String getCiudadContacto() {
+		return ciudadContacto;
 	}
 	
-	public void setEmpresa(orm.Empresa value) {
-		if (empresa != null) {
-			empresa.contacto.remove(this);
+	public void setRun(String value) {
+		this.run = value;
+	}
+	
+	public String getRun() {
+		return run;
+	}
+	
+	public void setDireccion(String value) {
+		this.direccion = value;
+	}
+	
+	public String getDireccion() {
+		return direccion;
+	}
+	
+	public void setIdEmpresa(orm.Empresa value) {
+		if (idEmpresa != null) {
+			idEmpresa.contacto.remove(this);
 		}
 		if (value != null) {
 			value.contacto.add(this);
 		}
 	}
 	
-	public orm.Empresa getEmpresa() {
-		return empresa;
+	public orm.Empresa getIdEmpresa() {
+		return idEmpresa;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Empresa(orm.Empresa value) {
-		this.empresa = value;
+	public void setORM_IdEmpresa(orm.Empresa value) {
+		this.idEmpresa = value;
 	}
 	
-	private orm.Empresa getORM_Empresa() {
-		return empresa;
+	private orm.Empresa getORM_IdEmpresa() {
+		return idEmpresa;
 	}
 	
 	public String toString() {
-		return String.valueOf(getUid());
+		return String.valueOf(getIdContacto());
 	}
 	
 }
