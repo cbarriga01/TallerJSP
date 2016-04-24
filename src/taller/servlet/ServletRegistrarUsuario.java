@@ -46,7 +46,7 @@ public class ServletRegistrarUsuario extends HttpServlet {
 		String password= "";
 		ServletRegistrarUsuario ingreso = new ServletRegistrarUsuario();
 		
-		try{
+		//try{
 			user= request.getParameter("user");
 			password= request.getParameter("password");
 				
@@ -58,8 +58,16 @@ public class ServletRegistrarUsuario extends HttpServlet {
 					out.println(" Hola tu usuario es "+ user+ ". Saludos!!!");
 					
 					Usuario ingresar = new Usuario();
-					ingresar.setUser(user);
-					ingresar.setPassword(password);
+					try{
+						ingresar.setUser(user);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setPassword(password);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
 					try {
 						Usuario.ingresar(ingresar);
 					} catch (PersistentException e) {
@@ -71,9 +79,9 @@ public class ServletRegistrarUsuario extends HttpServlet {
 				}
 				
 			}
-		}catch(NullPointerException e){
-			e.printStackTrace();
-		}
+		//}catch(NullPointerException e){
+		//	e.printStackTrace();
+		//}
 	}
 
 	/**

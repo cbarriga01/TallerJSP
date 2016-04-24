@@ -95,6 +95,21 @@
 	</div>
 	
 	<div class="form-group">
+		<label class="col-lg-3 control-label">Empresa</label>
+		<div class="col-lg-3">
+			<select class="form-control" name="empresa" id="empresa">
+			  <option value="volvo">Volvo</option>
+			  <option value="saab">Saab</option>
+			  <option value="mercedes">Mercedes</option>
+			  <option value="audi">Audi</option>
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			</select> 
+			<br>
+		</div>
+	</div>
+	
+	<div class="form-group">
 		<div class="col-lg-9 col-lg-offset-3">
 			<button type="submit" class="btn btn-success left">Guardar Datos</button>
 		</div>

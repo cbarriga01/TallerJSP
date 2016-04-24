@@ -36,7 +36,7 @@ public class ServletBuscadorSimpleCont extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("FormularioBuscarContacto.jsp");
+				.getRequestDispatcher("BusquedaSimple.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -53,6 +53,7 @@ public class ServletBuscadorSimpleCont extends HttpServlet {
 		List<Contacto> lista = new ArrayList<Contacto>();
 		try {
 			lista = contacto.busquedaSimpleCont(textoBusqueda);
+			System.out.println(lista.get(0).getNombre());
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,6 +61,7 @@ public class ServletBuscadorSimpleCont extends HttpServlet {
 
 		request.removeAttribute("busqueda");
 		request.setAttribute("busqueda", lista);
+		request.getRequestDispatcher("/BusquedaSimple.jsp").forward(request, response);
 
 	}
 

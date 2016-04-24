@@ -9,7 +9,7 @@ import org.orm.PersistentTransaction;
 import taller.servlet.TallerServlet;
 
 public class Empresa {
-
+	//agregar arraylist de contactos
 	public Empresa() {
 	}
 	
@@ -134,32 +134,72 @@ private static final int ROW_COUNT = 100;
 	 */
 	public static String ingresar(Empresa empresa) throws PersistentException{
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
-		String msg = "";
-		try{
+		String msg = "Ingreso fallido de empresa";
+		//try{
 			try {
 				orm.Empresa lormEmpresa = orm.EmpresaDAO.createEmpresa();
-				TallerServlet Empresa = new TallerServlet();
 				// Initialize the properties of the persistent object here
-				lormEmpresa.setRut(empresa.rut);
-				lormEmpresa.setRazonSocial(empresa.razonSocial);
-				lormEmpresa.setNombreEmpresa(empresa.nombreEmpresa);
-				lormEmpresa.setRepresentante(empresa.representante);
-				lormEmpresa.setMailEmpresa(empresa.mailEmpresa);
-				lormEmpresa.setTelefonoEmpresa(empresa.telefonoEmpresa);
-				lormEmpresa.setPaisEmpresa(empresa.paisEmpresa);
-				lormEmpresa.setRegionEmpresa(empresa.regionEmpresa);
-				lormEmpresa.setCiudadEmpresa(empresa.ciudadEmpresa);
-				lormEmpresa.setDomicilio(empresa.domicilio);
-				msg = "Ingreso Exitoso";
+				try{
+					lormEmpresa.setRut(empresa.getRut());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setRazonSocial(empresa.getRazonSocial());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setNombreEmpresa(empresa.getNombreEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setRepresentante(empresa.getRepresentante());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setMailEmpresa(empresa.getMailEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setTelefonoEmpresa(empresa.getTelefonoEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setPaisEmpresa(empresa.getPaisEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setRegionEmpresa(empresa.getRegionEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setCiudadEmpresa(empresa.getCiudadEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setDomicilio(empresa.getDomicilio());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				
 				orm.EmpresaDAO.save(lormEmpresa);
 				t.commit();
+				msg = "Ingreso exitoso de empresa";
 			}
 			catch (Exception e) {
 				t.rollback();
 			}
-		} catch (NullPointerException e){
-			e.printStackTrace();
-		}
+		//} catch (NullPointerException e){
+		//	e.printStackTrace();
+		//}
 		return msg;
 	}
 	
@@ -172,21 +212,60 @@ private static final int ROW_COUNT = 100;
 	public static String actualizar(Empresa empresa) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "Error de conexion";
-		try{
+		//try{
 			try {
-				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.idEmpresa);  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
+				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.getIdEmpresa());  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
 				// Update the properties of the persistent object
-				System.out.println("Id = " + empresa.idEmpresa);
-				lormEmpresa.setRut(empresa.rut);
-				lormEmpresa.setRazonSocial(empresa.razonSocial);
-				lormEmpresa.setNombreEmpresa(empresa.nombreEmpresa);
-				lormEmpresa.setRepresentante(empresa.representante);
-				lormEmpresa.setMailEmpresa(empresa.mailEmpresa);
-				lormEmpresa.setTelefonoEmpresa(empresa.telefonoEmpresa);
-				lormEmpresa.setPaisEmpresa(empresa.paisEmpresa);
-				lormEmpresa.setRegionEmpresa(empresa.regionEmpresa);
-				lormEmpresa.setCiudadEmpresa(empresa.ciudadEmpresa);
-				lormEmpresa.setDomicilio(empresa.domicilio);
+				try{
+					lormEmpresa.setRut(empresa.getRut());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setRazonSocial(empresa.getRazonSocial());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setNombreEmpresa(empresa.getNombreEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setRepresentante(empresa.getRepresentante());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setMailEmpresa(empresa.getMailEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setTelefonoEmpresa(empresa.getTelefonoEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setPaisEmpresa(empresa.getPaisEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setRegionEmpresa(empresa.getRegionEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setCiudadEmpresa(empresa.getCiudadEmpresa());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
+				try{
+					lormEmpresa.setDomicilio(empresa.getDomicilio());
+				}catch (NullPointerException e){
+					e.printStackTrace();
+				}
 				msg = "Ingreso Exitoso";
 				orm.EmpresaDAO.save(lormEmpresa);
 				t.commit();
@@ -194,9 +273,9 @@ private static final int ROW_COUNT = 100;
 			catch (Exception e) {
 				t.rollback();
 			}
-		} catch (NullPointerException e){
-			e.printStackTrace();
-		}
+		//} catch (NullPointerException e){
+		//	e.printStackTrace();
+		//}
 		return msg;
 		
 	}
@@ -212,7 +291,7 @@ private static final int ROW_COUNT = 100;
 		String msg = "";
 		try{
 			try {
-				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.idEmpresa);
+				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.getIdEmpresa());
 				// Delete the persistent object<
 				msg="Dato eliminado...";
 				orm.EmpresaDAO.delete(lormEmpresa);

@@ -43,10 +43,14 @@ public class ServletListarUsuario extends HttpServlet {
 				out.println("User: " + usuario.getUser());
 				out.println("Password: " + usuario.getPassword());
 			}
+			//capanegocio.Usuario user = new capanegocio.Usuario();
+			//lista = user.listar();
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("user", lista);
+		request.getRequestDispatcher("/ListarUsuario.jsp").forward(request, response);
 	}
 
 	/**
@@ -54,6 +58,21 @@ public class ServletListarUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		List<Usuario> lista = new ArrayList<>();
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try {
+			lista=Usuario.listar();
+			PrintWriter out = response.getWriter();
+			for(Usuario usuario:lista){
+				out.println("User: " + usuario.getUser());
+				out.println("Password: " + usuario.getPassword());
+			}
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("user", lista);
+		request.getRequestDispatcher("/ListarUsuario.jsp").forward(request, response);
 	}
 
 	/**

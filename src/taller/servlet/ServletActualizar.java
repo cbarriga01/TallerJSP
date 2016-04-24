@@ -15,6 +15,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import capanegocio.Contacto;
+import capanegocio.Empresa;
 
 /**
  * Servlet implementation class ServletActualizar
@@ -60,12 +61,15 @@ public class ServletActualizar extends HttpServlet {
 			String region= request.getParameter("region");
 			String ciudad= request.getParameter("ciudad");
 			String direccion= request.getParameter("direccion");
+			String empresa= request.getParameter("empresa");
+			int idEmpresa = Integer.parseInt(empresa);
 			
 			ServletActualizar refrescar = new ServletActualizar();
 			refrescar.validarId(id);
 			refrescar.validateEmail(mail);
 			refrescar.esEntero(telefono);
 			
+			Empresa emp = new Empresa();
 			Contacto actualizar = new Contacto();
 			if(id < 0 || run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
 					mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
@@ -88,8 +92,18 @@ public class ServletActualizar extends HttpServlet {
 					actualizar.setRegion(region);
 					actualizar.setCiudad(ciudad);
 					actualizar.setDireccion(direccion);
+					
+					emp.setIdEmpresa(idEmpresa);
+					try{
+						actualizar.setEmpresa(emp);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					
+					String r="";
 					try {
-						Contacto.actualizar(actualizar);
+						//Contacto.actualizar(actualizar);
+						r=Contacto.actualizar(actualizar);
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

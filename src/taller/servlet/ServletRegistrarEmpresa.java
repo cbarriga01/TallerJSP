@@ -54,7 +54,7 @@ public class ServletRegistrarEmpresa extends HttpServlet {
 		String domicilio= "";
 		ServletRegistrarEmpresa ingreso = new ServletRegistrarEmpresa();
 		
-		try{
+		//try{
 			rut= request.getParameter("rut");
 			razonSocial= request.getParameter("razonSocial");
 			nombre= request.getParameter("nombre");
@@ -80,16 +80,56 @@ public class ServletRegistrarEmpresa extends HttpServlet {
 					out.println(" Hola tu nombre es "+ nombre+ ". Saludos!!!");
 					
 					Empresa ingresar = new Empresa();
-					ingresar.setRut(rut);
-					ingresar.setRazonSocial(razonSocial);
-					ingresar.setNombreEmpresa(nombre);
-					ingresar.setRepresentante(representante);
-					ingresar.setMailEmpresa(mail);
-					ingresar.setTelefonoEmpresa(telefono);
-					ingresar.setPaisEmpresa(pais);
-					ingresar.setRegionEmpresa(region);
-					ingresar.setCiudadEmpresa(ciudad);
-					ingresar.setDomicilio(domicilio);
+					try{
+						ingresar.setRut(rut);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setRazonSocial(razonSocial);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setNombreEmpresa(nombre);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setRepresentante(representante);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setMailEmpresa(mail);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setTelefonoEmpresa(telefono);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setPaisEmpresa(pais);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setRegionEmpresa(region);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setCiudadEmpresa(ciudad);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setDomicilio(domicilio);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
 					try {
 						Empresa.ingresar(ingresar);
 					} catch (PersistentException e) {
@@ -101,9 +141,9 @@ public class ServletRegistrarEmpresa extends HttpServlet {
 				}
 				
 			}
-		}catch(NullPointerException e){
-			e.printStackTrace();
-		}
+		//}catch(NullPointerException e){
+		//	e.printStackTrace();
+		//}
 	}
 
 }

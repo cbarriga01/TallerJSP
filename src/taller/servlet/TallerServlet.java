@@ -15,6 +15,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import capanegocio.Contacto;
+import capanegocio.Empresa;
 import ormsamples.CreateTaller1MagisterInformaticaData;
 
 /**
@@ -57,9 +58,10 @@ public class TallerServlet extends HttpServlet {
 		String region= "";
 		String ciudad= "";
 		String direccion= "";
+		String empresa= "";
 		TallerServlet ingreso = new TallerServlet();
 		
-		try{
+		//try{
 			run= request.getParameter("run");
 			nombre= request.getParameter("nombre");
 			apellido= request.getParameter("apellido");
@@ -69,13 +71,17 @@ public class TallerServlet extends HttpServlet {
 			region= request.getParameter("region");
 			ciudad= request.getParameter("ciudad");
 			direccion= request.getParameter("direccion");
+			//Obtener request de la empresa
+			empresa= request.getParameter("empresa");
+			int idEmpresa = Integer.parseInt(empresa);
 			
 			ingreso.validateEmail(mail);
 			ingreso.esEntero(telefono);
-			
+			//Validar datos empresa
 			if(run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
 					mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
-					region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("")){
+					region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("") ||
+					idEmpresa < 0){
 				System.out.println("variable vacia");
 				
 			}else{
@@ -84,18 +90,70 @@ public class TallerServlet extends HttpServlet {
 						ciudad.length() <= 20 && direccion.length() <= 30){
 					out.println(" Hola tu nombre es "+ nombre+ ". Saludos!!!");
 					
-					Contacto ingresar = new Contacto();
-					ingresar.setRun(run);
-					ingresar.setNombre(nombre);
-					ingresar.setApellido(apellido);
-					ingresar.setMail(mail);
-					ingresar.setTelefono(telefono);
-					ingresar.setPais(pais);
-					ingresar.setRegion(region);
-					ingresar.setCiudad(ciudad);
-					ingresar.setDireccion(direccion);
+					//Instanciar clase empresa
+					Empresa emp = new Empresa();
+ 					Contacto ingresar = new Contacto(); //renombrar ingresar por objetoContacto o similar
+					try{
+						ingresar.setRun(run);
+					}catch (NullPointerException e) {
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setNombre(nombre);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setApellido(apellido);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setMail(mail);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setTelefono(telefono);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setPais(pais);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setRegion(region);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setCiudad(ciudad);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					try{
+						ingresar.setDireccion(direccion);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					//asignar al contacto el objeto de la empresa
+					
+					//Instanciar variable que almacene la respuesta de la capa de negocio
+					emp.setIdEmpresa(idEmpresa);
+					try{
+						ingresar.setEmpresa(emp);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					
+					String r="";
+					
 					try {
-						Contacto.ingresar(ingresar);
+						r=Contacto.ingresar(ingresar);
+						//asignar a la variable creada la respuesta del metodo ingresar
+						//Contacto.ingresar(ingresar);
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -105,9 +163,9 @@ public class TallerServlet extends HttpServlet {
 				}
 				
 			}
-		}catch(NullPointerException e){
-			e.printStackTrace();
-		}
+		//}catch(NullPointerException e){
+		//	e.printStackTrace();
+		//}
 		
 		
 	}

@@ -17,7 +17,7 @@
 <title>Busqueda simple</title>
 </head>
 <body>
-	<form action="ServletBuscadorSimpleCont" id="ServletBuscadorSimpleCont" method="post" class="form-horizontal mitad" action="#">
+	<form action="ServletBuscadorSimpleCont" id="ServletBuscadorSimpleCont" method="post" class="form-horizontal mitad">
 	<div class="form-group">
 		<label class="col-lg-3 control-label">Buscar</label>
 		<div class="col-lg-3">
@@ -31,5 +31,39 @@
 		</div>
 	</div>
 	</form>
+	
+	<table class="table table-bordered table-hover table-responsive">
+	<tr class="success">
+		<th>Usuario</th>
+		<th>Contraseña</th>
+	</tr>
+	
+	<i:forEach items="${busqueda}" var="contacto">
+		<tr>
+			<td>${contacto.run}</td>
+			<td>${contacto.nombre}</td>
+			<td>
+				<table>
+					<tr>
+						<td><form action="ActualizarUsuario.jsp" method="post">
+							<input type="hidden" value="${usuario.idusuario}" name="idP">
+							<input type="submit" value="Editar" class="btn btn-primary">	
+						</form>
+						</td>
+						<td>
+						<form action="EliminarUsuario" method="post">
+							<input type="hidden" value="${usuario.idusuario}" name="idP">
+							<input type="submit" value="Eliminar" class="btn btn-danger">	
+						</form>
+						</td>
+					</tr>
+				</table>
+				
+			</td>
+			
+		</tr>
+	</i:forEach>
+	</table>
+	
 </body>
 </html>
