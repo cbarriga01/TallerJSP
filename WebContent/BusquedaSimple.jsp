@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="i"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,35 +36,33 @@
 	
 	<table class="table table-bordered table-hover table-responsive">
 	<tr class="success">
-		<th>Usuario</th>
-		<th>Contraseña</th>
+		<thead>
+			<th>Run</th>
+			<th>Nombre</th>
+			<th>Apellidos</th>
+			<th>Mail</th>
+			<th>Teléfono</th>
+			<th>País</th>
+			<th>Región</th>
+			<th>Ciudad</th>
+			<th>Dirección</th>
+		</thead>
 	</tr>
-	
-	<i:forEach items="${busqueda}" var="contacto">
-		<tr>
-			<td>${contacto.run}</td>
-			<td>${contacto.nombre}</td>
-			<td>
-				<table>
-					<tr>
-						<td><form action="ActualizarUsuario.jsp" method="post">
-							<input type="hidden" value="${usuario.idusuario}" name="idP">
-							<input type="submit" value="Editar" class="btn btn-primary">	
-						</form>
-						</td>
-						<td>
-						<form action="EliminarUsuario" method="post">
-							<input type="hidden" value="${usuario.idusuario}" name="idP">
-							<input type="submit" value="Eliminar" class="btn btn-danger">	
-						</form>
-						</td>
-					</tr>
-				</table>
-				
-			</td>
-			
-		</tr>
-	</i:forEach>
+	<tbody>
+		<i:forEach items="${busqueda}" var="contacto">
+			<tr>
+				<td>${contacto.run}</td>
+				<td>${contacto.nombre}</td>	
+				<td>${contacto.apellido}</td>
+				<td>${contacto.mail}</td>
+				<td>${contacto.telefono}</td>
+				<td>${contacto.pais}</td>
+				<td>${contacto.region}</td>
+				<td>${contacto.ciudad}</td>
+				<td>${contacto.direccion}</td>		
+			</tr>
+		</i:forEach>
+	</tbody>
 	</table>
 	
 </body>

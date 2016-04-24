@@ -8,6 +8,14 @@ import org.orm.PersistentTransaction;
 
 import taller.servlet.TallerServlet;
 
+/**
+ * 
+ * @author César Barriga I.
+ * 
+ * Clase relacionada a la lógica de negocio de la aplicación referente a Usuarios
+ * Se encarga de enviar transacciones a la Base de Datos
+ *
+ */
 public class Usuario {
 	
 	public Usuario() {
@@ -17,34 +25,58 @@ public class Usuario {
 	private String user;
 	private String password;
 	
+	/**
+	 * 
+	 * @return int idusuario del usuario
+	 */
 	public int getIdusuario() {
 		return idusuario;
 	}
 	
+	/**
+	 * 
+	 * @return String user del usuario
+	 */
 	public String getUser() {
 		return user;
 	}
 	
+	/**
+	 * 
+	 * @return String password del usuario
+	 */
 	public String getPassword() {
 		return password;
 	}
 	
+	/**
+	 * 
+	 * @param int idusuario del usuario
+	 */
 	public void setIdusuario(int idusuario) {
 		this.idusuario = idusuario;
 	}
 	
+	/**
+	 * 
+	 * @param String user del usuario
+	 */
 	public void setUser(String user) {
 		this.user = user;
 	}
 	
+	/**
+	 * 
+	 * @param String password del usuario
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	
 	/**
 	 * Método que permite ingresar un usuario de la BD
-	 * @param usuario
-	 * @return
+	 * @param Usuario usuario, objeto que contiene los datos a ingresar
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Usuario usuario) throws PersistentException {
@@ -79,9 +111,9 @@ public class Usuario {
 	}
 	
 	/**
-	 * Método que permite actualizar un usuario de la BD
-	 * @param usuario
-	 * @return
+	 * Método que permite actualizar un usuario de la Base de Datos
+	 * @param Usuario usuario, objeto que contiene los datos a actualizar
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Usuario usuario) throws PersistentException {
@@ -116,9 +148,9 @@ public class Usuario {
 	}
 	
 	/**
-	 * Método que permite eliminar un usuario de la BD
-	 * @param usuario
-	 * @return
+	 * Método que permite eliminar un usuario de la Base de Datos
+	 * @param Usuario usuario, objeto que contiene los datos a eliminar
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String borrar(Usuario usuario) throws PersistentException {
@@ -142,8 +174,8 @@ public class Usuario {
 	}
 	
 	/**
-	 * Método que permite listar los usuarios almacenados en la BD
-	 * @return
+	 * Método que permite listar los usuarios almacenados en la Base de Datos
+	 * @return List <Usuario> listaUsuario, lista con los datos de usuario almacenados
 	 * @throws PersistentException
 	 */
 	public static List <Usuario> listar() throws PersistentException {

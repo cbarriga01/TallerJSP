@@ -21,20 +21,14 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
 	crossorigin="anonymous"></script>
-<script
-	src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-	rel="stylesheet"></link>
-<link
-	href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"
-	rel="stylesheet"></link>
+	
+<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"></link>
+<link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
 
 <!--- <script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>-->
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script
-	src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 
 <script type="text/javascript" src=".js/validador.js"></script>
 <title>Principal</title>
@@ -64,10 +58,11 @@
 					<li role="presentation"><a href="ActualizarContacto.jsp">Actualizar Empresa</a></li>
 					<li role="presentation"><a href="EliminarContacto.jsp">Eliminar Empresa</a></li>
 					<li role="presentation"><a href="ListarEmpresa.jsp">Listar Empresa</a></li>
+					<li role="presentation"><a href="ServletListarUsuario">Listar Usuario</a></li>
 					<li role="presentation"><a href="BusquedaSimple.jsp">Busqueda Simple</a></li>
 					<li role="presentation"><a href="BusquedaAvanzada.jsp">Busqueda Avanzada</a></li>
-
-					<li role="presentation"><form action="Login" id="Login" method="get" class="form-horizontal mitad" action="#">
+					
+					<li role="presentation"><form action="Login" id="Login" method="get" class="form-horizontal mitad">
 							<div class="form-group">
 								<div class="col-lg-9 col-lg-offset-3">
 									<button type="submit" class="btn btn-primary navbar-btn">Logout</button>

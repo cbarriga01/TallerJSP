@@ -9,8 +9,11 @@ import org.orm.PersistentTransaction;
 import taller.servlet.TallerServlet;
 
 /*
- * Clase de negocio de contacto
- * @author: César Barriga
+ * @author: César Barriga I.
+ * 
+ * Clase relacionada a la lógica de negocio de la aplicación referente a Contactos
+ * Se encarga de enviar transacciones a la Base de Datos
+ * 
  */
 public class Contacto {
 	public Contacto() {
@@ -40,98 +43,186 @@ public class Contacto {
 	
 	private Empresa empresa; //cambiar nombre
 
+	/**
+	 * 
+	 * @return Empresa a la que pertenece el contacto
+	 */
 	public Empresa getEmpresa() {
 		return empresa;
 	}
 
+	/**
+	 * 
+	 * @param Empresa empresa a la que pertenece el contacto
+	 */
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
 
+	/**
+	 * 
+	 * @return idContacto del contacto
+	 */
 	public int getIdContacto() {
 		return idContacto;
 	}
 
+	/**
+	 * 
+	 * @param int idContacto del contacto 
+	 */
 	public void setIdContacto(int idContacto) {
 		this.idContacto = idContacto;
 	}
 
+	/**
+	 * 
+	 * @return run del contacto
+	 */
 	public String getRun() {
 		return run;
 	}
 
+	/**
+	 * 
+	 * @param String run del contacto
+	 */
 	public void setRun(String run) {
 		this.run = run;
 	}
 
+	/**
+	 * 
+	 * @return direccion del contacto
+	 */
 	public String getDireccion() {
 		return direccion;
 	}
 
+	/**
+	 * 
+	 * @param String direccion del contacto
+	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
+	/**
+	 * 
+	 * @return nombre del contacto
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * 
+	 * @param String nombre del contacto
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * 
+	 * @return apellido del contacto
+	 */
 	public String getApellido() {
 		return apellido;
 	}
 
+	/**
+	 * 
+	 * @param String apellido del contacto
+	 */
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
+	/**
+	 * 
+	 * @return mail del contacto
+	 */
 	public String getMail() {
 		return mail;
 	}
 
+	/**
+	 * 
+	 * @param String mail del contacto
+	 */
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
+	/**
+	 * 
+	 * @return telefono del contacto
+	 */
 	public String getTelefono() {
 		return telefono;
 	}
 
+	/**
+	 * 
+	 * @param String telefono del contacto
+	 */
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
+	/**
+	 * 
+	 * @return pais del contacto
+	 */
 	public String getPais() {
 		return pais;
 	}
 
+	/**
+	 * 
+	 * @param String pais del contacto
+	 */
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
 
+	/**
+	 * 
+	 * @return region del contacto
+	 */
 	public String getRegion() {
 		return region;
 	}
 
+	/**
+	 * 
+	 * @param String region del contcato
+	 */
 	public void setRegion(String region) {
 		this.region = region;
 	}
 
+	/**^
+	 * 
+	 * @return ciudad del contacto
+	 */
 	public String getCiudad() {
 		return ciudad;
 	}
 
+	/**
+	 * 
+	 * @param String ciudad del contacto
+	 */
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
 
 	/**
-	 * Método que permite ingresar un contacto a la BD
-	 * @param contacto Contacto
-	 * @return mensaje de si el ingreso fue exitoso o no
+	 * Método que permite ingresar un contacto a la Base de Datos
+	 * @param Contacto contacto, objeto que contiene los datos a ingresar
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Contacto contacto) throws PersistentException {
@@ -213,9 +304,9 @@ public class Contacto {
 	}
 	
 	/**
-	 * Método que permite actualizar un contacto en la BD
-	 * @param contacto de tipo Contacto,
-	 * @return mensaje de si la actualización fue exitosa o no
+	 * Método que permite actualizar un contacto en la Base de Datos
+	 * @param Contacto contacto, objeto que contiene los datos a actualizar
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Contacto contacto) throws PersistentException {
@@ -294,9 +385,9 @@ public class Contacto {
 	}
 	
 	/**
-	 * Método que permite eliminar un contacto de la BD
-	 * @param contacto de tipo Contacto
-	 * @return mensaje de si la eliminación fué exitosa o no
+	 * Método que permite eliminar un contacto de la Base de Datos
+	 * @param Contacto contacto, objeto que contiene los datos a eliminar
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String borrar(Contacto contacto) throws PersistentException {
@@ -320,8 +411,8 @@ public class Contacto {
 	}
 	
 	/**
-	 * Método que permite listar los contactos almacenados en la BD
-	 * @return lista con contactos almacenados en BD
+	 * Método que permite listar los contactos almacenados en la Base de Datos
+	 * @return List <Contacto> listaContacto, lista con contactos almacenados en la Base de Datos
 	 * @throws PersistentException
 	 */
 	public static List <Contacto> listar() throws PersistentException {
@@ -384,12 +475,7 @@ public class Contacto {
         }
         //if (listaContactos != null) {
         	
-        	//Modificar variable recibida de formulario:
-        	//a minusculas
-        	//a mayusculas
-        	//buscar por ñ como n
-        	//buscar por n como ñ
-        	//buscar sin modificar lo ingresado
+        	
             for (orm.Contacto contactoOrm : listaContactos) {
                 Contacto contactoNegocio = new Contacto();
                 Empresa empresaNegocio = new Empresa();
@@ -436,52 +522,133 @@ public class Contacto {
         List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();
         String query = "";
         
-        if (contacto.getNombre() != null && !contacto.getNombre().equals("")) {
-            query += "Contacto.nombre='" + contacto.getNombre() + "' ";
+        if (contacto.getRun() != null && !contacto.getRun().equals("")){
+        	query += "Contacto.run='" + contacto.getRun() + "' ";
         }
-        if ((contacto.getNombre() != null && !contacto.getNombre().equals("")) && 
-        		(contacto.getApellido() != null && !contacto.getApellido().equals(""))) {
-            query += "and ";
+        
+        if ((contacto.getRun() != null && !contacto.getRun().equals("")) 
+        		&& (contacto.getNombre()!=null && !contacto.getNombre().equals(""))){
+        	query += "AND ";
         }
-        if (contacto.getApellido() != null && !contacto.getApellido().trim().equals("")) {
-            query += "Contacto.apellido='" + contacto.getApellido() + "' ";
+        
+        if(contacto.getNombre()!=null && !contacto.getNombre().trim().equals("")){
+        	query += "Contacto.nombreContacto'" + contacto.getNombre() + "' ";
         }
-        if (((contacto.getNombre() != null && !contacto.getNombre().trim().equals("")) || 
-        		contacto.getApellido() != null && !contacto.getApellido().trim().equals("")) && 
-        		(contacto.getTelefono() != null && !contacto.getTelefono().trim().equals(""))) {
-            query += "and ";
+        
+        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
+        		|| contacto.getNombre()!=null&&!contacto.getNombre().trim().equals("")) 
+        		&& (contacto.getApellido()!=null && contacto.getApellido().trim().equals(""))){
+        	query += "AND ";
         }
-        if (contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("")) {
-            query += "Contacto.telefono='" + contacto.getTelefono() + "' ";
+        
+        if(contacto.getApellido()!=null && !contacto.getApellido().trim().equals("")){
+        	query += "Contacto.apellidoContacto='"+contacto.getApellido()+ "' ";
         }
-        if (((contacto.getNombre() != null && !contacto.getNombre().trim().equals("")) || 
-        		contacto.getApellido() != null && !contacto.getApellido().trim().equals("")
-                || contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("")) && 
-                contacto.getMail() != null && !contacto.getMail().trim().equals("")) {
-            query += "and ";
+        
+        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
+        		|| contacto.getNombre()!=null && contacto.getNombre().trim().equals("") 
+        		|| contacto.getApellido()!=null && !contacto.getApellido().trim().equals("")) 
+        		&& contacto.getMail()!=null && !contacto.getMail().trim().equals("")){
+        	query += "AND ";
         }
-        if (contacto.getMail() != null && !contacto.getMail().trim().equals("")) {
-            query += "Contacto.mail='" + contacto.getMail() + "'";
+        
+        if(contacto.getMail()!=null && !contacto.getMail().trim().equals("")){
+        	query += "Contacto.mailContacto='" + contacto.getMail() + "' ";
         }
-        if (contacto.getCiudad() != null && !contacto.getCiudad().trim().equals("")) {
-            query += "Contacto.ciudad='" + contacto.getCiudad() + "'";
+        //Telefono
+        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals(""))
+        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
+        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
+        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals("")))
+        		&& (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals(""))){
+        	query += "AND ";
         }
-        if (contacto.getRegion() != null && !contacto.getRegion().trim().equals("")) {
-            query += "Contacto.region='" + contacto.getRegion() + "'";
+        
+        if(contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")){
+        	query += "Contacto.telefonoContacto='" + contacto.getTelefono() + "' ";
         }
-        if (contacto.getPais() != null && !contacto.getPais().trim().equals("")) {
-            query += "Contacto.pais='" + contacto.getPais() + "'";
+        //pais
+        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
+        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
+        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
+        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals(""))
+        		|| (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")) 
+        		&& contacto.getPais()!=null && !contacto.getPais().trim().equals(""))){
+        	query += "AND ";
         }
+        
+        if(contacto.getPais()!=null && !contacto.getPais().trim().equals("")){
+        	query += "Contacto.paisContacto='" + contacto.getPais() + "' ";
+        }
+        //Pais
+        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
+        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
+        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
+        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals(""))
+        		|| (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")) 
+        		|| (contacto.getPais()!=null && !contacto.getPais().trim().equals(""))
+        		&& contacto.getRegion()!=null && !contacto.getRegion().trim().equals(""))){
+        	query += "AND ";
+        }
+        
+        if(contacto.getRegion()!=null && !contacto.getRegion().trim().equals("")){
+        	query += "Contacto.regionContacto='" + contacto.getRegion() + "' ";
+        }
+        //ciudad
+        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
+        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
+        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
+        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals(""))
+        		|| (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")) 
+        		|| (contacto.getPais()!=null && !contacto.getPais().trim().equals(""))
+        		|| (contacto.getRegion()!=null && !contacto.getRegion().trim().equals(""))
+        		&& contacto.getCiudad()!=null && !contacto.getCiudad().trim().equals(""))){
+        	query += "AND ";
+        }
+        
+        if(contacto.getCiudad()!=null && !contacto.getCiudad().trim().equals("")){
+        	query += "Contacto.ciudadContacto='" + contacto.getCiudad() + "' ";
+        }
+        //direccion
+        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
+        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
+        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
+        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals(""))
+        		|| (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")) 
+        		|| (contacto.getPais()!=null && !contacto.getPais().trim().equals(""))
+        		|| (contacto.getRegion()!=null && !contacto.getRegion().trim().equals(""))
+        		|| (contacto.getCiudad()!=null && !contacto.getCiudad().trim().equals(""))
+        		&& contacto.getDireccion()!=null && !contacto.getDireccion().trim().equals(""))){
+        	query += "AND ";
+        }
+        
+        if(contacto.getDireccion()!=null && !contacto.getDireccion().trim().equals("")){
+        	query += "Contacto.direccion='" + contacto.getDireccion() + "' ";
+        }
+        
 
         listaContactos = orm.ContactoDAO.queryContacto(query, null);
        
         if (listaContactos != null) {
             for (orm.Contacto contactoOrm : listaContactos) {
                 Contacto contactoNegocio = new Contacto();
-              // Empresa empresaNegocio = new Empresa();
-               // orm.Empresa empresaOrm = orm.EmpresaDAO.loadEmpresaByORMID(contactoOrm.getUid());//falta codigo aca?
-                //empresaNegocio.setNombre(empresaOrm.getNombre());
-                //empresaNegocio.setUid(empresaOrm.getUid());
+                Empresa empresaBuscar = new Empresa();
+                
+                orm.Empresa empresaOrm = orm.EmpresaDAO.loadEmpresaByORMID(contactoOrm.getIdEmpresa().getIdEmpresa());
+                
+                empresaBuscar.setIdEmpresa(empresaOrm.getIdEmpresa());
+                empresaBuscar.setRut(empresaOrm.getRut());
+                empresaBuscar.setRazonSocial(empresaOrm.getRazonSocial());
+                empresaBuscar.setNombreEmpresa(empresaOrm.getNombreEmpresa());
+                empresaBuscar.setRepresentante(empresaOrm.getRepresentante());
+                empresaBuscar.setMailEmpresa(empresaOrm.getMailEmpresa());
+                empresaBuscar.setTelefonoEmpresa(empresaOrm.getTelefonoEmpresa());
+                empresaBuscar.setPaisEmpresa(empresaOrm.getPaisEmpresa());
+                empresaBuscar.setRegionEmpresa(empresaOrm.getRegionEmpresa());
+                empresaBuscar.setCiudadEmpresa(empresaOrm.getCiudadEmpresa());
+                empresaBuscar.setDomicilio(empresaOrm.getDomicilio());
+                
+                
         
              //   contactoNegocio.setEmpresa(empresaNegocio);
                 contactoNegocio.setIdContacto(contactoOrm.getIdContacto());
@@ -495,6 +662,7 @@ public class Contacto {
                 contactoNegocio.setCiudad(contactoOrm.getCiudadContacto());
                 contactoNegocio.setDireccion(contactoOrm.getDireccion());
                 
+                contactoNegocio.setEmpresa(empresaBuscar);
                 
                 listaContacto.add(contactoNegocio);
             }
