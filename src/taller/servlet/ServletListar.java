@@ -49,12 +49,16 @@ public class ServletListar extends HttpServlet {
 				out.println("Pais: " + contacto.getPais());
 				out.println("Region: " + contacto.getRegion());
 				out.println("Ciudad: " + contacto.getCiudad());
-				out.println("Direccion" + contacto.getDireccion());
+				out.println("Direccion " + contacto.getDireccion());
+				out.println("Empresa " + contacto.getEmpresa().getNombreEmpresa());
+				System.out.println("Empresa " + contacto.getEmpresa().getNombreEmpresa());
 			}
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("listaContacto", lista);
+		request.getRequestDispatcher("/ListarContacto.jsp").forward(request, response);
 	
 	}
 

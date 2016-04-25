@@ -3,6 +3,7 @@ package taller.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +49,7 @@ public class ServletActualizarUsuario extends HttpServlet {
 			int id= Integer.parseInt(request.getParameter("id"));
 			String user= request.getParameter("user");
 			String password= request.getParameter("password");
+			String msg= "";
 			
 			ServletActualizarUsuario refrescar = new ServletActualizarUsuario();
 			refrescar.validarId(id);
@@ -65,6 +67,10 @@ public class ServletActualizarUsuario extends HttpServlet {
 					actualizar.setPassword(password);
 					try {
 						Usuario.actualizar(actualizar);
+						msg = "Actualización exitosa";
+						RequestDispatcher rs = request.getRequestDispatcher("ActualizarUsuario.jsp");
+						request.setAttribute("msg", msg);
+						rs.forward(request, response);
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

@@ -3,6 +3,7 @@ package taller.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,7 @@ public class ServletRegistrarUsuario extends HttpServlet {
 		PersistentTransaction t = null;
 		String user= "";
 		String password= "";
+		String msg="";
 		ServletRegistrarUsuario ingreso = new ServletRegistrarUsuario();
 		
 		//try{
@@ -70,12 +72,19 @@ public class ServletRegistrarUsuario extends HttpServlet {
 					}
 					try {
 						Usuario.ingresar(ingresar);
+						msg = "Ingreso exitoso";
+						RequestDispatcher rs = request.getRequestDispatcher("IngresarUsuario.jsp");
+						request.setAttribute("msg", msg);
+						rs.forward(request, response);
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} else {
-					System.out.println("Los campos ingresados sobrepasan el límite de caracteres permitidos...");
+					msg = "Error en el ingreso, datos inválidos";
+					RequestDispatcher rs = request.getRequestDispatcher("IngresarUsuario.jsp");
+					request.setAttribute("msg", msg);
+					rs.forward(request, response);
 				}
 				
 			}

@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -59,6 +60,7 @@ public class TallerServlet extends HttpServlet {
 		String ciudad= "";
 		String direccion= "";
 		String empresa= "";
+		String msg="";
 		TallerServlet ingreso = new TallerServlet();
 		
 		//try{
@@ -74,94 +76,109 @@ public class TallerServlet extends HttpServlet {
 			//Obtener request de la empresa
 			empresa= request.getParameter("empresa");
 			int idEmpresa = Integer.parseInt(empresa);
+
+			ingreso.validarRun(run);			
+			ingreso.validarEmail(mail);
+			ingreso.validarEntero(telefono);
 			
-			ingreso.validateEmail(mail);
-			ingreso.esEntero(telefono);
-			//Validar datos empresa
-			if(run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
-					mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
-					region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("") ||
-					idEmpresa < 0){
-				System.out.println("variable vacia");
-				
-			}else{
-				if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 && mail.length() <=20 && 
-						telefono.length() <= 20 && pais.length() <= 20 && region.length() <= 20 && 
-						ciudad.length() <= 20 && direccion.length() <= 30){
-					out.println(" Hola tu nombre es "+ nombre+ ". Saludos!!!");
+			if ((ingreso.validarRun(run) == true) && (ingreso.validarEmail(mail) == true)
+					&& (ingreso.validarEntero(telefono))){
+			
+				//Validar datos empresa
+				if(run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
+						mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
+						region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("") ||
+						idEmpresa < 0){
+					System.out.println("variable vacia");
 					
-					//Instanciar clase empresa
-					Empresa emp = new Empresa();
- 					Contacto ingresar = new Contacto(); //renombrar ingresar por objetoContacto o similar
-					try{
-						ingresar.setRun(run);
-					}catch (NullPointerException e) {
-						e.printStackTrace();
+				}else{
+					if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 && mail.length() <=20 && 
+							telefono.length() <= 20 && pais.length() <= 20 && region.length() <= 20 && 
+							ciudad.length() <= 20 && direccion.length() <= 30){
+						out.println(" Hola tu nombre es "+ nombre+ ". Saludos!!!");
+						
+						//Instanciar clase empresa
+						Empresa emp = new Empresa();
+	 					Contacto ingresar = new Contacto(); //renombrar ingresar por objetoContacto o similar
+						try{
+							ingresar.setRun(run);
+						}catch (NullPointerException e) {
+							e.printStackTrace();
+						}
+						try{
+							ingresar.setNombre(nombre);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						try{
+							ingresar.setApellido(apellido);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						try{
+							ingresar.setMail(mail);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						try{
+							ingresar.setTelefono(telefono);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						try{
+							ingresar.setPais(pais);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						try{
+							ingresar.setRegion(region);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						try{
+							ingresar.setCiudad(ciudad);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						try{
+							ingresar.setDireccion(direccion);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						
+						emp.setIdEmpresa(idEmpresa);
+						
+						try{
+							ingresar.setEmpresa(emp);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						
+						String r="";
+						
+						try {
+							r=Contacto.ingresar(ingresar);
+							msg = "Ingreso exitoso";
+							RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
+							request.setAttribute("msg", msg);
+							rs.forward(request, response);
+						} catch (PersistentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					} else {
+						msg = "Error en el ingreso, datos inválidos";
+						RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
+						request.setAttribute("msg", msg);
+						rs.forward(request, response);
 					}
-					try{
-						ingresar.setNombre(nombre);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					try{
-						ingresar.setApellido(apellido);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					try{
-						ingresar.setMail(mail);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					try{
-						ingresar.setTelefono(telefono);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					try{
-						ingresar.setPais(pais);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					try{
-						ingresar.setRegion(region);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					try{
-						ingresar.setCiudad(ciudad);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					try{
-						ingresar.setDireccion(direccion);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					//asignar al contacto el objeto de la empresa
 					
-					//Instanciar variable que almacene la respuesta de la capa de negocio
-					emp.setIdEmpresa(idEmpresa);
-					try{
-						ingresar.setEmpresa(emp);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
-					
-					String r="";
-					
-					try {
-						r=Contacto.ingresar(ingresar);
-						//asignar a la variable creada la respuesta del metodo ingresar
-						//Contacto.ingresar(ingresar);
-					} catch (PersistentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} else {
-					System.out.println("Los campos ingresados sobrepasan el límite de caracteres permitidos...");
 				}
-				
+			} else { //Else de validación de rut, mail y entero
+				msg = "Error en el ingreso, datos inválidos";
+				RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
+				request.setAttribute("msg", msg);
+				rs.forward(request, response);
 			}
 		//}catch(NullPointerException e){
 		//	e.printStackTrace();
@@ -175,7 +192,7 @@ public class TallerServlet extends HttpServlet {
 	 * @param email = cadena con el mail recibido
 	 * @return
 	 */
-	public boolean validateEmail(String email) {
+	public boolean validarEmail(String email) {
 		 
         // Compiles the given regular expression into a pattern.
         Pattern pattern = Pattern.compile(PATTERN_EMAIL);
@@ -191,13 +208,43 @@ public class TallerServlet extends HttpServlet {
 	 * @param cad = cadena ingresada
 	 * @return
 	 */
-	public boolean esEntero(String cad){
+	public boolean validarEntero(String cad){
 		 for(int i = 0; i<cad.length(); i++)
 		 if( !Character.isDigit(cad.charAt(i)) ){
 			 return false;
 		 }
 		 return true;
-	 }
+	}
+	
+	/**
+	 * Método que permite validar si el run ingresado es válido
+	 * @param String run del contacto a validar
+	 * @return boolean validacion, indica si el run es valido o no
+	 */
+	public static boolean validarRun(String run) {
+		 
+		boolean validacion = false;
+		try {
+			run = run.toUpperCase();
+			run = run.replace(".", "");
+			run = run.replace("-", "");
+			int runAux = Integer.parseInt(run.substring(0, run.length() - 1));
+			 
+			char dv = run.charAt(run.length() - 1);
+			 
+			int m = 0, s = 1;
+			for (; runAux != 0; runAux /= 10) {
+				s = (s + runAux % 10 * (9 - m++ % 6)) % 11;
+			}
+			if (dv == (char) (s != 0 ? s + 47 : 75)) {
+				validacion = true;
+			}
+			 
+		} catch (java.lang.NumberFormatException e) {
+		} catch (Exception e) {
+		}
+		return validacion;
+	}
 	
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)

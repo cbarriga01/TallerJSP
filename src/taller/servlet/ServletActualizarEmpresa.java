@@ -3,6 +3,7 @@ package taller.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,6 +57,7 @@ public class ServletActualizarEmpresa extends HttpServlet {
 			String region= request.getParameter("region");
 			String ciudad= request.getParameter("ciudad");
 			String domicilio= request.getParameter("domicilio");
+			String msg = "";
 			
 			ServletActualizarEmpresa refrescar = new ServletActualizarEmpresa();
 			refrescar.validarId(id);
@@ -87,6 +89,10 @@ public class ServletActualizarEmpresa extends HttpServlet {
 					actualizar.setDomicilio(domicilio);
 					try {
 						Empresa.actualizar(actualizar);
+						msg = "Actualización exitosa";
+						RequestDispatcher rs = request.getRequestDispatcher("ActualizarEmpresa.jsp");
+						request.setAttribute("msg", msg);
+						rs.forward(request, response);
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

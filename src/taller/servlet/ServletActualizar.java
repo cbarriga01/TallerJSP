@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,6 +63,7 @@ public class ServletActualizar extends HttpServlet {
 			String ciudad= request.getParameter("ciudad");
 			String direccion= request.getParameter("direccion");
 			String empresa= request.getParameter("empresa");
+			String msg = "";
 			int idEmpresa = Integer.parseInt(empresa);
 			
 			ServletActualizar refrescar = new ServletActualizar();
@@ -102,8 +104,11 @@ public class ServletActualizar extends HttpServlet {
 					
 					String r="";
 					try {
-						//Contacto.actualizar(actualizar);
 						r=Contacto.actualizar(actualizar);
+						msg = "Actualización exitosa";
+						RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
+						request.setAttribute("msg", msg);
+						rs.forward(request, response);
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

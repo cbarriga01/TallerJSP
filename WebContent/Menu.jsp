@@ -53,10 +53,10 @@
 					<li role="presentation"><a href="IngresarContacto.jsp">Ingresar Contacto</a></li>
 					<li role="presentation"><a href="ActualizarContacto.jsp">Actualizar Contacto</a></li>
 					<li role="presentation"><a href="EliminarContacto.jsp">Eliminar Contacto</a></li>
-					<li role="presentation"><a href="ListarContacto.jsp">Listar Contactos</a></li>
+					<li role="presentation"><a href="ServletListar">Listar Contactos</a></li>
 					<li role="presentation"><a href="IngresarEmpresa.jsp">Ingresar Empresa</a></li>
-					<li role="presentation"><a href="ActualizarContacto.jsp">Actualizar Empresa</a></li>
-					<li role="presentation"><a href="EliminarContacto.jsp">Eliminar Empresa</a></li>
+					<li role="presentation"><a href="ActualizarEmpresa.jsp">Actualizar Empresa</a></li>
+					<li role="presentation"><a href="EliminarEmpresa.jsp">Eliminar Empresa</a></li>
 					<li role="presentation"><a href="ListarEmpresa.jsp">Listar Empresa</a></li>
 					<li role="presentation"><a href="ServletListarUsuario">Listar Usuario</a></li>
 					<li role="presentation"><a href="BusquedaSimple.jsp">Busqueda Simple</a></li>

@@ -60,7 +60,7 @@ public class ServletLogin extends HttpServlet {
 			usuario=Usuario.busquedaUsuario(usuario);
 			if(!usuario.getUser().equals("")){
 	        	sesion.setAttribute("user", "password");
-	        	response.sendRedirect("IngresarContacto.jsp");
+	        	response.sendRedirect("Menu.jsp");
 	        }else{
 	        	response.sendRedirect("Login.jsp");
 	        }

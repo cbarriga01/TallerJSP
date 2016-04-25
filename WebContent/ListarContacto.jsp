@@ -17,31 +17,37 @@
 <title>Lista de contactos</title>
 </head>
 <body>
-	<form action="ServletListar" method="get">
-	<div class="row">
-                        <div class="col-sm-1" style="background-color:lavender;"> Nombre </div>
-                        <div class="col-sm-2" style="background-color:lavender;"> Apellido </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> Mail </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> Telefono </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> Pais </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> Region </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> Ciudad </div>
-                    </div>
-		<i:forEach items="${nombre}" var="contacto">
- 		${contacto.nombre} : ${contacto.apellido} : ${contacto.mail} :
- 		${contacto.telefono} : ${contacto.pais} : ${contacto.region} : ${contacto.ciudad}		
-		<br/>
-		<div class="row">
-			<div class="col-sm-1" style="background-color:lavender;"> ${contacto.nombre} </div>
-                        <div class="col-sm-2" style="background-color:lavender;"> ${contacto.apellido} </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> ${contacto.mail} </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> ${contacto.telefono} </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> ${contacto.pais} </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> ${contacto.region} </div>
-                        <div class="col-sm-1" style="background-color:lavender;"> ${contacto.ciudad} </div>
-		</div>
+	<table class="table table-bordered table-hover table-responsive">
+	<tr class="success">
+		<thead>
+			<th>Run</th>
+			<th>Nombre</th>
+			<th>Apellidos</th>
+			<th>Mail</th>
+			<th>Teléfono</th>
+			<th>País</th>
+			<th>Región</th>
+			<th>Ciudad</th>
+			<th>Dirección</th>
+			<th>Empresa</th>
+		</thead>
+	</tr>
+	<tbody>
+		<i:forEach items="${listaContacto}" var="contacto">
+			<tr>
+				<td>${contacto.run}</td>
+				<td>${contacto.nombre}</td>	
+				<td>${contacto.apellido}</td>
+				<td>${contacto.mail}</td>
+				<td>${contacto.telefono}</td>
+				<td>${contacto.pais}</td>
+				<td>${contacto.region}</td>
+				<td>${contacto.ciudad}</td>
+				<td>${contacto.direccion}</td>	
+				<td>${contacto.empresa.nombreEmpresa}</td>	
+			</tr>
 		</i:forEach>
-		<button type="submit" class="btn btn-success left">Listar</button>
-	</form>
+	</tbody>
+	</table>
 </body>
 </html>

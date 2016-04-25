@@ -422,6 +422,8 @@ public class Contacto {
 		
 		for (orm.Contacto contactoOrm:listaContactoOrm) {
 			Contacto contacto= new Contacto();
+			Empresa empresaNegocio = new Empresa();
+			orm.Empresa empresaOrm = orm.EmpresaDAO.loadEmpresaByORMID(contactoOrm.getIdEmpresa().getIdEmpresa());
 			contacto.setRun(contactoOrm.getRun());
 			contacto.setNombre(contactoOrm.getNombreContacto());
 			contacto.setApellido(contactoOrm.getApellidoContacto());
@@ -431,6 +433,22 @@ public class Contacto {
 			contacto.setRegion(contactoOrm.getRegionContacto());
 			contacto.setCiudad(contactoOrm.getCiudadContacto());
 			contacto.setDireccion(contactoOrm.getDireccion());
+			//contacto.setEmpresa(contactoOrm.getIdEmpresa());
+			
+			 empresaNegocio.setIdEmpresa(empresaOrm.getIdEmpresa());
+             empresaNegocio.setRut(empresaOrm.getRut());
+             empresaNegocio.setRazonSocial(empresaOrm.getRazonSocial());
+             empresaNegocio.setNombreEmpresa(empresaOrm.getNombreEmpresa());
+             empresaNegocio.setRepresentante(empresaOrm.getRepresentante());
+             empresaNegocio.setMailEmpresa(empresaOrm.getMailEmpresa());
+             empresaNegocio.setTelefonoEmpresa(empresaOrm.getTelefonoEmpresa());
+             empresaNegocio.setPaisEmpresa(empresaOrm.getPaisEmpresa());
+             empresaNegocio.setRegionEmpresa(empresaOrm.getRegionEmpresa());
+             empresaNegocio.setCiudadEmpresa(empresaOrm.getCiudadEmpresa());
+             empresaNegocio.setDomicilio(empresaOrm.getDomicilio());
+             
+             contacto.setEmpresa(empresaNegocio);			
+			
 			listaContacto.add(contacto);
 		}
 		

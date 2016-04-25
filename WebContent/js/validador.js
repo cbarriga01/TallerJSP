@@ -292,8 +292,10 @@ $(document).ready(function() {
                         message: 'El nombre de usuario es requerido'
                     },
                     stringLength: {
+                    	min: 4,
+                        message: 'El nombre de usuario debe contener mínimo 4 caracteres',
                         max: 20,
-                        message: 'El nombre de usuario debe contener máximo 20 caracteres'
+                        message: 'El nombre de usuario debe contener máximo 20 caracteres'                        
                     }
                 }
             },
