@@ -22,7 +22,7 @@
 	<div class="container">
 
       <form class="form-signin" role="form" action="ServletLogin" id="ServletLogin" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">Ingrese sus datos</h2>
         <div class="form-group">
         	<input type="text" class="form-control" name="user" placeholder="Nombre de usuario" required>
         </div>

@@ -58,7 +58,6 @@
 					<li role="presentation"><a href="ActualizarEmpresa.jsp">Actualizar Empresa</a></li>
 					<li role="presentation"><a href="EliminarEmpresa.jsp">Eliminar Empresa</a></li>
 					<li role="presentation"><a href="ServletListarEmpresa">Listar Empresa</a></li>
-					<li role="presentation"><a href="ServletListarUsuario">Listar Usuario</a></li>
 					<li role="presentation"><a href="BusquedaSimple.jsp">Busqueda Simple</a></li>
 					<li role="presentation"><a href="BusquedaAvanzada.jsp">Busqueda Avanzada</a></li>
 					
