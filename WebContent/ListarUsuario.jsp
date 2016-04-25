@@ -34,13 +34,13 @@
 					<td>
 						<table>
 							<tr>
-								<td><form action="ActualizarUsuario.jsp" method="post">
+								<td><form action="ActualizarContacto.jsp" method="post">
 									<input type="hidden" value="${usuario.idusuario}" name="idUsuario">
 									<input type="submit" value="Editar" class="btn btn-primary">	
 								</form>
 								</td>
 								<td>
-								<form action="EliminarUsuario" method="post">
+								<form action="EliminarContacto" method="post">
 									<input type="hidden" value="${usuario.idusuario}" name="idUsuario">
 									<input type="submit" value="Eliminar" class="btn btn-danger">	
 								</form>

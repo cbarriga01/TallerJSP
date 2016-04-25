@@ -526,34 +526,34 @@ public class Contacto {
         List<Contacto> listaContacto = new ArrayList<Contacto>();
         List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();
         String query = "";
-        
-        if (contacto.getRun() != null && !contacto.getRun().equals("")){
+        /*
+        if (contacto.getRun() != null && !contacto.getRun().trim().equals("")){
         	query += "Contacto.run='" + contacto.getRun() + "' ";
         }
         
-        if ((contacto.getRun() != null && !contacto.getRun().equals("")) 
-        		&& (contacto.getNombre()!=null && !contacto.getNombre().equals(""))){
+        if ((contacto.getRun() != null && !contacto.getRun().trim().equals("")) 
+        		&& (contacto.getNombre() != null && !contacto.getNombre().trim().equals(""))){
         	query += "AND ";
         }
         
-        if(contacto.getNombre()!=null && !contacto.getNombre().trim().equals("")){
-        	query += "Contacto.nombreContacto'" + contacto.getNombre() + "' ";
+        if(contacto.getNombre() != null && !contacto.getNombre().trim().equals("")){
+        	query += "Contacto.nombreContacto='" + contacto.getNombre() + "' ";
         }
         
-        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
-        		|| contacto.getNombre()!=null&&!contacto.getNombre().trim().equals("")) 
+        if((contacto.getRun() != null && !contacto.getRun().trim().equals("") 
+        		|| contacto.getNombre()!=null && !contacto.getNombre().trim().equals("")) 
         		&& (contacto.getApellido()!=null && contacto.getApellido().trim().equals(""))){
         	query += "AND ";
         }
         
-        if(contacto.getApellido()!=null && !contacto.getApellido().trim().equals("")){
+        if(contacto.getApellido() != null && !contacto.getApellido().trim().equals("")){
         	query += "Contacto.apellidoContacto='"+contacto.getApellido()+ "' ";
         }
-        
-        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
-        		|| contacto.getNombre()!=null && contacto.getNombre().trim().equals("") 
-        		|| contacto.getApellido()!=null && !contacto.getApellido().trim().equals("")) 
-        		&& contacto.getMail()!=null && !contacto.getMail().trim().equals("")){
+        //Probar desde aca
+        if((contacto.getRun() != null && !contacto.getRun().trim().equals("") 
+        		|| contacto.getNombre() != null && !contacto.getNombre().trim().equals("") 
+        		|| contacto.getApellido() != null && !contacto.getApellido().trim().equals("")) 
+        		&& (contacto.getMail() != null && !contacto.getMail().trim().equals(""))){
         	query += "AND ";
         }
         
@@ -561,80 +561,181 @@ public class Contacto {
         	query += "Contacto.mailContacto='" + contacto.getMail() + "' ";
         }
         //Telefono
-        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals(""))
-        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
-        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
-        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals("")))
-        		&& (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals(""))){
+        if((contacto.getRun() != null && !contacto.getRun().trim().equals("")
+        		|| contacto.getNombre() != null && !contacto.getNombre().trim().equals("")
+        		|| contacto.getApellido() != null && !contacto.getApellido().trim().equals("")
+        		|| contacto.getMail() != null && !contacto.getMail().trim().equals(""))
+        		&& (contacto.getTelefono() != null && !contacto.getTelefono().trim().equals(""))){
         	query += "AND ";
         }
         
-        if(contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")){
+        if(contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("")){
         	query += "Contacto.telefonoContacto='" + contacto.getTelefono() + "' ";
         }
         //pais
-        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
-        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
-        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
-        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals(""))
-        		|| (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")) 
-        		&& contacto.getPais()!=null && !contacto.getPais().trim().equals(""))){
+        if((contacto.getRun() != null && !contacto.getRun().trim().equals("") 
+        		|| contacto.getNombre() != null && !contacto.getNombre().trim().equals("")
+        		|| contacto.getApellido() != null && !contacto.getApellido().trim().equals("")
+        		|| contacto.getMail() != null && !contacto.getMail().trim().equals("")
+        		|| contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("")) 
+        		&& (contacto.getPais() != null && !contacto.getPais().trim().equals(""))){
         	query += "AND ";
         }
         
-        if(contacto.getPais()!=null && !contacto.getPais().trim().equals("")){
+        if(contacto.getPais() != null && !contacto.getPais().trim().equals("")){
         	query += "Contacto.paisContacto='" + contacto.getPais() + "' ";
         }
         //Pais
-        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
-        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
-        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
-        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals(""))
-        		|| (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")) 
-        		|| (contacto.getPais()!=null && !contacto.getPais().trim().equals(""))
-        		&& contacto.getRegion()!=null && !contacto.getRegion().trim().equals(""))){
+        if((contacto.getRun() != null && !contacto.getRun().trim().equals("") 
+        		|| contacto.getNombre() != null && !contacto.getNombre().trim().equals("")
+        		|| contacto.getApellido() != null && !contacto.getApellido().trim().equals("")
+        		|| contacto.getMail() != null && !contacto.getMail().trim().equals("")
+        		|| contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("") 
+        		|| contacto.getPais() != null && !contacto.getPais().trim().equals(""))
+        		&& (contacto.getRegion() != null && !contacto.getRegion().trim().equals(""))) {
         	query += "AND ";
         }
         
-        if(contacto.getRegion()!=null && !contacto.getRegion().trim().equals("")){
+        if(contacto.getRegion() != null && !contacto.getRegion().trim().equals("")){
         	query += "Contacto.regionContacto='" + contacto.getRegion() + "' ";
         }
         //ciudad
-        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
-        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
-        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
-        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals(""))
-        		|| (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")) 
-        		|| (contacto.getPais()!=null && !contacto.getPais().trim().equals(""))
-        		|| (contacto.getRegion()!=null && !contacto.getRegion().trim().equals(""))
-        		&& contacto.getCiudad()!=null && !contacto.getCiudad().trim().equals(""))){
+        if((contacto.getRun() != null && !contacto.getRun().trim().equals("") 
+        		|| contacto.getNombre() != null && !contacto.getNombre().trim().equals("")
+        		|| contacto.getApellido() != null && !contacto.getApellido().trim().equals("")
+        		|| contacto.getMail() != null && !contacto.getMail().trim().equals("")
+        		|| contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("") 
+        		|| contacto.getPais() != null && !contacto.getPais().trim().equals("")
+        		|| contacto.getRegion() != null && !contacto.getRegion().trim().equals(""))
+        		&& (contacto.getCiudad() != null && !contacto.getCiudad().trim().equals(""))) {
         	query += "AND ";
         }
         
-        if(contacto.getCiudad()!=null && !contacto.getCiudad().trim().equals("")){
+        if(contacto.getCiudad() != null && !contacto.getCiudad().trim().equals("")){
         	query += "Contacto.ciudadContacto='" + contacto.getCiudad() + "' ";
         }
         //direccion
-        if(((contacto.getRun()!=null && !contacto.getRun().trim().equals("")) 
-        		|| (contacto.getNombre()!=null && contacto.getNombre().trim().equals(""))
-        		|| (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))
-        		|| (contacto.getMail()!=null && !contacto.getMail().trim().equals(""))
-        		|| (contacto.getTelefono()!=null && !contacto.getTelefono().trim().equals("")) 
-        		|| (contacto.getPais()!=null && !contacto.getPais().trim().equals(""))
-        		|| (contacto.getRegion()!=null && !contacto.getRegion().trim().equals(""))
-        		|| (contacto.getCiudad()!=null && !contacto.getCiudad().trim().equals(""))
-        		&& contacto.getDireccion()!=null && !contacto.getDireccion().trim().equals(""))){
+        if((contacto.getRun() != null && !contacto.getRun().trim().equals("") 
+        		|| contacto.getNombre() != null && !contacto.getNombre().trim().equals("")
+        		|| contacto.getApellido() != null && !contacto.getApellido().trim().equals("")
+        		|| contacto.getMail() != null && !contacto.getMail().trim().equals("")
+        		|| contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("") 
+        		|| contacto.getPais() != null && !contacto.getPais().trim().equals("")
+        		|| contacto.getRegion() != null && !contacto.getRegion().trim().equals("")
+        		|| (contacto.getCiudad() != null && !contacto.getCiudad().trim().equals(""))
+        		&& contacto.getDireccion() != null && !contacto.getDireccion().trim().equals(""))){
         	query += "AND ";
         }
         
-        if(contacto.getDireccion()!=null && !contacto.getDireccion().trim().equals("")){
+        if(contacto.getDireccion() != null && !contacto.getDireccion().trim().equals("")){
         	query += "Contacto.direccion='" + contacto.getDireccion() + "' ";
         }
+        */
         
+        if(contacto.getRun()!= null && !contacto.getRun().trim().equals("")){
+			query += "Contacto.run='"+contacto.getRun()+"' ";
+		}
+		
+		if((contacto.getRun()!= null && !contacto.getRun().trim().equals(""))
+				&& (contacto.getNombre()!=null && !contacto.getNombre().equals(""))){
+			query += "AND ";
+		}
+		if (contacto.getNombre()!=null && !contacto.getNombre().trim().equals("")){
+			query += "Contacto.nombreContacto='"+contacto.getNombre()+"' ";
+		}
+		
+		if(((contacto.getRun()!=null && !contacto.getRun().trim().equals(""))
+				|| (contacto.getNombre()!=null && !contacto.getNombre().trim().equals("")))
+				&& (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))){
+			query += "AND ";
+		}
+		
+		if(contacto.getApellido()!=null && !contacto.getApellido().trim().equals("")){
+			query += "Contacto.apellidoContacto='"+contacto.getApellido()+"' ";
+		}
+		
+		if((contacto.getRun()!=null && !contacto.getRun().equals("")
+				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
+				|| contacto.getApellido()!=null && !contacto.getApellido().equals(""))
+				&& (contacto.getMail() != null && !contacto.getMail().equals(""))){
+			query += "AND ";
+		}
+		if(contacto.getMail() != null && !contacto.getMail().trim().equals("")){
+			query += "Contacto.mailContacto='"+contacto.getMail()+"' ";
+		}
+		
+		if((contacto.getRun()!=null && !contacto.getRun().equals("")
+				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
+				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
+				||contacto.getMail() != null && !contacto.getMail().equals(""))
+				&& (contacto.getTelefono() != null && !contacto.getTelefono().equals(""))){
+			query += "AND ";
+		}
+		if(contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("")){
+			query += "Contacto.telefonoContacto='"+contacto.getTelefono()+ "' ";
+		}
+		
+		if((contacto.getRun()!=null && !contacto.getRun().equals("")
+				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
+				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
+				|| contacto.getMail() != null && !contacto.getMail().equals("")
+				|| contacto.getTelefono() != null && !contacto.getTelefono().equals(""))
+				&& (contacto.getPais() != null && !contacto.getPais().equals(""))){
+			query += "AND ";
+		}
+		if(contacto.getDireccion() != null && !contacto.getPais().trim().equals("")){
+			query += "Contacto.paisContacto='"+contacto.getPais()+ "' ";
+		}
+		
+		if((contacto.getRun()!=null && !contacto.getRun().equals("")
+				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
+				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
+				|| contacto.getMail() != null && !contacto.getMail().equals("")
+				|| contacto.getTelefono() != null && !contacto.getTelefono().equals("")
+				|| contacto.getPais() != null && !contacto.getPais().equals(""))
+				&& (contacto.getRegion() != null && !contacto.getRegion().equals(""))){
+			query += "AND ";
+		}
+		if(contacto.getRegion() != null && !contacto.getRegion().trim().equals("")){
+			query += "Contacto.regionContacto='"+contacto.getRegion()+ "' ";
+		}		
+        
+		if((contacto.getRun()!=null && !contacto.getRun().equals("")
+				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
+				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
+				|| contacto.getMail() != null && !contacto.getMail().equals("")
+				|| contacto.getTelefono() != null && !contacto.getTelefono().equals("")
+				|| contacto.getPais() != null && !contacto.getPais().equals("")
+				|| contacto.getRegion() != null && !contacto.getRegion().equals(""))
+				&& (contacto.getCiudad() != null && !contacto.getCiudad().equals(""))){
+			query += "AND ";
+		}
+				
+		if(contacto.getCiudad() != null && !contacto.getCiudad().trim().equals("")){
+			query += "Contacto.ciudadContacto='"+contacto.getCiudad()+ "' ";
+		}	
 
+		if((contacto.getRun()!=null && !contacto.getRun().equals("")
+				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
+				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
+				|| contacto.getMail() != null && !contacto.getMail().equals("")
+				|| contacto.getTelefono() != null && !contacto.getTelefono().equals("")
+				|| contacto.getPais() != null && !contacto.getPais().equals("")
+				|| contacto.getRegion() != null && !contacto.getRegion().equals("")
+				|| contacto.getCiudad() != null && !contacto.getCiudad().equals(""))
+				&& (contacto.getDireccion() != null && !contacto.getDireccion().equals(""))){
+			query += "AND ";
+		}
+				
+		if(contacto.getDireccion() != null && !contacto.getDireccion().trim().equals("")){
+			query += "Contacto.direccion='"+contacto.getDireccion()+ "' ";
+		}	
+
+		
+		
         listaContactos = orm.ContactoDAO.queryContacto(query, null);
        
-        if (listaContactos != null) {
+        if (!listaContactos.isEmpty()) {
             for (orm.Contacto contactoOrm : listaContactos) {
                 Contacto contactoNegocio = new Contacto();
                 Empresa empresaBuscar = new Empresa();

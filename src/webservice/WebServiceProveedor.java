@@ -143,7 +143,7 @@ public class WebServiceProveedor {
 				resultadoBusqueda = gson.toJson(listaContactoBuscar);
 			}			
 		}catch(PersistentException p){
-			resultadoBusqueda = p.getMessage();
+			resultadoBusqueda = "Error capa de servicio: " + p.getMessage();
 		}
 		
 		return resultadoBusqueda;

@@ -45,58 +45,89 @@ public class ServletBuscadorAvCont extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String nombre = "", apellido = "", telefono = "", mail = "", ciudad = "", region = "", pais = "";
-		try {
-			nombre = request.getParameter("nombre");
-		} catch (NullPointerException e) {
-		}
-		try {
-			apellido = request.getParameter("apellido");
-		} catch (NullPointerException e) {
-		}
-		try {
-			telefono = request.getParameter("telefono");
-		} catch (NullPointerException e) {
-		}
-		try {
-			mail = request.getParameter("mail");
-		} catch (NullPointerException e) {
-		}
-		try {
-			ciudad = request.getParameter("ciudad");
-		} catch (NullPointerException e) {
-		}
-		try {
-			region = request.getParameter("region");
-		} catch (NullPointerException e) {
-		}
-		try {
-			pais = request.getParameter("pais");
-		} catch (NullPointerException e) {
-		}
-
 		Contacto contacto = new Contacto();
-		contacto.setNombre(nombre);
-		contacto.setApellido(apellido);
-		contacto.setTelefono(telefono);
-		contacto.setMail(mail);
-		contacto.setCiudad(ciudad);
-		contacto.setRegion(region);
-		contacto.setPais(pais);
-		List<Contacto> lista = new ArrayList<Contacto>();
-		try {
-			lista = contacto.busquedaAvanzadaCont(contacto);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String run = request.getParameter("run");
+		String nombre = request.getParameter("nombre");
+		String apellido = request.getParameter("apellido");
+		String mail = request.getParameter("mail");
+		String telefono = request.getParameter("telefonofono");
+		String pais = request.getParameter("pais");
+		String region = request.getParameter("region");
+		String ciudad = request.getParameter("ciudad");
+		String direccion = request.getParameter("direccion");
+		
+		if(run != null){
+			contacto.setRun(run);
+		} else {
+			contacto.setRun("");
+		}
+		
+		if(nombre != null){
+			contacto.setNombre(nombre);
+		} else {
+			contacto.setNombre("");
+		}
+		
+		if(apellido != null){
+			contacto.setApellido(apellido);;
+		} else {
+			contacto.setApellido("");
+		}
+		
+		if(mail != null){
+			contacto.setMail(mail);
+		} else {
+			contacto.setMail("");
+		}
+		
+		if(telefono != null){
+			contacto.setTelefono(telefono);
+		} else {
+			contacto.setTelefono("");
+		}
+		
+		if(pais != null){
+			contacto.setPais(pais);
+		} else {
+			contacto.setPais("");
+		}
+		
+		if(region != null){
+			contacto.setRegion(region);
+		} else {
+			contacto.setRegion("");
+		}
+		
+		if(ciudad != null){
+			contacto.setCiudad(ciudad);
+		} else {
+			contacto.setCiudad("");
+		}
+		
+		if(direccion != null){
+			contacto.setDireccion(direccion);
+		} else {
+			contacto.setDireccion("");
 		}
 
-		request.removeAttribute("busqueda");
-		request.setAttribute("busqueda", lista);
-
-		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("FormularioBuscarContacto.jsp");
-		dispatcher.forward(request, response);
+		try {
+			List<Contacto> listaContactoBuscar = contacto.busquedaAvanzadaCont(contacto);
+			if(!listaContactoBuscar.isEmpty()){
+				request.removeAttribute("busqueda");
+				request.setAttribute("busqueda", listaContactoBuscar);				
+				request.getRequestDispatcher( "BusquedaAvanzada.jsp").forward(request, response);
+			} else {
+				RequestDispatcher rs = request.getRequestDispatcher("BusquedaAvanzada.jsp");
+				request.setAttribute("mensaje",	"No se encontraron datos asociados a la busqueda");
+				rs.forward(request, response);
+			}
+		} catch (PersistentException e) {
+			RequestDispatcher rs = request.getRequestDispatcher("BusquedaAvanzada.jsp");
+			request.setAttribute("mensaje",	e.getMessage());
+			rs.forward(request, response);
+		}		
+		
+		
 	}
 
 	/**

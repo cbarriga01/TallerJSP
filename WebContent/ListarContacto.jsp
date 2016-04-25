@@ -47,7 +47,24 @@
 						<td>${contacto.region}</td>
 						<td>${contacto.ciudad}</td>
 						<td>${contacto.direccion}</td>	
-						<td>${contacto.empresa.nombreEmpresa}</td>	
+						<td>${contacto.empresa.nombreEmpresa}</td>
+						<td>
+						<table>
+							<tr>
+								<td><form action="ActualizarUsuario.jsp" method="post">
+									<input type="hidden" value="${contacto.idContacto}" name="idUsuario">
+									<input type="submit" value="Editar" class="btn btn-primary">	
+								</form>
+								</td>
+								<td>
+								<form action="EliminarUsuario" method="post">
+									<input type="hidden" value="${contacto.idContacto}" name="idUsuario">
+									<input type="submit" value="Eliminar" class="btn btn-danger">	
+								</form>
+								</td>
+							</tr>
+						</table>
+					</td>	
 					</tr>
 				</i:forEach>
 			</tbody>

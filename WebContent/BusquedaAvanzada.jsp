@@ -16,21 +16,86 @@
     <script type="text/javascript" src="./js/validador.js"></script>
     
     <jsp:include page="Menu.jsp"></jsp:include>
-<title>Búsqueda simple</title>
+<title>Búsqueda Avanzada</title>
 </head>
 <body>
 	<div class="jumbotron">
 		<div class="container">
-			<h3>Búsqueda Simple de Contacto</h3>
-			<form action="ServletBuscadorSimpleCont" id="ServletBuscadorSimpleCont" method="post" 
+			<h3>Búsqueda Avanzada de Contacto</h3>
+			<form action="ServletBuscadorAvCont" id="ServletBuscadorAvCont" method="post" 
 				class="form-horizontal mitad">
 			<div class="form-group">
-				<label class="col-lg-3 control-label">Buscar</label>
+				<label class="col-lg-3 control-label">Run</label>
 				<div class="col-lg-3">
-					<input type="text" class="form-control" name="textoBusqueda" required>
+					<input type="text" class="form-control" name="run">
 					<br>
 				</div>
 			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Nombre</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="nombre">
+					<br>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Apellido</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="apellido">
+					<br>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Mail</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="mail">
+					<br>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Telefono</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="telefono">
+					<br>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Pais</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="pais">
+					<br>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Region</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="region">
+					<br>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Ciudad</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="ciudad">
+					<br>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Direccion</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="direccion">
+					<br>
+				</div>
+			</div>	
+							
 			<div class="form-group">
 				<div class="col-lg-9 col-lg-offset-3">
 					<button type="submit" class="btn btn-success left">Enviar</button>

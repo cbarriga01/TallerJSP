@@ -49,6 +49,23 @@
 						<td>${empresa.regionEmpresa}</td>
 						<td>${empresa.ciudadEmpresa}</td>
 						<td>${empresa.domicilio}</td>
+						<td>
+						<table>
+							<tr>
+								<td><form action="ActualizarEmpresa.jsp" method="post">
+									<input type="hidden" value="${empresa.idEmpresa}" name="idUsuario">
+									<input type="submit" value="Editar" class="btn btn-primary">	
+								</form>
+								</td>
+								<td>
+								<form action="EliminarEmpresa" method="post">
+									<input type="hidden" value="${empresa.idEmpresa}" name="idUsuario">
+									<input type="submit" value="Eliminar" class="btn btn-danger">	
+								</form>
+								</td>
+							</tr>
+						</table>
+					</td>
 					</tr>
 				</i:forEach>
 			</tbody>

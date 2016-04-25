@@ -53,7 +53,6 @@ public class ServletBuscadorSimpleCont extends HttpServlet {
 		List<Contacto> lista = new ArrayList<Contacto>();
 		try {
 			lista = contacto.busquedaSimpleCont(textoBusqueda);
-			System.out.println(lista.get(0).getNombre());
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
