@@ -455,19 +455,6 @@ public class Contacto {
 		return listaContacto;
 	}
 	
-	public static List <Empresa> llenarSelect() throws PersistentException {
-		List <orm.Empresa> listaEmpresaOrm = orm.EmpresaDAO.queryEmpresa(null, null);
-		List <Empresa> listaEmpresa = new ArrayList<>();
-		for (orm.Empresa empresaOrm:listaEmpresaOrm) {
-			Empresa empresa= new Empresa();
-			empresa.setIdEmpresa(empresaOrm.getIdEmpresa());
-			empresa.setNombreEmpresa(empresaOrm.getNombreEmpresa());
-			
-			listaEmpresa.add(empresa);
-		}
-		return listaEmpresa;
-	}
-	
 	/**
 	 * Método de busqueda simple de contacto empresarial
 	 * @param busqueda de tipo String que es el criterio a buscar

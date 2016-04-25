@@ -75,22 +75,22 @@ $(document).ready(function() {
              pais: {
                  validators: {
                      notEmpty: {
-                         message: 'El pais es requerido'
+                         message: 'El país es requerido'
                      },
                      stringLength: {
                          max: 20,
-                         message: 'El pais debe contener máximo 20 caracteres'
+                         message: 'El país debe contener máximo 20 caracteres'
                      }
                  }
              },
              region: {
                  validators: {
                      notEmpty: {
-                         message: 'La region es requerida'
+                         message: 'La región es requerida'
                      },
                      stringLength: {
                          max: 20,
-                         message: 'La region debe contener máximo 20 caracteres'
+                         message: 'La región debe contener máximo 20 caracteres'
                      }
                  }
              },
@@ -210,11 +210,11 @@ $(document).ready(function() {
              pais: {
                  validators: {
                      notEmpty: {
-                         message: 'El pais es requerido'
+                         message: 'El país es requerido'
                      },
                      stringLength: {
                          max: 20,
-                         message: 'El pais debe contener máximo 20 caracteres'
+                         message: 'El país debe contener máximo 20 caracteres'
                      }
                  }
              },
@@ -524,11 +524,11 @@ $(document).ready(function() {
             pais: {
                 validators: {
                     notEmpty: {
-                        message: 'El pais es requerido'
+                        message: 'El país es requerido'
                     },
                     stringLength: {
                         max: 20,
-                        message: 'El pais debe contener maximo 20 caracteres'
+                        message: 'El país debe contener maximo 20 caracteres'
                     }
                 }
             },
@@ -550,7 +550,7 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 20,
-                        message: 'La ciudad debe contener maximo 20 caracteres'
+                        message: 'La ciudad debe contener máximo 20 caracteres'
                     }
                 }
             },
@@ -561,7 +561,7 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 30,
-                        message: 'El domicilio debe contener maximo 30 caracteres'
+                        message: 'El domicilio debe contener máximo 30 caracteres'
                     }
                 }
             }
@@ -582,7 +582,7 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         max: 10,
-                        message: 'El id debe contener maximo 10 caracteres'
+                        message: 'El id debe contener máximo 10 caracteres'
                     },
                     regexp: {
                         regexp: /^[0-9]+$/,

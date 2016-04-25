@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,19 +19,24 @@
 <title>Eliminar contacto</title>
 </head>
 <body>
-	<form action="ServletEliminar" id="ServletEliminar" method="post" class="form-horizontal mitad" action="#">
-	<div class="form-group">
-		<label class="col-lg-3 control-label">Id</label>
-		<div class="col-lg-3">
-			<input type="text" class="form-control" name="id" required>
-			<br>
+	<div class="jumbotron">
+		<div class="container">
+			<h3>Eliminar Contacto</h3>
+			<form action="ServletEliminar" id="ServletEliminar" method="post" class="form-horizontal mitad" action="#">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Id</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control" name="id" required>
+					<br>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-9 col-lg-offset-3">
+					<button type="submit" class="btn btn-success left">Enviar</button>
+				</div>
+			</div>
+			</form>
 		</div>
 	</div>
-	<div class="form-group">
-		<div class="col-lg-9 col-lg-offset-3">
-			<button type="submit" class="btn btn-success left">Enviar</button>
-		</div>
-	</div>
-	</form>
 </body>
 </html>

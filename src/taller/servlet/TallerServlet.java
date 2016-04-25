@@ -2,6 +2,8 @@ package taller.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,6 +43,36 @@ public class TallerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		/*
+		String msg= "";
+		List<Empresa> listaEmpresa = new ArrayList<>();
+		Contacto contacto = new Contacto();
+		try {
+			listaEmpresa = contacto.llenarSelect();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("listaEmpresa", listaEmpresa);
+		request.getRequestDispatcher("/IngresarContacto.jsp").forward(request, response);
+		*/
+		
+		List<Empresa> listaEmpresa = new ArrayList<>();
+		
+		try {
+			listaEmpresa=Empresa.listar();
+			PrintWriter out = response.getWriter();
+			for(Empresa empresa:listaEmpresa){
+				out.println("idempresa: " + empresa.getIdEmpresa());
+				out.println("Nombre: " + empresa.getNombreEmpresa());
+			}
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("listaEmpresa", listaEmpresa);
+		request.getRequestDispatcher("/IngresarContacto.jsp").forward(request, response);
 	}
 
 	/**

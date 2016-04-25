@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,7 +57,7 @@
 					<li role="presentation"><a href="IngresarEmpresa.jsp">Ingresar Empresa</a></li>
 					<li role="presentation"><a href="ActualizarEmpresa.jsp">Actualizar Empresa</a></li>
 					<li role="presentation"><a href="EliminarEmpresa.jsp">Eliminar Empresa</a></li>
-					<li role="presentation"><a href="ListarEmpresa.jsp">Listar Empresa</a></li>
+					<li role="presentation"><a href="ServletListarEmpresa">Listar Empresa</a></li>
 					<li role="presentation"><a href="ServletListarUsuario">Listar Usuario</a></li>
 					<li role="presentation"><a href="BusquedaSimple.jsp">Busqueda Simple</a></li>
 					<li role="presentation"><a href="BusquedaAvanzada.jsp">Busqueda Avanzada</a></li>

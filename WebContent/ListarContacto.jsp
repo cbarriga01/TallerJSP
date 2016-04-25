@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="i"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,37 +17,42 @@
 <title>Lista de contactos</title>
 </head>
 <body>
-	<table class="table table-bordered table-hover table-responsive">
-	<tr class="success">
-		<thead>
-			<th>Run</th>
-			<th>Nombre</th>
-			<th>Apellidos</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>País</th>
-			<th>Región</th>
-			<th>Ciudad</th>
-			<th>Dirección</th>
-			<th>Empresa</th>
-		</thead>
-	</tr>
-	<tbody>
-		<i:forEach items="${listaContacto}" var="contacto">
-			<tr>
-				<td>${contacto.run}</td>
-				<td>${contacto.nombre}</td>	
-				<td>${contacto.apellido}</td>
-				<td>${contacto.mail}</td>
-				<td>${contacto.telefono}</td>
-				<td>${contacto.pais}</td>
-				<td>${contacto.region}</td>
-				<td>${contacto.ciudad}</td>
-				<td>${contacto.direccion}</td>	
-				<td>${contacto.empresa.nombreEmpresa}</td>	
+	<div class="jumbotron">
+		<div class="container">
+			<h3>Lista de Contactos</h3>
+			<table class="table table-bordered table-hover table-responsive">
+			<tr class="success">
+				<thead>
+					<th>Run</th>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Mail</th>
+					<th>TelÃ©fono</th>
+					<th>PaÃ­s</th>
+					<th>RegiÃ³n</th>
+					<th>Ciudad</th>
+					<th>DirecciÃ³n</th>
+					<th>Empresa</th>
+				</thead>
 			</tr>
-		</i:forEach>
-	</tbody>
-	</table>
+			<tbody>
+				<i:forEach items="${listaContacto}" var="contacto">
+					<tr>
+						<td>${contacto.run}</td>
+						<td>${contacto.nombre}</td>	
+						<td>${contacto.apellido}</td>
+						<td>${contacto.mail}</td>
+						<td>${contacto.telefono}</td>
+						<td>${contacto.pais}</td>
+						<td>${contacto.region}</td>
+						<td>${contacto.ciudad}</td>
+						<td>${contacto.direccion}</td>	
+						<td>${contacto.empresa.nombreEmpresa}</td>	
+					</tr>
+				</i:forEach>
+			</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

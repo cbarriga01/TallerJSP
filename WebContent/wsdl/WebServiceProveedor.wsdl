@@ -1,36 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="http://webservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice" xmlns:intf="http://webservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:definitions targetNamespace="http://webservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice" xmlns:intf="http://webservice" xmlns:tns1="http://orm.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <!--WSDL created by Apache Axis version: 1.4
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://webservice" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="Eliminar">
+   <import namespace="http://orm.org"/>
+   <element name="busquedaAvanzadaCont">
     <complexType>
      <sequence>
-      <element name="uid" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="EliminarResponse">
-    <complexType>
-     <sequence>
-      <element name="EliminarReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="listar">
-    <complexType/>
-   </element>
-   <element name="listarResponse">
-    <complexType>
-     <sequence>
-      <element name="listarReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="agregarContacto">
-    <complexType>
-     <sequence>
+      <element name="run" type="xsd:string"/>
       <element name="nombre" type="xsd:string"/>
       <element name="apellido" type="xsd:string"/>
       <element name="mail" type="xsd:string"/>
@@ -38,99 +16,75 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
       <element name="pais" type="xsd:string"/>
       <element name="region" type="xsd:string"/>
       <element name="ciudad" type="xsd:string"/>
+      <element name="direccion" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="agregarContactoResponse">
+   <element name="busquedaAvanzadaContResponse">
     <complexType>
      <sequence>
-      <element name="agregarContactoReturn" type="xsd:string"/>
+      <element name="busquedaAvanzadaContReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="editarContactoServicioWeb">
+   <element name="fault" type="tns1:PersistentException"/>
+   <element name="busquedaSimpleCont">
     <complexType>
      <sequence>
-      <element name="uid" type="xsd:int"/>
-      <element name="nombre" type="xsd:string"/>
-      <element name="apellido" type="xsd:string"/>
-      <element name="mail" type="xsd:string"/>
-      <element name="telefono" type="xsd:string"/>
-      <element name="pais" type="xsd:string"/>
-      <element name="region" type="xsd:string"/>
-      <element name="ciudad" type="xsd:string"/>
+      <element name="busqueda" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="editarContactoServicioWebResponse">
+   <element name="busquedaSimpleContResponse">
     <complexType>
      <sequence>
-      <element name="editarContactoServicioWebReturn" type="xsd:string"/>
+      <element name="busquedaSimpleContReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
   </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://orm.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="PersistentException">
+    <sequence/>
+   </complexType>
+  </schema>
  </wsdl:types>
 
-   <wsdl:message name="editarContactoServicioWebRequest">
+   <wsdl:message name="busquedaSimpleContRequest">
 
-      <wsdl:part element="impl:editarContactoServicioWeb" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="EliminarResponse">
-
-      <wsdl:part element="impl:EliminarResponse" name="parameters">
+      <wsdl:part element="impl:busquedaSimpleCont" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="listarRequest">
+   <wsdl:message name="busquedaAvanzadaContRequest">
 
-      <wsdl:part element="impl:listar" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="EliminarRequest">
-
-      <wsdl:part element="impl:Eliminar" name="parameters">
+      <wsdl:part element="impl:busquedaAvanzadaCont" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="agregarContactoRequest">
+   <wsdl:message name="PersistentException">
 
-      <wsdl:part element="impl:agregarContacto" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="agregarContactoResponse">
-
-      <wsdl:part element="impl:agregarContactoResponse" name="parameters">
+      <wsdl:part element="impl:fault" name="fault">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="listarResponse">
+   <wsdl:message name="busquedaSimpleContResponse">
 
-      <wsdl:part element="impl:listarResponse" name="parameters">
+      <wsdl:part element="impl:busquedaSimpleContResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="editarContactoServicioWebResponse">
+   <wsdl:message name="busquedaAvanzadaContResponse">
 
-      <wsdl:part element="impl:editarContactoServicioWebResponse" name="parameters">
+      <wsdl:part element="impl:busquedaAvanzadaContResponse" name="parameters">
 
       </wsdl:part>
 
@@ -138,51 +92,35 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="WebServiceProveedor">
 
-      <wsdl:operation name="Eliminar">
+      <wsdl:operation name="busquedaAvanzadaCont">
 
-         <wsdl:input message="impl:EliminarRequest" name="EliminarRequest">
+         <wsdl:input message="impl:busquedaAvanzadaContRequest" name="busquedaAvanzadaContRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:EliminarResponse" name="EliminarResponse">
+         <wsdl:output message="impl:busquedaAvanzadaContResponse" name="busquedaAvanzadaContResponse">
 
        </wsdl:output>
+
+         <wsdl:fault message="impl:PersistentException" name="PersistentException">
+
+       </wsdl:fault>
 
       </wsdl:operation>
 
-      <wsdl:operation name="listar">
+      <wsdl:operation name="busquedaSimpleCont">
 
-         <wsdl:input message="impl:listarRequest" name="listarRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:listarResponse" name="listarResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="agregarContacto">
-
-         <wsdl:input message="impl:agregarContactoRequest" name="agregarContactoRequest">
+         <wsdl:input message="impl:busquedaSimpleContRequest" name="busquedaSimpleContRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:agregarContactoResponse" name="agregarContactoResponse">
+         <wsdl:output message="impl:busquedaSimpleContResponse" name="busquedaSimpleContResponse">
 
        </wsdl:output>
 
-      </wsdl:operation>
+         <wsdl:fault message="impl:PersistentException" name="PersistentException">
 
-      <wsdl:operation name="editarContactoServicioWeb">
-
-         <wsdl:input message="impl:editarContactoServicioWebRequest" name="editarContactoServicioWebRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:editarContactoServicioWebResponse" name="editarContactoServicioWebResponse">
-
-       </wsdl:output>
+       </wsdl:fault>
 
       </wsdl:operation>
 
@@ -192,75 +130,51 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="Eliminar">
+      <wsdl:operation name="busquedaAvanzadaCont">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="EliminarRequest">
+         <wsdl:input name="busquedaAvanzadaContRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="EliminarResponse">
+         <wsdl:output name="busquedaAvanzadaContResponse">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:output>
+
+         <wsdl:fault name="PersistentException">
+
+            <wsdlsoap:fault name="PersistentException" use="literal"/>
+
+         </wsdl:fault>
 
       </wsdl:operation>
 
-      <wsdl:operation name="listar">
+      <wsdl:operation name="busquedaSimpleCont">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="listarRequest">
+         <wsdl:input name="busquedaSimpleContRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="listarResponse">
+         <wsdl:output name="busquedaSimpleContResponse">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:output>
 
-      </wsdl:operation>
+         <wsdl:fault name="PersistentException">
 
-      <wsdl:operation name="agregarContacto">
+            <wsdlsoap:fault name="PersistentException" use="literal"/>
 
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="agregarContactoRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="agregarContactoResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="editarContactoServicioWeb">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="editarContactoServicioWebRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="editarContactoServicioWebResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
+         </wsdl:fault>
 
       </wsdl:operation>
 

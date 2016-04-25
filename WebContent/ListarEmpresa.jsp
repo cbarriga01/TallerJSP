@@ -15,41 +15,43 @@
     
     <jsp:include page="Menu.jsp"></jsp:include>
     
-<title>Lista de usuarios</title>
+<title>Lista de Empresas</title>
 </head>
 <body>
 	<div class="jumbotron">
 		<div class="container">
-			<h3>Listar Usuarioo</h3>
+			<h3>Lista de Empresas</h3>
 			<table class="table table-bordered table-hover table-responsive">
 			<tr class="success">
-				<th>Usuario</th>
-				<th>Contraseña</th>
+				<thead>
+					<th>Rut</th>
+					<th>Razón Social</th>
+					<th>Nombre</th>
+					<th>Representante</th>
+					<th>Mail</th>
+					<th>Teléfono</th>
+					<th>País</th>
+					<th>Región</th>
+					<th>Ciudad</th>
+					<th>Domicilio</th>
+				</thead>
 			</tr>
-			
-			<i:forEach items="${user}" var="usuario">
-				<tr>
-					<td>${usuario.user}</td>
-					<td>${usuario.password}</td>
-					<td>
-						<table>
-							<tr>
-								<td><form action="ActualizarUsuario.jsp" method="post">
-									<input type="hidden" value="${usuario.idusuario}" name="idUsuario">
-									<input type="submit" value="Editar" class="btn btn-primary">	
-								</form>
-								</td>
-								<td>
-								<form action="EliminarUsuario" method="post">
-									<input type="hidden" value="${usuario.idusuario}" name="idUsuario">
-									<input type="submit" value="Eliminar" class="btn btn-danger">	
-								</form>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</i:forEach>
+			<tbody>
+				<i:forEach items="${listaEmpresa}" var="empresa">
+					<tr>
+						<td>${empresa.rut}</td>
+						<td>${empresa.razonSocial}</td>
+						<td>${empresa.nombreEmpresa}</td>	
+						<td>${empresa.representante}</td>
+						<td>${empresa.mailEmpresa}</td>
+						<td>${empresa.telefonoEmpresa}</td>
+						<td>${empresa.paisEmpresa}</td>
+						<td>${empresa.regionEmpresa}</td>
+						<td>${empresa.ciudadEmpresa}</td>
+						<td>${empresa.domicilio}</td>
+					</tr>
+				</i:forEach>
+			</tbody>
 			</table>
 		</div>
 	</div>

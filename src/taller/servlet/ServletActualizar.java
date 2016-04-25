@@ -68,56 +68,67 @@ public class ServletActualizar extends HttpServlet {
 			
 			ServletActualizar refrescar = new ServletActualizar();
 			refrescar.validarId(id);
-			refrescar.validateEmail(mail);
-			refrescar.esEntero(telefono);
+			refrescar.validarRun(run);
+			refrescar.validarEmail(mail);
+			refrescar.validarEntero(telefono);
 			
-			Empresa emp = new Empresa();
-			Contacto actualizar = new Contacto();
-			if(id < 0 || run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
-					mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
-					region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("")){
-				System.out.println("variable vacia");
-				
-			} else {
-				
-				if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 && mail.length() <=20 && 
-						telefono.length() <= 20 && pais.length() <= 20 && region.length() <= 20 && 
-						ciudad.length() <= 20 && direccion.length() <= 30){
-					out.println(" Hola tu id es "+ id+ ". Saludos!!!");
-					actualizar.setIdContacto(id);
-					actualizar.setRun(run);
-					actualizar.setNombre(nombre);
-					actualizar.setApellido(apellido);
-					actualizar.setMail(mail);
-					actualizar.setTelefono(telefono);
-					actualizar.setPais(pais);
-					actualizar.setRegion(region);
-					actualizar.setCiudad(ciudad);
-					actualizar.setDireccion(direccion);
+			if ((refrescar.validarId(id)) && (refrescar.validarRun(run) == true) 
+					&& (refrescar.validarEmail(mail) == true)
+					&& (refrescar.validarEntero(telefono))){
+			
+				Empresa emp = new Empresa();
+				Contacto actualizar = new Contacto();
+				if(id < 0 || run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
+						mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
+						region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("")){
+					System.out.println("variable vacia");
 					
-					emp.setIdEmpresa(idEmpresa);
-					try{
-						actualizar.setEmpresa(emp);
-					}catch (NullPointerException e){
-						e.printStackTrace();
-					}
+				} else {
 					
-					String r="";
-					try {
-						r=Contacto.actualizar(actualizar);
-						msg = "Actualización exitosa";
-						RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
-						request.setAttribute("msg", msg);
-						rs.forward(request, response);
-					} catch (PersistentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 && mail.length() <=20 && 
+							telefono.length() <= 20 && pais.length() <= 20 && region.length() <= 20 && 
+							ciudad.length() <= 20 && direccion.length() <= 30){
+						out.println(" Hola tu id es "+ id+ ". Saludos!!!");
+						actualizar.setIdContacto(id);
+						actualizar.setRun(run);
+						actualizar.setNombre(nombre);
+						actualizar.setApellido(apellido);
+						actualizar.setMail(mail);
+						actualizar.setTelefono(telefono);
+						actualizar.setPais(pais);
+						actualizar.setRegion(region);
+						actualizar.setCiudad(ciudad);
+						actualizar.setDireccion(direccion);
+						
+						emp.setIdEmpresa(idEmpresa);
+						try{
+							actualizar.setEmpresa(emp);
+						}catch (NullPointerException e){
+							e.printStackTrace();
+						}
+						
+						String r="";
+						try {
+							r=Contacto.actualizar(actualizar);
+							msg = "Actualización exitosa";
+							RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
+							request.setAttribute("msg", msg);
+							rs.forward(request, response);
+						} catch (PersistentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				}
+			} else { //Else de validación de rut, mail y entero
+				msg = "Error en el ingreso, datos inválidos";
+				RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
+				request.setAttribute("msg", msg);
+				rs.forward(request, response);
 			}
-		}catch(NullPointerException e){
-			e.printStackTrace();
-		}
+			}catch(NullPointerException e){
+				e.printStackTrace();
+			}
 		
 	}
 
@@ -126,7 +137,7 @@ public class ServletActualizar extends HttpServlet {
 	 * @param email, String , variable con el mail recibido
 	 * @return booleano que representra true si esta bueno o false si esta malo
 	 */
-	private boolean validateEmail(String email) {
+	private boolean validarEmail(String email) {
 		 
         // Compiles the given regular expression into a pattern.
         Pattern pattern = Pattern.compile(PATTERN_EMAIL);
@@ -142,7 +153,7 @@ public class ServletActualizar extends HttpServlet {
 	 * @param cad = cadena ingresada
 	 * @return
 	 */
-	private boolean esEntero(String cad){
+	private boolean validarEntero(String cad){
 		 for(int i = 0; i<cad.length(); i++)
 		 if( !Character.isDigit(cad.charAt(i)) ){
 			 return false;
@@ -162,7 +173,37 @@ public class ServletActualizar extends HttpServlet {
 			 return false;
 		 }
 		 return true;
-	 }
+	}
+	
+	/**
+	 * Método que permite validar si el run ingresado es válido
+	 * @param String run del contacto a validar
+	 * @return boolean validacion, indica si el run es valido o no
+	 */
+	public static boolean validarRun(String run) {
+		 
+		boolean validacion = false;
+		try {
+			run = run.toUpperCase();
+			run = run.replace(".", "");
+			run = run.replace("-", "");
+			int runAux = Integer.parseInt(run.substring(0, run.length() - 1));
+			 
+			char dv = run.charAt(run.length() - 1);
+			 
+			int m = 0, s = 1;
+			for (; runAux != 0; runAux /= 10) {
+				s = (s + runAux % 10 * (9 - m++ % 6)) % 11;
+			}
+			if (dv == (char) (s != 0 ? s + 47 : 75)) {
+				validacion = true;
+			}
+			 
+		} catch (java.lang.NumberFormatException e) {
+		} catch (Exception e) {
+		}
+		return validacion;
+	}
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */

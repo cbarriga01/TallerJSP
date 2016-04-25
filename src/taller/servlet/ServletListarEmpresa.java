@@ -55,6 +55,8 @@ public class ServletListarEmpresa extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("listaEmpresa", lista);
+		request.getRequestDispatcher("/ListarEmpresa.jsp").forward(request, response);
 	}
 
 	/**
