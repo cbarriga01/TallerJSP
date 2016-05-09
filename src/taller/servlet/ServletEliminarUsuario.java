@@ -2,6 +2,7 @@ package taller.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +51,7 @@ public class ServletEliminarUsuario extends HttpServlet {
 			eliminar.setIdusuario(id);
 			try {
 				Usuario.borrar(eliminar);
+				RequestDispatcher rs = request.getRequestDispatcher("EliminarUsuario.jsp");
 			} catch (PersistentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

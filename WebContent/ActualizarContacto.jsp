@@ -63,7 +63,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-lg-3 control-label">Telefono</label>
+				<label class="col-lg-3 control-label">Teléfono</label>
 				<div class="col-lg-3">
 					<input type="text" class="form-control" name="telefono" required>
 					<br>
@@ -71,7 +71,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-lg-3 control-label">Pais</label>
+				<label class="col-lg-3 control-label">País</label>
 				<div class="col-lg-3">
 					<input type="text" class="form-control" name="pais" required>
 					<br>
@@ -79,7 +79,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-lg-3 control-label">Region</label>
+				<label class="col-lg-3 control-label">Región</label>
 				<div class="col-lg-3">
 					<input type="text" class="form-control" name="region" required>
 					<br>
@@ -94,7 +94,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-lg-3 control-label">Direccion</label>
+				<label class="col-lg-3 control-label">Dirección</label>
 				<div class="col-lg-3">
 					<input type="text" class="form-control" name="direccion" required>
 					<br>

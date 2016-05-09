@@ -35,7 +35,7 @@ public class ServletLogin extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
         HttpSession sesion = request.getSession();
-        if(sesion.getAttribute("user")!= null){
+        if(sesion.getAttribute("usuario")!= null){
             sesion.invalidate();
             response.sendRedirect("Login.jsp");
         }
@@ -53,13 +53,13 @@ public class ServletLogin extends HttpServlet {
         usu = request.getParameter("user");
         pass = request.getParameter("password");
         Usuario usuario=new Usuario();
-        usuario.setUser(usu);
+        usuario.setUsuario(usu);
         usuario.setPassword(pass);
         
         try {
 			usuario=Usuario.busquedaUsuario(usuario);
-			if(!usuario.getUser().equals("")){
-	        	sesion.setAttribute("user", "password");
+			if(!usuario.getUsuario().equals("")){
+	        	sesion.setAttribute("usuario", "password");
 	        	response.sendRedirect("Menu.jsp");
 	        }else{
 	        	response.sendRedirect("Login.jsp");

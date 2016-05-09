@@ -3,6 +3,7 @@ package taller.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,6 +54,7 @@ public class ServletEliminar extends HttpServlet {
 			eliminar.setIdContacto(id);
 			try {
 				Contacto.borrar(eliminar);
+				RequestDispatcher rs = request.getRequestDispatcher("EliminarContacto.jsp");
 			} catch (PersistentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -61,7 +61,7 @@ public class ServletRegistrarUsuario extends HttpServlet {
 					
 					Usuario ingresar = new Usuario();
 					try{
-						ingresar.setUser(user);
+						ingresar.setUsuario(user);
 					}catch (NullPointerException e){
 						e.printStackTrace();
 					}

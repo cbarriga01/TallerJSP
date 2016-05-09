@@ -25,7 +25,7 @@
 				<thead>
 					<th>Run</th>
 					<th>Nombre</th>
-					<th>Apellidos</th>
+					<th>Apellido</th>
 					<th>Mail</th>
 					<th>Teléfono</th>
 					<th>País</th>

@@ -22,7 +22,7 @@ public class Usuario {
 	}
 	
 	private int idusuario;
-	private String user;
+	private String usuario;
 	private String password;
 	
 	/**
@@ -37,8 +37,8 @@ public class Usuario {
 	 * 
 	 * @return String user del usuario
 	 */
-	public String getUser() {
-		return user;
+	public String getUsuario() {
+		return usuario;
 	}
 	
 	/**
@@ -61,8 +61,8 @@ public class Usuario {
 	 * 
 	 * @param String user del usuario
 	 */
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	
 	/**
@@ -87,7 +87,7 @@ public class Usuario {
 				orm.Usuario lormUsuario = orm.UsuarioDAO.createUsuario();
 				// Initialize the properties of the persistent object here
 				try{
-					lormUsuario.setUser(usuario.getUser());
+					lormUsuario.setUsuario(usuario.getUsuario());
 				}catch (NullPointerException e){
 					e.printStackTrace();
 				}
@@ -124,12 +124,12 @@ public class Usuario {
 				orm.Usuario lormUsuario = orm.UsuarioDAO.loadUsuarioByORMID(usuario.getIdusuario());  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
 				// Update the properties of the persistent object
 				try{
-					lormUsuario.setUser(usuario.getUser());
+					lormUsuario.setUsuario(usuario.getUsuario());
 				}catch (NullPointerException e){
 					e.printStackTrace();
 				}
 				try{
-					lormUsuario.setPassword(usuario.getUser());
+					lormUsuario.setPassword(usuario.getUsuario());
 				}catch (NullPointerException e){
 					e.printStackTrace();
 				}
@@ -185,7 +185,7 @@ public class Usuario {
 		
 		for (orm.Usuario usuarioOrm:listaUsuarioOrm) {
 			Usuario usuario= new Usuario();
-			usuario.setUser(usuarioOrm.getUser());
+			usuario.setUsuario(usuarioOrm.getUsuario());
 			usuario.setPassword(usuarioOrm.getPassword());
 			listaUsuario.add(usuario);
 		}
@@ -200,7 +200,7 @@ public class Usuario {
 		
 		for (orm.Usuario usuarioOrm:listaUsuarioOrm) {
 			//Usuario usuario= new Usuario();
-			usuario.setUser(usuarioOrm.getUser());
+			usuario.setUsuario(usuarioOrm.getUsuario());
 			usuario.setPassword(usuarioOrm.getPassword());
 			listaUsuario.add(usuario);
 		}
@@ -213,7 +213,7 @@ public class Usuario {
 		try{
 		orm.Usuario usuarioOrm = orm.UsuarioDAO.loadUsuarioByQuery("Usuario.user='"+usuarioRec.getUser()+"'AND Usuario.password='"+usuarioRec.getPassword()+"'", null);
 		
-			usuario.setUser(usuarioOrm.getUser());
+			usuario.setUsuario(usuarioOrm.getUsuario());
 			usuario.setPassword(usuarioOrm.getPassword());
 		
 		System.out.println(" record(s) retrieved.");

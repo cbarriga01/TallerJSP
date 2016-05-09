@@ -20,7 +20,7 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
-			<h3>Listar Usuarioo</h3>
+			<h3>Listar Usuario</h3>
 			<table class="table table-bordered table-hover table-responsive">
 			<tr class="success">
 				<th>Usuario</th>
