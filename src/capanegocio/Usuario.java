@@ -195,7 +195,7 @@ public class Usuario {
 	
 	public static List <Usuario> buscarUsuario() throws PersistentException {
 		Usuario usuario = new Usuario();
-		List <orm.Usuario> listaUsuarioOrm = orm.UsuarioDAO.queryUsuario("Usuario.user='"+usuario.getUser()+"'& Usuario.password='"+usuario.getPassword()+"'", null);
+		List <orm.Usuario> listaUsuarioOrm = orm.UsuarioDAO.queryUsuario("Usuario.usuario='"+usuario.getUsuario()+"'& Usuario.password='"+usuario.getPassword()+"'", null);
 		List <Usuario> listaUsuario = new ArrayList<>();
 		
 		for (orm.Usuario usuarioOrm:listaUsuarioOrm) {
@@ -211,7 +211,7 @@ public class Usuario {
 	public static Usuario busquedaUsuario(Usuario usuarioRec) throws PersistentException {
 		Usuario usuario=new Usuario();
 		try{
-		orm.Usuario usuarioOrm = orm.UsuarioDAO.loadUsuarioByQuery("Usuario.user='"+usuarioRec.getUser()+"'AND Usuario.password='"+usuarioRec.getPassword()+"'", null);
+		orm.Usuario usuarioOrm = orm.UsuarioDAO.loadUsuarioByQuery("Usuario.usuario='"+usuarioRec.getUsuario()+"'AND Usuario.password='"+usuarioRec.getPassword()+"'", null);
 		
 			usuario.setUsuario(usuarioOrm.getUsuario());
 			usuario.setPassword(usuarioOrm.getPassword());

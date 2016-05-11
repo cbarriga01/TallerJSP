@@ -40,7 +40,7 @@ public class ServletListarUsuario extends HttpServlet {
 			lista=Usuario.listar();
 			PrintWriter out = response.getWriter();
 			for(Usuario usuario:lista){
-				out.println("User: " + usuario.getUser());
+				out.println("User: " + usuario.getUsuario());
 				out.println("Password: " + usuario.getPassword());
 			}
 			//capanegocio.Usuario user = new capanegocio.Usuario();
@@ -64,7 +64,7 @@ public class ServletListarUsuario extends HttpServlet {
 			lista=Usuario.listar();
 			PrintWriter out = response.getWriter();
 			for(Usuario usuario:lista){
-				out.println("User: " + usuario.getUser());
+				out.println("User: " + usuario.getUsuario());
 				out.println("Password: " + usuario.getPassword());
 			}
 		} catch (PersistentException e) {

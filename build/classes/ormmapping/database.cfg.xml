@@ -126,12 +126,12 @@
     <DriverFiles>C:\Users\Kal-El\Desktop\postgresql-9.4.1208.jre6.jar</DriverFiles>
     <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
     <DriverClass>org.postgresql.Driver</DriverClass>
-    <URL>jdbc:postgresql://localhost:5432/dbempresa</URL>
+    <URL>jdbc:postgresql://localhost:5432/dbempresacrm</URL>
     <UserName>postgres</UserName>
     <Password>admin</Password>
     <HostName>localhost</HostName>
     <PortNO>5432</PortNO>
-    <DBName>dbempresa</DBName>
+    <DBName>dbempresacrm</DBName>
     <ServiceName></ServiceName>
     <ServerName></ServerName>
     <SelectedForm>true</SelectedForm>

@@ -63,7 +63,7 @@ public class ServletActualizarUsuario extends HttpServlet {
 				if (user.length() <=20 && password.length() <=20 ){
 					out.println(" Hola tu id es "+ id+ ". Saludos!!!");
 					actualizar.setIdusuario(id);
-					actualizar.setUser(user);
+					actualizar.setUsuario(user);
 					actualizar.setPassword(password);
 					try {
 						Usuario.actualizar(actualizar);
