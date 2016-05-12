@@ -64,6 +64,7 @@ public class WebServiceProveedor {
 	 * @return resultadoBusqueda
 	 * @throws PersistentException
 	 */
+	/*
 	@WebMethod(operationName="busquedaAvanzadaCont")
 	public String busquedaAvanzadaCont(
 			@WebParam(name = "run") String run, 
@@ -148,6 +149,90 @@ public class WebServiceProveedor {
 		}
 		
 		return resultadoBusqueda;
+	}
+	*/
+	
+	@WebMethod(operationName = "busquedaAvanzada")
+	public String busquedaAvanzada(String busquedaAvanzada)throws PersistentException{
+		
+		String resultado = "";
+		List<Contacto> listarContactos = new ArrayList<Contacto>();
+		Contacto contacto = new Contacto();
+		Gson listarJson =new Gson();
+		try{
+			 contacto=listarJson.fromJson(busquedaAvanzada, Contacto.class);
+			
+		}catch(JsonSyntaxException e){
+			return null;
+		}
+	
+		if(contacto.getRun()!= null){
+			contacto.setRun(contacto.getRun());
+		}			
+		else{
+			contacto.setRun("");
+		}
+		
+		if(contacto.getNombre() != null){
+			contacto.setNombre(contacto.getNombre());
+		}else{
+			contacto.setNombre("");
+		}
+		
+		if(contacto.getApellido() != null){
+			contacto.setApellido(contacto.getApellido());
+		}else{
+			contacto.setApellido("");
+		}
+		
+		if(contacto.getMail() != null){
+			contacto.setMail(contacto.getMail());
+		}else{
+			contacto.setMail("");
+		}
+		
+		if(contacto.getTelefono()!= null){
+			contacto.setTelefono(contacto.getTelefono());
+		}else{
+			contacto.setTelefono("");
+		}
+		
+		if(contacto.getPais() != null){
+			contacto.setPais(contacto.getPais());
+		}else{
+			contacto.setPais("");
+		}
+		
+		if(contacto.getRegion() != null){
+			contacto.setRegion(contacto.getRegion());
+		}else{
+			contacto.setRegion("");
+		}
+		if(contacto.getCiudad()!= null){
+			contacto.setCiudad(contacto.getCiudad());
+		}else{
+			contacto.setCiudad("");
+		}
+		if(contacto.getDireccion()!= null){
+			contacto.setDireccion(contacto.getDireccion());
+		}else{
+			contacto.setDireccion("");
+		}
+	
+		
+		 listarJson = new GsonBuilder().create();
+		
+		try{
+			listarContactos = contacto.busquedaAvanzadaCont(contacto);
+			if(listarContactos.isEmpty()){
+				resultado = "no se encontraron datos";
+			}else{
+				resultado = listarJson.toJson(listarContactos);
+			}			
+		}catch(PersistentException p){
+			resultado = p.getMessage();
+		}
+		return resultado;
 	}
 			
 }

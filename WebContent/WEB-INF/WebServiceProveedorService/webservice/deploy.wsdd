@@ -10,23 +10,15 @@
       <parameter name="className" value="webservice.WebServiceProveedor"/>
       <parameter name="wsdlPortType" value="WebServiceProveedor"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation xmlns:operNS="http://webservice" xmlns:retNS="http://webservice" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="busquedaAvanzadaCont" qname="operNS:busquedaAvanzadaCont" returnQName="retNS:busquedaAvanzadaContReturn" returnType="rtns:string" soapAction="">
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:run" type="tns:string"/>
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nombre" type="tns:string"/>
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:apellido" type="tns:string"/>
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mail" type="tns:string"/>
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:telefono" type="tns:string"/>
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pais" type="tns:string"/>
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:region" type="tns:string"/>
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ciudad" type="tns:string"/>
-        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:direccion" type="tns:string"/>
-        <fault xmlns:fns="http://webservice" xmlns:tns="http://orm.org" name="PersistentException" qname="fns:fault" class="org.orm.PersistentException" type="tns:PersistentException"/>
-      </operation>
       <operation xmlns:operNS="http://webservice" xmlns:retNS="http://webservice" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="busquedaSimpleCont" qname="operNS:busquedaSimpleCont" returnQName="retNS:busquedaSimpleContReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:busqueda" type="tns:string"/>
         <fault xmlns:fns="http://webservice" xmlns:tns="http://orm.org" name="PersistentException" qname="fns:fault" class="org.orm.PersistentException" type="tns:PersistentException"/>
       </operation>
-      <parameter name="allowedMethods" value="busquedaAvanzadaCont busquedaSimpleCont"/>
+      <operation xmlns:operNS="http://webservice" xmlns:retNS="http://webservice" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="busquedaAvanzada" qname="operNS:busquedaAvanzada" returnQName="retNS:busquedaAvanzadaReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webservice" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:busquedaAvanzada" type="tns:string"/>
+        <fault xmlns:fns="http://webservice" xmlns:tns="http://orm.org" name="PersistentException" qname="fns:fault" class="org.orm.PersistentException" type="tns:PersistentException"/>
+      </operation>
+      <parameter name="allowedMethods" value="busquedaAvanzada busquedaSimpleCont"/>
 
       <typeMapping xmlns:ns="http://orm.org" qname="ns:PersistentException" type="java:org.orm.PersistentException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
   </service>
