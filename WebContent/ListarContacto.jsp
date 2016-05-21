@@ -12,6 +12,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
     
+    <script type="text/javascript" src="./js/cargarImg.js"></script>
     <jsp:include page="Menu.jsp"></jsp:include>
     
 <title>Lista de contactos</title>
@@ -32,6 +33,7 @@
 					<th>Región</th>
 					<th>Ciudad</th>
 					<th>Dirección</th>
+					<th>Imagen</th>
 					<th>Empresa</th>
 				</thead>
 			</tr>
@@ -46,7 +48,8 @@
 						<td>${contacto.pais}</td>
 						<td>${contacto.region}</td>
 						<td>${contacto.ciudad}</td>
-						<td>${contacto.direccion}</td>	
+						<td>${contacto.direccion}</td>
+						<td>${contacto.imagen}</td>		
 						<td>${contacto.empresa.nombreEmpresa}</td>
 						<td>
 						<table>

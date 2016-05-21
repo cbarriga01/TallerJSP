@@ -29,6 +29,7 @@ public class ContactoCriteria extends AbstractORMCriteria {
 	public final StringExpression regionContacto;
 	public final StringExpression ciudadContacto;
 	public final StringExpression direccion;
+	public final StringExpression imagen;
 	public final IntegerExpression idEmpresaId;
 	public final AssociationExpression idEmpresa;
 	
@@ -44,6 +45,7 @@ public class ContactoCriteria extends AbstractORMCriteria {
 		regionContacto = new StringExpression("regionContacto", this);
 		ciudadContacto = new StringExpression("ciudadContacto", this);
 		direccion = new StringExpression("direccion", this);
+		imagen = new StringExpression("imagen", this);
 		idEmpresaId = new IntegerExpression("idEmpresa.idEmpresa", this);
 		idEmpresa = new AssociationExpression("idEmpresa", this);
 	}

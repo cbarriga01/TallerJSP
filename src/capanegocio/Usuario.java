@@ -10,9 +10,9 @@ import taller.servlet.TallerServlet;
 
 /**
  * 
- * @author César Barriga I.
+ * @author Cï¿½sar Barriga I.
  * 
- * Clase relacionada a la lógica de negocio de la aplicación referente a Usuarios
+ * Clase relacionada a la lï¿½gica de negocio de la aplicaciï¿½n referente a Usuarios
  * Se encarga de enviar transacciones a la Base de Datos
  *
  */
@@ -74,9 +74,9 @@ public class Usuario {
 	}
 	
 	/**
-	 * Método que permite ingresar un usuario de la BD
+	 * Mï¿½todo que permite ingresar un usuario de la BD
 	 * @param Usuario usuario, objeto que contiene los datos a ingresar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Usuario usuario) throws PersistentException {
@@ -111,9 +111,9 @@ public class Usuario {
 	}
 	
 	/**
-	 * Método que permite actualizar un usuario de la Base de Datos
+	 * Mï¿½todo que permite actualizar un usuario de la Base de Datos
 	 * @param Usuario usuario, objeto que contiene los datos a actualizar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Usuario usuario) throws PersistentException {
@@ -148,9 +148,9 @@ public class Usuario {
 	}
 	
 	/**
-	 * Método que permite eliminar un usuario de la Base de Datos
+	 * Mï¿½todo que permite eliminar un usuario de la Base de Datos
 	 * @param Usuario usuario, objeto que contiene los datos a eliminar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String borrar(Usuario usuario) throws PersistentException {
@@ -174,7 +174,7 @@ public class Usuario {
 	}
 	
 	/**
-	 * Método que permite listar los usuarios almacenados en la Base de Datos
+	 * Mï¿½todo que permite listar los usuarios almacenados en la Base de Datos
 	 * @return List <Usuario> listaUsuario, lista con los datos de usuario almacenados
 	 * @throws PersistentException
 	 */
@@ -222,6 +222,21 @@ public class Usuario {
 			e.printStackTrace();
 			
 			return usuario;
+		}
+	}
+	
+	public boolean validarUsuario(Usuario usuario) throws PersistentException{
+		orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
+		boolean validador = false;
+		
+		orm.Usuario[] usuarioQ; 
+		usuarioQ = orm.UsuarioDAO.listUsuarioByQuery("Usuario.usuario = '"+usuario.getUsuario()+"' AND Usuario.password = '"+usuario.getPassword()+"'", null);
+		
+		if(usuarioQ.length > 0){
+			validador = true;
+			return validador;
+		}else{
+			return validador;
 		}
 	}
 

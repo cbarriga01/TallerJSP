@@ -50,6 +50,8 @@ public class Contacto {
 	
 	private String direccion;
 	
+	private String imagen;
+	
 	private orm.Empresa idEmpresa;
 	
 	/**
@@ -164,6 +166,14 @@ public class Contacto {
 	
 	public String getDireccion() {
 		return direccion;
+	}
+	
+	public void setImagen(String value) {
+		this.imagen = value;
+	}
+	
+	public String getImagen() {
+		return imagen;
 	}
 	
 	public void setIdEmpresa(orm.Empresa value) {

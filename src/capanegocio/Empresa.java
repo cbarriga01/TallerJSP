@@ -10,9 +10,9 @@ import taller.servlet.TallerServlet;
 
 /**
  * 
- * @author César Barriga I.
+ * @author Cï¿½sar Barriga I.
  * 
- * Clase relacionada a la lógica de negocio de la aplicación referente a Empresas
+ * Clase relacionada a la lï¿½gica de negocio de la aplicaciï¿½n referente a Empresas
  * Se encarga de enviar transacciones a la Base de Datos
  * 
  */
@@ -223,9 +223,9 @@ private static final int ROW_COUNT = 100;
 	}
 
 	/**
-	 * Método que permite ingresar una empresa a la Base de Datos
+	 * Mï¿½todo que permite ingresar una empresa a la Base de Datos
 	 * @param Empresa empresa, objeto que contiene los datos a ingresar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Empresa empresa) throws PersistentException{
@@ -300,9 +300,9 @@ private static final int ROW_COUNT = 100;
 	}
 	
 	/**
-	 * Método que permite actualizar una empresa en la BD
+	 * Mï¿½todo que permite actualizar una empresa en la BD
 	 * @param Empresa empresa, objeto que contiene los datos a actualizar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Empresa empresa) throws PersistentException {
@@ -377,9 +377,9 @@ private static final int ROW_COUNT = 100;
 	}
 	
 	/**
-	 * Método que permite eliminar un contacto de la Base de Datos
+	 * Mï¿½todo que permite eliminar un contacto de la Base de Datos
 	 * @param Empresa empresa, objeto que contiene los datos a eliminar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String borrar(Empresa empresa) throws PersistentException {
@@ -403,7 +403,7 @@ private static final int ROW_COUNT = 100;
 	}
 	
 	/**
-	 * Método que permite listar las empresas almacenadas en la Base de Datos
+	 * Mï¿½todo que permite listar las empresas almacenadas en la Base de Datos
 	 * @return List <Empresa> listaEmpresa, lista con los datos de empresa almacenados
 	 * @throws PersistentException
 	 */
@@ -424,6 +424,26 @@ private static final int ROW_COUNT = 100;
 			empresa.setRegionEmpresa(empresaOrm.getRegionEmpresa());
 			empresa.setCiudadEmpresa(empresaOrm.getCiudadEmpresa());
 			empresa.setDomicilio(empresaOrm.getDomicilio());
+			listaEmpresa.add(empresa);
+		}
+		
+		return listaEmpresa;
+	}
+	/**
+	 * Metodo que permite listar las empresas almacenadas en la Base de Datos
+	 * para su posterior muestra en select de ingreso y ediciÃ³n
+	 * @return List <Empresa> listaEmpresa, lista con los datos de empresa almacenados
+	 * @throws PersistentException
+	 */
+	public static List <Empresa> listarEmpresa() throws PersistentException {
+		
+		List <orm.Empresa> listaEmpresaOrm = orm.EmpresaDAO.queryEmpresa(null, null);
+		List <Empresa> listaEmpresa= new ArrayList<>();
+		
+		for (orm.Empresa empresaOrm:listaEmpresaOrm) {
+			Empresa empresa= new Empresa();
+			empresa.setIdEmpresa(empresaOrm.getIdEmpresa());
+			empresa.setNombreEmpresa(empresaOrm.getNombreEmpresa());
 			listaEmpresa.add(empresa);
 		}
 		

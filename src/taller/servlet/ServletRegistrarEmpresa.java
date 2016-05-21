@@ -143,7 +143,7 @@ public class ServletRegistrarEmpresa extends HttpServlet {
 						e.printStackTrace();
 					}
 				} else {
-					msg = "Error en el ingreso, datos inv·lidos";
+					msg = "Error en el ingreso, datos inv√°lidos";
 					RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
 					request.setAttribute("msg", msg);
 					rs.forward(request, response);

@@ -50,6 +50,7 @@ public class ServletListar extends HttpServlet {
 				out.println("Region: " + contacto.getRegion());
 				out.println("Ciudad: " + contacto.getCiudad());
 				out.println("Direccion " + contacto.getDireccion());
+				out.println("Imagen " + contacto.getImagen());
 				out.println("Empresa " + contacto.getEmpresa().getNombreEmpresa());
 				System.out.println("Empresa " + contacto.getEmpresa().getNombreEmpresa());
 			}

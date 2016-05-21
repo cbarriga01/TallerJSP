@@ -62,6 +62,7 @@ public class ServletActualizar extends HttpServlet {
 			String region= request.getParameter("region");
 			String ciudad= request.getParameter("ciudad");
 			String direccion= request.getParameter("direccion");
+			String imagen= request.getParameter("textArea");
 			String empresa= request.getParameter("empresa");
 			String msg = "";
 			int idEmpresa = Integer.parseInt(empresa);
@@ -99,6 +100,7 @@ public class ServletActualizar extends HttpServlet {
 						actualizar.setRegion(region);
 						actualizar.setCiudad(ciudad);
 						actualizar.setDireccion(direccion);
+						actualizar.setImagen(imagen);
 						
 						emp.setIdEmpresa(idEmpresa);
 						try{
@@ -110,7 +112,7 @@ public class ServletActualizar extends HttpServlet {
 						String r="";
 						try {
 							r=Contacto.actualizar(actualizar);
-							msg = "Actualización exitosa";
+							msg = "ActualizaciÃ³n exitosa";
 							RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
 							request.setAttribute("msg", msg);
 							rs.forward(request, response);
@@ -120,8 +122,8 @@ public class ServletActualizar extends HttpServlet {
 						}
 					}
 				}
-			} else { //Else de validación de rut, mail y entero
-				msg = "Error en el ingreso, datos inválidos";
+			} else { //Else de validaciï¿½n de rut, mail y entero
+				msg = "Error en el ingreso, datos invï¿½lidos";
 				RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
 				request.setAttribute("msg", msg);
 				rs.forward(request, response);
@@ -133,7 +135,7 @@ public class ServletActualizar extends HttpServlet {
 	}
 
 	/**
-	 * Método que permite validar el formato de un mail
+	 * Mï¿½todo que permite validar el formato de un mail
 	 * @param email, String , variable con el mail recibido
 	 * @return booleano que representra true si esta bueno o false si esta malo
 	 */
@@ -149,7 +151,7 @@ public class ServletActualizar extends HttpServlet {
     }
 	
 	/**
-	 * Método que permite validar que el formato de la cadena ingresada sea numérico
+	 * Mï¿½todo que permite validar que el formato de la cadena ingresada sea numï¿½rico
 	 * @param cad = cadena ingresada
 	 * @return
 	 */
@@ -162,7 +164,7 @@ public class ServletActualizar extends HttpServlet {
 	 }
 	
 	/**
-	 * Método que permite validar si el campo ingresado en id es entero
+	 * Mï¿½todo que permite validar si el campo ingresado en id es entero
 	 * @param id = campo ingresado en id
 	 * @return
 	 */
@@ -176,7 +178,7 @@ public class ServletActualizar extends HttpServlet {
 	}
 	
 	/**
-	 * Método que permite validar si el run ingresado es válido
+	 * Mï¿½todo que permite validar si el run ingresado es vï¿½lido
 	 * @param String run del contacto a validar
 	 * @return boolean validacion, indica si el run es valido o no
 	 */

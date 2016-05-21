@@ -2,6 +2,7 @@ package taller.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,7 @@ public class ServletLogin extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * Metodo encargado de cerrar la seción del usuario
+	 * Metodo encargado de cerrar la seciï¿½n del usuario
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -43,7 +44,7 @@ public class ServletLogin extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * Metodo encargado de iniciar la seción del usuario
+	 * Metodo encargado de iniciar la seciÃ³n del usuario
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -55,7 +56,7 @@ public class ServletLogin extends HttpServlet {
         Usuario usuario=new Usuario();
         usuario.setUsuario(usu);
         usuario.setPassword(pass);
-        
+        /*
         try {
 			usuario=Usuario.busquedaUsuario(usuario);
 			if(!usuario.getUsuario().equals("")){
@@ -69,6 +70,20 @@ public class ServletLogin extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}catch(NullPointerException e){
+			e.printStackTrace();
+		}*/
+        
+        try {
+			if(usuario.validarUsuario(usuario)){
+				RequestDispatcher rs = request.getRequestDispatcher("Menu.jsp");
+				sesion.setAttribute("usu", usuario);
+				rs.forward(request, response);
+			}else{				
+				RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+				request.setAttribute("LoginStatus",	"Error en los datos ingresados");
+				rs.forward(request, response);
+			}
+		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
 		

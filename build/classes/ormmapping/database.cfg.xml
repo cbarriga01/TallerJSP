@@ -123,15 +123,15 @@
   </Setting>
   <Setting type="256">
     <Driver>PostgreSQL</Driver>
-    <DriverFiles>C:\Users\Kal-El\Desktop\postgresql-9.4.1208.jre6.jar</DriverFiles>
+    <DriverFiles>/home/kal-el/git/TallerJSP/WebContent/WEB-INF/lib/postgresql-9.4.1208.jre6.jar</DriverFiles>
     <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
     <DriverClass>org.postgresql.Driver</DriverClass>
-    <URL>jdbc:postgresql://localhost:5432/dbempresacrm</URL>
+    <URL>jdbc:postgresql://localhost:5432/dbcrmempresa</URL>
     <UserName>postgres</UserName>
     <Password>admin</Password>
     <HostName>localhost</HostName>
     <PortNO>5432</PortNO>
-    <DBName>dbempresacrm</DBName>
+    <DBName>dbcrmempresa</DBName>
     <ServiceName></ServiceName>
     <ServerName></ServerName>
     <SelectedForm>true</SelectedForm>

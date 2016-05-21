@@ -36,6 +36,7 @@ License Type: Academic
 		<property name="regionContacto" column="regionContacto" type="string" length="20" not-null="true" lazy="false"/>
 		<property name="ciudadContacto" column="ciudadContacto" type="string" length="20" not-null="true" lazy="false"/>
 		<property name="direccion" column="direccion" type="string" length="30" not-null="true" lazy="false"/>
+		<property name="imagen" column="imagen" type="text" not-null="false" lazy="false"/>
 		<many-to-one name="idEmpresa" cascade="lock" column="idEmpresa" class="orm.Empresa" not-null="true" lazy="no-proxy" access="field">
 		</many-to-one>
 	</class>

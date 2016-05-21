@@ -12,6 +12,7 @@
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
      
     <script type="text/javascript" src="./js/validador.js"></script>
+    <script type="text/javascript" src="./js/cargarImg.js"></script>
     
 	<jsp:include page="Menu.jsp"></jsp:include>
     
@@ -102,15 +103,22 @@
 			</div>
 			
 			<div class="form-group">
+	  			<label for="foto">Imagen:</label>
+	  			<input id="inputImagen" name="inputImagen" type="file" multiple accept='image/*' onchange="encodeImageFileAsURL();" />	  			
+	  		</div>
+	  		<div class="form-group">
+            	<textarea id="textArea" name="textArea" class="form-control textbox" style="display:none;"></textarea>
+        	</div>
+       
+        	<div class="form-group" id="imgContainer"></div>
+			
+			
+			<div class="form-group">
 				<label class="col-lg-3 control-label">Empresa</label>
 				<div class="col-lg-3">
 					<select class="form-control" name="empresa" id="empresa">
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					  <option value="1">1</option>
-					  <option value="2">2</option>
+					  <option value="1">Volvo</option>
+					  <option value="2">Saab</option>
 					</select> 
 					<br>
 				</div>

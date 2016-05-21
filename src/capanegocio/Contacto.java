@@ -9,9 +9,9 @@ import org.orm.PersistentTransaction;
 import taller.servlet.TallerServlet;
 
 /*
- * @author: César Barriga I.
+ * @author: Cï¿½sar Barriga I.
  * 
- * Clase relacionada a la lógica de negocio de la aplicación referente a Contactos
+ * Clase relacionada a la lï¿½gica de negocio de la aplicaciï¿½n referente a Contactos
  * Se encarga de enviar transacciones a la Base de Datos
  * 
  */
@@ -40,6 +40,8 @@ public class Contacto {
 	private String ciudad;
 	
 	private String direccion;
+	
+	private String imagen;
 	
 	private Empresa empresa; //cambiar nombre
 
@@ -218,11 +220,27 @@ public class Contacto {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
+	
+	/**
+	 * 
+	 * @return imagen del contacto
+	 */
+	public String getImagen() {
+		return imagen;
+	}
 
 	/**
-	 * Método que permite ingresar un contacto a la Base de Datos
+	 * 
+	 * @param String imagen del contacto
+	 */
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	/**
+	 * Mï¿½todo que permite ingresar un contacto a la Base de Datos
 	 * @param Contacto contacto, objeto que contiene los datos a ingresar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Contacto contacto) throws PersistentException {
@@ -283,6 +301,8 @@ public class Contacto {
 					e.printStackTrace();
 				}	
 				
+				lormContacto.setImagen(contacto.getImagen());
+				
 				try{
 					lormContacto.setIdEmpresa(lormEmpresa);
 				}catch (NullPointerException e){
@@ -304,9 +324,9 @@ public class Contacto {
 	}
 	
 	/**
-	 * Método que permite actualizar un contacto en la Base de Datos
+	 * Mï¿½todo que permite actualizar un contacto en la Base de Datos
 	 * @param Contacto contacto, objeto que contiene los datos a actualizar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Contacto contacto) throws PersistentException {
@@ -364,6 +384,8 @@ public class Contacto {
 					e.printStackTrace();
 				}
 				
+					lormContacto.setImagen(contacto.getImagen());
+				
 				try{
 					lormContacto.setIdEmpresa(lormEmpresa);
 				}catch (NullPointerException e){
@@ -385,9 +407,9 @@ public class Contacto {
 	}
 	
 	/**
-	 * Método que permite eliminar un contacto de la Base de Datos
+	 * Mï¿½todo que permite eliminar un contacto de la Base de Datos
 	 * @param Contacto contacto, objeto que contiene los datos a eliminar
-	 * @return String msg, mensaje que informa el estado de la transacción
+	 * @return String msg, mensaje que informa el estado de la transacciï¿½n
 	 * @throws PersistentException
 	 */
 	public static String borrar(Contacto contacto) throws PersistentException {
@@ -411,7 +433,7 @@ public class Contacto {
 	}
 	
 	/**
-	 * Método que permite listar los contactos almacenados en la Base de Datos
+	 * Mï¿½todo que permite listar los contactos almacenados en la Base de Datos
 	 * @return List <Contacto> listaContacto, lista con contactos almacenados en la Base de Datos
 	 * @throws PersistentException
 	 */
@@ -433,6 +455,7 @@ public class Contacto {
 			contacto.setRegion(contactoOrm.getRegionContacto());
 			contacto.setCiudad(contactoOrm.getCiudadContacto());
 			contacto.setDireccion(contactoOrm.getDireccion());
+			contacto.setImagen(contactoOrm.getImagen());
 			//contacto.setEmpresa(contactoOrm.getIdEmpresa());
 			
 			 empresaNegocio.setIdEmpresa(empresaOrm.getIdEmpresa());
@@ -456,9 +479,9 @@ public class Contacto {
 	}
 	
 	/**
-	 * Método de busqueda simple de contacto empresarial
+	 * Mï¿½todo de busqueda simple de contacto empresarial
 	 * @param busqueda de tipo String que es el criterio a buscar
-	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la búsqueda
+	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la bï¿½squeda
 	 * @throws PersistentException
 	 */
 	public List<Contacto> busquedaSimpleCont(String busqueda) throws PersistentException {
@@ -517,9 +540,9 @@ public class Contacto {
     }
 	
 	/**
-	 * Método de busqueda simple de contacto empresarial
+	 * Mï¿½todo de busqueda simple de contacto empresarial
 	 * @param contacto de tipo Contacto
-	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la búsqueda
+	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la bï¿½squeda
 	 * @throws PersistentException
 	 */
 	public List<Contacto> busquedaAvanzadaCont(Contacto contacto) throws PersistentException {

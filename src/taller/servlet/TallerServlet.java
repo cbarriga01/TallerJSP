@@ -61,7 +61,7 @@ public class TallerServlet extends HttpServlet {
 		List<Empresa> listaEmpresa = new ArrayList<>();
 		
 		try {
-			listaEmpresa=Empresa.listar();
+			listaEmpresa=Empresa.listarEmpresa();
 			PrintWriter out = response.getWriter();
 			for(Empresa empresa:listaEmpresa){
 				out.println("idempresa: " + empresa.getIdEmpresa());
@@ -91,6 +91,7 @@ public class TallerServlet extends HttpServlet {
 		String region= "";
 		String ciudad= "";
 		String direccion= "";
+		String imagen= "";
 		String empresa= "";
 		String msg="";
 		TallerServlet ingreso = new TallerServlet();
@@ -105,6 +106,7 @@ public class TallerServlet extends HttpServlet {
 			region= request.getParameter("region");
 			ciudad= request.getParameter("ciudad");
 			direccion= request.getParameter("direccion");
+			imagen= request.getParameter("textArea");
 			//Obtener request de la empresa
 			empresa= request.getParameter("empresa");
 			int idEmpresa = Integer.parseInt(empresa);
@@ -178,6 +180,10 @@ public class TallerServlet extends HttpServlet {
 							e.printStackTrace();
 						}
 						
+						
+							ingresar.setImagen(imagen);
+						
+						
 						emp.setIdEmpresa(idEmpresa);
 						
 						try{
@@ -199,15 +205,15 @@ public class TallerServlet extends HttpServlet {
 							e.printStackTrace();
 						}
 					} else {
-						msg = "Error en el ingreso, datos inválidos";
+						msg = "Error en el ingreso, datos invï¿½lidos";
 						RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
 						request.setAttribute("msg", msg);
 						rs.forward(request, response);
 					}
 					
 				}
-			} else { //Else de validación de rut, mail y entero
-				msg = "Error en el ingreso, datos inválidos";
+			} else { //Else de validaciï¿½n de rut, mail y entero
+				msg = "Error en el ingreso, datos invï¿½lidos";
 				RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
 				request.setAttribute("msg", msg);
 				rs.forward(request, response);
@@ -220,7 +226,7 @@ public class TallerServlet extends HttpServlet {
 	}
 
 	/**
-	 * Método que permite validar el formato de un mail
+	 * Mï¿½todo que permite validar el formato de un mail
 	 * @param email = cadena con el mail recibido
 	 * @return
 	 */
@@ -236,7 +242,7 @@ public class TallerServlet extends HttpServlet {
     }
 	
 	/**
-	 * Método que permite validar que el formato de la cadena ingresada sea numérico
+	 * Mï¿½todo que permite validar que el formato de la cadena ingresada sea numï¿½rico
 	 * @param cad = cadena ingresada
 	 * @return
 	 */
@@ -249,7 +255,7 @@ public class TallerServlet extends HttpServlet {
 	}
 	
 	/**
-	 * Método que permite validar si el run ingresado es válido
+	 * Mï¿½todo que permite validar si el run ingresado es vï¿½lido
 	 * @param String run del contacto a validar
 	 * @return boolean validacion, indica si el run es valido o no
 	 */

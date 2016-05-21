@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="i"%>
+  <%@ page import="capanegocio.Contacto" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,6 +16,7 @@
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
      
     <script type="text/javascript" src="./js/validador.js"></script>
+    <script type="text/javascript" src="./js/cargarImg.js"></script>
     
     <jsp:include page="Menu.jsp"></jsp:include>
     
@@ -97,24 +100,29 @@
 				</div>
 			</div>
 			
+			
+			<div class="form-group">
+	  			<label for="foto">Imagen:</label>
+	  			<input id="inputImagen" name="inputImagen" type="file" multiple accept='image/*' onchange="encodeImageFileAsURL();" />	  			
+	  		</div>
+	  		<div class="form-group">
+            	<textarea id="textArea" name="textArea" class="form-control textbox" style="display:none;"></textarea>
+        	</div>
+       
+        	<div class="form-group" id="imgContainer"></div>
+			
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Empresa</label>
 				<div class="col-lg-3">
-				 
 					<select class="form-control" name="empresa" id="empresa">
 					  <option value="1">Volvo</option>
 					  <option value="2">Saab</option>
 					</select> 
-				<!--
-				<select class="form-control" name="empresa" id="empresa" action="TallerServlet" method="get">
-					<i:forEach items="${listaEmpresa}" var="empresa">
-					
-						<option value="${empresa.idempresa}">${empresa.nombreEmpresa}</option>
-					
-					</i:forEach>
-				</select> 
 					<br>
-					-->
+				</div>
+			</div>
+			
+			
 				</div>
 			</div>
 			
