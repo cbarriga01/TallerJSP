@@ -25,3 +25,7 @@ function encodeImageFileAsURL(){
             fileReader.readAsDataURL(fileToLoad);
         }
     }
+
+function decodeImageURLAsFile(){
+    document.getElementById("imgContainer").innerHTML = window.atob(encodeImageFileAsURL());
+}

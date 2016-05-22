@@ -14,6 +14,7 @@
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
      
     <script type="text/javascript" src="./js/validador.js"></script>
+    <script type="text/javascript" src="./js/cargarImg.js"></script>
     
     <jsp:include page="Menu.jsp"></jsp:include>
 <title>Búsqueda Avanzada</title>
@@ -115,6 +116,7 @@
 					<th>Región</th>
 					<th>Ciudad</th>
 					<th>Dirección</th>
+					<th>Imagen</th>
 				</thead>
 			</tr>
 			<tbody>
@@ -128,7 +130,10 @@
 						<td>${contacto.pais}</td>
 						<td>${contacto.region}</td>
 						<td>${contacto.ciudad}</td>
-						<td>${contacto.direccion}</td>		
+						<td>${contacto.direccion}</td>
+						<td id="imgContainer" onLoad="decodeImageURLAsFile();">
+							<img src="${contacto.imagen}" width="100px" class = "thumbnail">
+						</td>		
 					</tr>
 				</i:forEach>
 			</tbody>

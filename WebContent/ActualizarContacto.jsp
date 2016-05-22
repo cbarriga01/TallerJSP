@@ -22,6 +22,7 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h3>Actualizar Contacto</h3>
+			<h3>${msg}</h3>
 			<form action="ServletActualizar" id="ServletActualizar" method="post" class="form-horizontal mitad">
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Id</label>

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
@@ -81,7 +82,7 @@ public class ServletRegistrarUsuario extends HttpServlet {
 						e.printStackTrace();
 					}
 				} else {
-					msg = "Error en el ingreso, datos inválidos";
+					msg = "Error en el ingreso, datos invï¿½lidos";
 					RequestDispatcher rs = request.getRequestDispatcher("IngresarUsuario.jsp");
 					request.setAttribute("msg", msg);
 					rs.forward(request, response);

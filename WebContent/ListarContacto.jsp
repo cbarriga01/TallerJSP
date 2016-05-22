@@ -49,10 +49,9 @@
 						<td>${contacto.region}</td>
 						<td>${contacto.ciudad}</td>
 						<td>${contacto.direccion}</td>
-						<textarea id="textArea" name="textArea" class="form-control textbox" onload="encodeImageFileAsURL();" style="display:none;">
-						${contacto.imagen}
-						</textarea>
-						<td><div class="form-group" id="imgContainer"></div></td> 		
+						<td id="imgContainer" onLoad="decodeImageURLAsFile();">
+							<img src="${contacto.imagen}" width="100px" class = "thumbnail">
+						</td>
 						<td>${contacto.empresa.nombreEmpresa}</td>
 						<td>
 						<table>
