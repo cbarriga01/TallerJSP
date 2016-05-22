@@ -79,49 +79,71 @@ public class ServletActualizar extends HttpServlet {
 			
 				Empresa emp = new Empresa();
 				Contacto actualizar = new Contacto();
-				if(id < 0 || run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
-						mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
-						region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("")){
-					System.out.println("variable vacia");
 					
-				} else {
+				if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 
+						&& mail.length() <=20 && telefono.length() <= 20 
+						&& pais.length() <= 20 && region.length() <= 20 
+						&& ciudad.length() <= 20 && direccion.length() <= 30){
+					out.println(" Hola tu id es "+ id+ ". Saludos!!!");
 					
-					if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 && mail.length() <=20 && 
-							telefono.length() <= 20 && pais.length() <= 20 && region.length() <= 20 && 
-							ciudad.length() <= 20 && direccion.length() <= 30){
-						out.println(" Hola tu id es "+ id+ ". Saludos!!!");
-						actualizar.setIdContacto(id);
+					actualizar.setIdContacto(id);
+					if ((run != null) && (!run.equals(""))) {
 						actualizar.setRun(run);
+					}
+					if ((nombre != null) && (!nombre.equals(""))){
 						actualizar.setNombre(nombre);
-						actualizar.setApellido(apellido);
-						actualizar.setMail(mail);
-						actualizar.setTelefono(telefono);
-						actualizar.setPais(pais);
-						actualizar.setRegion(region);
-						actualizar.setCiudad(ciudad);
-						actualizar.setDireccion(direccion);
-						actualizar.setImagen(imagen);
+	 			    }
+	 					
+	 			    if ((apellido != null) && (!apellido.equals(""))) {
+	 			    	actualizar.setApellido(apellido);
+	 			    }
+	 				    
+	 			    if ((mail != null) && (!mail.equals(""))) {
+	 			    	actualizar.setMail(mail);
+	 			    }
+	 				    
+	 			    if ((telefono != null) && (!telefono.equals(""))) {
+	 			    	actualizar.setTelefono(telefono);
+	 			    }
+	 				    
+	 			    if ((pais != null) && (!pais.equals(""))) {
+	 			    	actualizar.setPais(pais);
+	 			    }
+	 				    
+	 			    if ((region != null) && (!region.equals(""))) {
+	 			    	actualizar.setRegion(region);
+	 			    }
+	 				    
+	 			    if ((ciudad != null) && (!ciudad.equals(""))) {
+	 			    	actualizar.setCiudad(ciudad);
+	 			    }
+	 				    
+	 			    if ((direccion != null) && (!direccion.equals(""))) {
+	 			    	actualizar.setDireccion(direccion);
+	 			    }
+					
+	 			    actualizar.setImagen(imagen);
 						
-						emp.setIdEmpresa(idEmpresa);
-						try{
-							actualizar.setEmpresa(emp);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						
-						String r="";
-						try {
-							r=Contacto.actualizar(actualizar);
-							msg = "Actualización exitosa";
-							RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
-							request.setAttribute("msg", msg);
-							rs.forward(request, response);
-						} catch (PersistentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+					emp.setIdEmpresa(idEmpresa);
+					try{
+						actualizar.setEmpresa(emp);
+					}catch (NullPointerException e){
+						e.printStackTrace();
+					}
+					
+					String r="";
+					try {
+						r=Contacto.actualizar(actualizar);
+						msg = "Actualización exitosa";
+						RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
+						request.setAttribute("msg", msg);
+						rs.forward(request, response);
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
+				
 			} else { //Else de validaci�n de rut, mail y entero
 				msg = "Error en el ingreso, datos inv�lidos";
 				RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");

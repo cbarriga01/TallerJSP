@@ -49,7 +49,10 @@
 						<td>${contacto.region}</td>
 						<td>${contacto.ciudad}</td>
 						<td>${contacto.direccion}</td>
-						<td>${contacto.imagen}</td>		
+						<textarea id="textArea" name="textArea" class="form-control textbox" onload="encodeImageFileAsURL();" style="display:none;">
+						${contacto.imagen}
+						</textarea>
+						<td><div class="form-group" id="imgContainer"></div></td> 		
 						<td>${contacto.empresa.nombreEmpresa}</td>
 						<td>
 						<table>

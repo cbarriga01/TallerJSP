@@ -1,6 +1,7 @@
 package capanegocio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.orm.PersistentException;
@@ -435,6 +436,7 @@ private static final int ROW_COUNT = 100;
 	 * @return List <Empresa> listaEmpresa, lista con los datos de empresa almacenados
 	 * @throws PersistentException
 	 */
+	
 	public static List <Empresa> listarEmpresa() throws PersistentException {
 		
 		List <orm.Empresa> listaEmpresaOrm = orm.EmpresaDAO.queryEmpresa(null, null);

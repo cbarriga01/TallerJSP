@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="i"%>
+  <%@ page import="java.util.*" %>
   <%@ page import="capanegocio.Contacto" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="i"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -115,17 +116,16 @@
 				<label class="col-lg-3 control-label">Empresa</label>
 				<div class="col-lg-3">
 					<select class="form-control" name="empresa" id="empresa">
-					  <option value="1">Volvo</option>
-					  <option value="2">Saab</option>
+					<option value="2">Saab</option>			
+						<i:forEach items="${listaEmpresa}" var="empresa">	
+							
+							<option value="${empresa.idEmpresa}">${empresa.nombreEmpresa}</option>
+							
+						</i:forEach>
 					</select> 
 					<br>
 				</div>
-			</div>
-			
-			
-				</div>
-			</div>
-			
+			</div>		
 			
 			
 			<div class="form-group">

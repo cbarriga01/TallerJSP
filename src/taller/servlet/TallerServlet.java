@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.sun.org.apache.xml.internal.security.utils.SignerOutputStream;
+
 import capanegocio.Contacto;
 import capanegocio.Empresa;
 import ormsamples.CreateTaller1MagisterInformaticaData;
@@ -43,20 +45,6 @@ public class TallerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*
-		String msg= "";
-		List<Empresa> listaEmpresa = new ArrayList<>();
-		Contacto contacto = new Contacto();
-		try {
-			listaEmpresa = contacto.llenarSelect();
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		request.setAttribute("listaEmpresa", listaEmpresa);
-		request.getRequestDispatcher("/IngresarContacto.jsp").forward(request, response);
-		*/
 		
 		List<Empresa> listaEmpresa = new ArrayList<>();
 		
@@ -71,8 +59,11 @@ public class TallerServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		request.setAttribute("listaEmpresa", listaEmpresa);
 		request.getRequestDispatcher("/IngresarContacto.jsp").forward(request, response);
+		
+		
 	}
 
 	/**
@@ -116,102 +107,80 @@ public class TallerServlet extends HttpServlet {
 			ingreso.validarEntero(telefono);
 			
 			if ((ingreso.validarRun(run) == true) && (ingreso.validarEmail(mail) == true)
-					&& (ingreso.validarEntero(telefono))){
+				&& (ingreso.validarEntero(telefono))){
 			
-				//Validar datos empresa
-				if(run.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")||
-						mail.trim().equals("") || telefono.trim().equals("") || pais.trim().equals("") || 
-						region.trim().equals("") || ciudad.trim().equals("") || direccion.trim().equals("") ||
-						idEmpresa < 0){
-					System.out.println("variable vacia");
-					
-				}else{
-					if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 && mail.length() <=20 && 
-							telefono.length() <= 20 && pais.length() <= 20 && region.length() <= 20 && 
-							ciudad.length() <= 20 && direccion.length() <= 30){
-						out.println(" Hola tu nombre es "+ nombre+ ". Saludos!!!");
+				if (run.length() <=12 && nombre.length() <=50 && apellido.length() <=50 
+						&& mail.length() <=20 && telefono.length() <= 20 
+						&& pais.length() <= 20 && region.length() <= 20 
+						&& ciudad.length() <= 20 && direccion.length() <= 30){
+					out.println(" Hola tu nombre es "+ nombre+ ". Saludos!!!");
 						
-						//Instanciar clase empresa
-						Empresa emp = new Empresa();
-	 					Contacto ingresar = new Contacto(); //renombrar ingresar por objetoContacto o similar
-						try{
-							ingresar.setRun(run);
-						}catch (NullPointerException e) {
-							e.printStackTrace();
-						}
-						try{
-							ingresar.setNombre(nombre);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						try{
-							ingresar.setApellido(apellido);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						try{
-							ingresar.setMail(mail);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						try{
-							ingresar.setTelefono(telefono);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						try{
-							ingresar.setPais(pais);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						try{
-							ingresar.setRegion(region);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						try{
-							ingresar.setCiudad(ciudad);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						try{
-							ingresar.setDireccion(direccion);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
+					Empresa emp = new Empresa();
+	 				Contacto ingresar = new Contacto();
+							 					
+	 			    if ((run != null) && (!run.equals(""))) {
+	 			        ingresar.setRun(run);
+	 			    }
+	 				    
+	 			    if ((nombre != null) && (!nombre.equals(""))){
+	 			    	ingresar.setNombre(nombre);
+	 			    }
+	 					
+	 			    if ((apellido != null) && (!apellido.equals(""))) {
+	 			        ingresar.setApellido(apellido);
+	 			    }
+	 				    
+	 			    if ((mail != null) && (!mail.equals(""))) {
+	 			        ingresar.setMail(mail);
+	 			    }
+	 				    
+	 			    if ((telefono != null) && (!telefono.equals(""))) {
+	 			        ingresar.setTelefono(telefono);
+	 			    }
+	 				    
+	 			    if ((pais != null) && (!pais.equals(""))) {
+	 			        ingresar.setPais(pais);
+	 			    }
+	 				    
+	 			    if ((region != null) && (!region.equals(""))) {
+	 			        ingresar.setRegion(region);
+	 			    }
+	 				    
+	 			    if ((ciudad != null) && (!ciudad.equals(""))) {
+	 			        ingresar.setCiudad(ciudad);
+	 			    }
+	 				    
+	 			    if ((direccion != null) && (!direccion.equals(""))) {
+	 			        ingresar.setDireccion(direccion);
+	 			    }
+	 				    
+	 			    ingresar.setImagen(imagen);
+	 				    
+	 			    emp.setIdEmpresa(idEmpresa);
+	 				    
+	 			    if ((emp != null) && (!emp.equals(""))) {
+	 			        ingresar.setEmpresa(emp);
+	 			    }
+	 				    
+					String r="";
 						
-						
-							ingresar.setImagen(imagen);
-						
-						
-						emp.setIdEmpresa(idEmpresa);
-						
-						try{
-							ingresar.setEmpresa(emp);
-						}catch (NullPointerException e){
-							e.printStackTrace();
-						}
-						
-						String r="";
-						
-						try {
-							r=Contacto.ingresar(ingresar);
-							msg = "Ingreso exitoso";
-							RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
-							request.setAttribute("msg", msg);
-							rs.forward(request, response);
-						} catch (PersistentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					} else {
-						msg = "Error en el ingreso, datos inv�lidos";
+					try {
+						r=Contacto.ingresar(ingresar);
+						msg = "Ingreso exitoso";
 						RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
 						request.setAttribute("msg", msg);
 						rs.forward(request, response);
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-					
+				} else {
+					msg = "Error en el ingreso, datos inv�lidos";
+					RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
+					request.setAttribute("msg", msg);
+					rs.forward(request, response);
 				}
+					
 			} else { //Else de validaci�n de rut, mail y entero
 				msg = "Error en el ingreso, datos inv�lidos";
 				RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
