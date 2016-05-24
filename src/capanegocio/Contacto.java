@@ -446,6 +446,7 @@ public class Contacto {
 			Contacto contacto= new Contacto();
 			Empresa empresaNegocio = new Empresa();
 			orm.Empresa empresaOrm = orm.EmpresaDAO.loadEmpresaByORMID(contactoOrm.getIdEmpresa().getIdEmpresa());
+			contacto.setIdContacto(contactoOrm.getIdContacto());
 			contacto.setRun(contactoOrm.getRun());
 			contacto.setNombre(contactoOrm.getNombreContacto());
 			contacto.setApellido(contactoOrm.getApellidoContacto());

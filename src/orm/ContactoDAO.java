@@ -327,6 +327,10 @@ public class ContactoDAO {
 				contacto.getIdEmpresa().contacto.remove(contacto);
 			}
 			
+			orm.Bitacora[] lBitacoras = contacto.bitacora.toArray();
+			for(int i = 0; i < lBitacoras.length; i++) {
+				lBitacoras[i].setIdContacto(null);
+			}
 			return delete(contacto);
 		}
 		catch(Exception e) {
@@ -341,6 +345,10 @@ public class ContactoDAO {
 				contacto.getIdEmpresa().contacto.remove(contacto);
 			}
 			
+			orm.Bitacora[] lBitacoras = contacto.bitacora.toArray();
+			for(int i = 0; i < lBitacoras.length; i++) {
+				lBitacoras[i].setIdContacto(null);
+			}
 			try {
 				session.delete(contacto);
 				return true;

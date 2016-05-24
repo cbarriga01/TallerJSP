@@ -17,6 +17,14 @@ public class Contacto {
 	public Contacto() {
 	}
 	
+	private java.util.Set this_getSet (int key) {
+		if (key == orm.ORMConstants.KEY_CONTACTO_BITACORA) {
+			return ORM_bitacora;
+		}
+		
+		return null;
+	}
+	
 	private void this_setOwner(Object owner, int key) {
 		if (key == orm.ORMConstants.KEY_CONTACTO_IDEMPRESA) {
 			this.idEmpresa = (orm.Empresa) owner;
@@ -24,6 +32,10 @@ public class Contacto {
 	}
 	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
+		public java.util.Set getSet(int key) {
+			return this_getSet(key);
+		}
+		
 		public void setOwner(Object owner, int key) {
 			this_setOwner(owner, key);
 		}
@@ -53,6 +65,8 @@ public class Contacto {
 	private String imagen;
 	
 	private orm.Empresa idEmpresa;
+	
+	private java.util.Set ORM_bitacora = new java.util.HashSet();
 	
 	/**
 	 * Clave Primara
@@ -199,6 +213,16 @@ public class Contacto {
 	private orm.Empresa getORM_IdEmpresa() {
 		return idEmpresa;
 	}
+	
+	private void setORM_Bitacora(java.util.Set value) {
+		this.ORM_bitacora = value;
+	}
+	
+	private java.util.Set getORM_Bitacora() {
+		return ORM_bitacora;
+	}
+	
+	public final orm.BitacoraSetCollection bitacora = new orm.BitacoraSetCollection(this, _ormAdapter, orm.ORMConstants.KEY_CONTACTO_BITACORA, orm.ORMConstants.KEY_BITACORA_IDCONTACTO, orm.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getIdContacto());

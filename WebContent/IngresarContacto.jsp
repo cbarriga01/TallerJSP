@@ -27,6 +27,7 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h3>Ingresar Contacto</h3>
+			<h3>{$msg}</h3>
 			<form action="TallerServlet" id="TallerServlet" method="post" class="form-horizontal mitad">
 			
 			<div class="form-group">
@@ -101,11 +102,14 @@
 				</div>
 			</div>
 			
-			
 			<div class="form-group">
-	  			<label for="foto">Imagen:</label>
-	  			<input id="inputImagen" name="inputImagen" type="file" multiple accept='image/*' onchange="encodeImageFileAsURL();" />	  			
+	  			<label  class="col-lg-3 control-label">Imagen:</label>
+	  			<div class="col-lg-3">
+	  				<input id="inputImagen" name="inputImagen" type="file" multiple accept='image/*' onchange="encodeImageFileAsURL();" />	  			
+	  				<br>
+				</div>
 	  		</div>
+	  		
 	  		<div class="form-group">
             	<textarea id="textArea" name="textArea" class="form-control textbox" style="display:none;"></textarea>
         	</div>

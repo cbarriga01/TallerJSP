@@ -32,6 +32,7 @@ public class ContactoCriteria extends AbstractORMCriteria {
 	public final StringExpression imagen;
 	public final IntegerExpression idEmpresaId;
 	public final AssociationExpression idEmpresa;
+	public final CollectionExpression bitacora;
 	
 	public ContactoCriteria(Criteria criteria) {
 		super(criteria);
@@ -48,6 +49,7 @@ public class ContactoCriteria extends AbstractORMCriteria {
 		imagen = new StringExpression("imagen", this);
 		idEmpresaId = new IntegerExpression("idEmpresa.idEmpresa", this);
 		idEmpresa = new AssociationExpression("idEmpresa", this);
+		bitacora = new CollectionExpression("ORM_Bitacora", this);
 	}
 	
 	public ContactoCriteria(PersistentSession session) {
@@ -60,6 +62,10 @@ public class ContactoCriteria extends AbstractORMCriteria {
 	
 	public EmpresaCriteria createIdEmpresaCriteria() {
 		return new EmpresaCriteria(createCriteria("idEmpresa"));
+	}
+	
+	public BitacoraCriteria createBitacoraCriteria() {
+		return new BitacoraCriteria(createCriteria("ORM_Bitacora"));
 	}
 	
 	public Contacto uniqueContacto() {

@@ -18,6 +18,9 @@ public class DeleteTaller1MagisterInformaticaData {
 			orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByQuery(null, null);
 			// Delete the persistent object
 			orm.EmpresaDAO.delete(lormEmpresa);
+			orm.Bitacora lormBitacora = orm.BitacoraDAO.loadBitacoraByQuery(null, null);
+			// Delete the persistent object
+			orm.BitacoraDAO.delete(lormBitacora);
 			t.commit();
 		}
 		catch (Exception e) {

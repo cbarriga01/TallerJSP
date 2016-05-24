@@ -41,6 +41,7 @@ public class ServletListar extends HttpServlet {
 			lista=Contacto.listar();
 			PrintWriter out = response.getWriter();
 			for(Contacto contacto:lista){
+				out.println("Id: " + contacto.getIdContacto());
 				out.println("Run: " + contacto.getRun());
 				out.println("Nombre: " + contacto.getNombre());
 				out.println("Apellido: " + contacto.getApellido());
@@ -53,6 +54,10 @@ public class ServletListar extends HttpServlet {
 				//out.println("Imagen " + contacto.getImagen());
 				out.println("Empresa " + contacto.getEmpresa().getNombreEmpresa());
 				System.out.println("Empresa " + contacto.getEmpresa().getNombreEmpresa());
+				
+				//int id=contacto.getEmpresa().getIdEmpresa();
+				//request.setAttribute("idContacto", id);
+				//request.getRequestDispatcher("/IngresarBitacora.jsp").forward(request, response);
 			}
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block

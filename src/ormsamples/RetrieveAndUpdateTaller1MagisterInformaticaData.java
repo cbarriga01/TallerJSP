@@ -18,6 +18,9 @@ public class RetrieveAndUpdateTaller1MagisterInformaticaData {
 			orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByQuery(null, null);
 			// Update the properties of the persistent object
 			orm.EmpresaDAO.save(lormEmpresa);
+			orm.Bitacora lormBitacora = orm.BitacoraDAO.loadBitacoraByQuery(null, null);
+			// Update the properties of the persistent object
+			orm.BitacoraDAO.save(lormBitacora);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -44,6 +47,12 @@ public class RetrieveAndUpdateTaller1MagisterInformaticaData {
 		// Please uncomment the follow line and fill in parameter(s)
 		//lormEmpresaCriteria.idEmpresa.eq();
 		System.out.println(lormEmpresaCriteria.uniqueEmpresa());
+		
+		System.out.println("Retrieving Bitacora by BitacoraCriteria");
+		orm.BitacoraCriteria lormBitacoraCriteria = new orm.BitacoraCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lormBitacoraCriteria.idBitacora.eq();
+		System.out.println(lormBitacoraCriteria.uniqueBitacora());
 		
 	}
 	

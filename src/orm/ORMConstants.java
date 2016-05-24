@@ -14,6 +14,10 @@
 package orm;
 
 public interface ORMConstants extends org.orm.util.ORMBaseConstants {
+	final int KEY_BITACORA_IDCONTACTO = -1167160806;
+	
+	final int KEY_CONTACTO_BITACORA = -473222049;
+	
 	final int KEY_CONTACTO_IDEMPRESA = -83744994;
 	
 	final int KEY_EMPRESA_CONTACTO = 1968643941;

@@ -18,7 +18,7 @@
 <title>Lista de contactos</title>
 </head>
 <body>
-	<div class="jumbotron">
+	<div class="jumbotron vertical-center">
 		<div class="container">
 			<h3>Lista de Contactos</h3>
 			<table class="table table-bordered table-hover table-responsive">
@@ -40,6 +40,7 @@
 			<tbody>
 				<i:forEach items="${listaContacto}" var="contacto">
 					<tr>
+						<td>${contacto.idContacto}</td>
 						<td>${contacto.run}</td>
 						<td>${contacto.nombre}</td>	
 						<td>${contacto.apellido}</td>
@@ -65,6 +66,12 @@
 								<form action="EliminarUsuario" method="post">
 									<input type="hidden" value="${contacto.idContacto}" name="idUsuario">
 									<input type="submit" value="Eliminar" class="btn btn-danger">	
+								</form>
+								</td>
+								<td>
+								<form action="IngresarBitacora.jsp" method="post">
+									<input type="hidden" value="${contacto.idContacto}" name="idContacto">
+									<input type="submit" value="Ingresar Bitacora" class="btn btn-danger">	
 								</form>
 								</td>
 							</tr>

@@ -196,4 +196,14 @@
     <servlet-name>ServletBuscadorAvCont</servlet-name>
     <url-pattern>/ServletBuscadorAvCont</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletRegistrarBitacora</display-name>
+    <servlet-name>ServletRegistrarBitacora</servlet-name>
+    <servlet-class>taller.servlet.ServletRegistrarBitacora</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarBitacora</servlet-name>
+    <url-pattern>/ServletRegistrarBitacora</url-pattern>
+  </servlet-mapping>
 </web-app>

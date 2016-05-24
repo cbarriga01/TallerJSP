@@ -33,6 +33,14 @@ public class ListTaller1MagisterInformaticaData {
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
+		System.out.println("Listing Bitacora...");
+		orm.Bitacora[] ormBitacoras = orm.BitacoraDAO.listBitacoraByQuery(null, null);
+		length = Math.min(ormBitacoras.length, ROW_COUNT);
+		for (int i = 0; i < length; i++) {
+			System.out.println(ormBitacoras[i]);
+		}
+		System.out.println(length + " record(s) retrieved.");
+		
 	}
 	
 	public void listByCriteria() throws PersistentException {
@@ -71,6 +79,18 @@ public class ListTaller1MagisterInformaticaData {
 			 System.out.println(ormEmpresas[i]);
 		}
 		System.out.println(length + " Empresa record(s) retrieved."); 
+		
+		System.out.println("Listing Bitacora by Criteria...");
+		orm.BitacoraCriteria lormBitacoraCriteria = new orm.BitacoraCriteria();
+		// Please uncomment the follow line and fill in parameter(s) 
+		//lormBitacoraCriteria.idBitacora.eq();
+		lormBitacoraCriteria.setMaxResults(ROW_COUNT);
+		orm.Bitacora[] ormBitacoras = lormBitacoraCriteria.listBitacora();
+		length =ormBitacoras== null ? 0 : Math.min(ormBitacoras.length, ROW_COUNT); 
+		for (int i = 0; i < length; i++) {
+			 System.out.println(ormBitacoras[i]);
+		}
+		System.out.println(length + " Bitacora record(s) retrieved."); 
 		
 	}
 	
