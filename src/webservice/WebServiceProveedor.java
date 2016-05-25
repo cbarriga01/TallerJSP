@@ -13,18 +13,19 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
 import capanegocio.Contacto;
+import capanegocio.Usuario;
 
 /**
  * 
- * @author César Barriga I.
+ * @author Cï¿½sar Barriga I.
  *
  */
 public class WebServiceProveedor {
 	  
 	/**
-	 * Método que realiza una búsqueda simple en base a los datos ingresados
+	 * Mï¿½todo que realiza una bï¿½squeda simple en base a los datos ingresados
 	 * @param busqueda
-	 * @return listaJsonContacto con los resultados de la búsqueda
+	 * @return listaJsonContacto con los resultados de la bï¿½squeda
 	 * @throws PersistentException
 	 */
 	@WebMethod(operationName="busquedaSimpleCont")
@@ -49,8 +50,8 @@ public class WebServiceProveedor {
 	}
 	
 	/**
-	 * Método que realiza una búsqueda avanzada en base a los parámetros que contienen 
-	 * datos ingresados, no se consideran los parámetros que no contienen datos
+	 * Mï¿½todo que realiza una bï¿½squeda avanzada en base a los parï¿½metros que contienen 
+	 * datos ingresados, no se consideran los parï¿½metros que no contienen datos
 	 * 
 	 * @param run
 	 * @param nombre
@@ -140,7 +141,7 @@ public class WebServiceProveedor {
 		try{
 			listaContactoBuscar = contacto.busquedaAvanzadaCont(contacto);
 			if(listaContactoBuscar.isEmpty()){
-				resultadoBusqueda = "La búsqueda no contiene resultados";
+				resultadoBusqueda = "La bï¿½squeda no contiene resultados";
 			}else{
 				resultadoBusqueda = gson.toJson(listaContactoBuscar);
 			}			
@@ -233,6 +234,37 @@ public class WebServiceProveedor {
 			resultado = p.getMessage();
 		}
 		return resultado;
+	}
+	
+	public String comprobarUsuario(
+			@WebParam(name = "usuario") String usuario,
+			@WebParam(name = "password") String password) throws PersistentException{
+		
+		Usuario us = new Usuario();
+		String valido = "f";
+		
+		if(usuario != null){
+			us.setUsuario(usuario);
+		}			
+		else{
+			us.setUsuario("");
+		}
+		
+		if(password != null){
+			us.setPassword(password);
+		}			
+		else{
+			us.setPassword("");
+		}
+		
+		
+		if(us.validarUsuario(us)){
+			valido = "true";
+		}else{
+			valido = "false";
+		}
+		
+		return valido;
 	}
 			
 }

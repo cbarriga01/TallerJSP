@@ -20,15 +20,20 @@
       <parameter name="className" value="webservice.WebServiceProveedorSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="WebServiceProveedor"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="busquedaSimpleCont" qname="operNS:busquedaSimpleCont" xmlns:operNS="http://webservice" returnQName="retNS:busquedaSimpleContReturn" xmlns:retNS="http://webservice" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
-        <parameter qname="pns:busqueda" xmlns:pns="http://webservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      <operation name="comprobarUsuario" qname="operNS:comprobarUsuario" xmlns:operNS="http://webservice" returnQName="retNS:comprobarUsuarioReturn" xmlns:retNS="http://webservice" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:usuario" xmlns:pns="http://webservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://webservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <fault name="PersistentException" qname="fns:fault" xmlns:fns="http://webservice" class="org.orm.PersistentException" type="tns:PersistentException" xmlns:tns="http://orm.org"/>
       </operation>
       <operation name="busquedaAvanzada" qname="operNS:busquedaAvanzada" xmlns:operNS="http://webservice" returnQName="retNS:busquedaAvanzadaReturn" xmlns:retNS="http://webservice" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:busquedaAvanzada" xmlns:pns="http://webservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <fault name="PersistentException" qname="fns:fault" xmlns:fns="http://webservice" class="org.orm.PersistentException" type="tns:PersistentException" xmlns:tns="http://orm.org"/>
       </operation>
-      <parameter name="allowedMethods" value="busquedaAvanzada busquedaSimpleCont"/>
+      <operation name="busquedaSimpleCont" qname="operNS:busquedaSimpleCont" xmlns:operNS="http://webservice" returnQName="retNS:busquedaSimpleContReturn" xmlns:retNS="http://webservice" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:busqueda" xmlns:pns="http://webservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <fault name="PersistentException" qname="fns:fault" xmlns:fns="http://webservice" class="org.orm.PersistentException" type="tns:PersistentException" xmlns:tns="http://orm.org"/>
+      </operation>
+      <parameter name="allowedMethods" value="comprobarUsuario busquedaAvanzada busquedaSimpleCont"/>
 
       <typeMapping
         xmlns:ns="http://orm.org"
