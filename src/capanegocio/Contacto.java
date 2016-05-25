@@ -755,4 +755,24 @@ public class Contacto {
         return listaContacto;
     }
 	
+	public static Contacto verPerfilContacto(int idContacto) throws PersistentException{
+		
+		Contacto contacto=new Contacto();
+	    orm.Contacto contactoOrm = orm.ContactoDAO.loadContactoByORMID(idContacto);
+	   
+	    contacto.setIdContacto(contactoOrm.getIdContacto());
+        contacto.setRun(contactoOrm.getRun());
+        contacto.setNombre(contactoOrm.getNombreContacto());
+        contacto.setApellido(contactoOrm.getApellidoContacto());
+        contacto.setMail(contactoOrm.getMailContacto());
+        contacto.setTelefono(contactoOrm.getTelefonoContacto());
+        contacto.setPais(contactoOrm.getPaisContacto());
+        contacto.setRegion(contactoOrm.getRegionContacto());
+        contacto.setCiudad(contactoOrm.getCiudadContacto());
+        contacto.setDireccion(contactoOrm.getDireccion());
+        contacto.setImagen(contactoOrm.getImagen());
+	    
+	    return contacto;
+	}
+	
 }

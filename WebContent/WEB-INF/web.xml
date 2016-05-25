@@ -206,4 +206,14 @@
     <servlet-name>ServletRegistrarBitacora</servlet-name>
     <url-pattern>/ServletRegistrarBitacora</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletVerPerfil</display-name>
+    <servlet-name>ServletVerPerfil</servlet-name>
+    <servlet-class>taller.servlet.ServletVerPerfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletVerPerfil</servlet-name>
+    <url-pattern>/ServletVerPerfil</url-pattern>
+  </servlet-mapping>
 </web-app>
