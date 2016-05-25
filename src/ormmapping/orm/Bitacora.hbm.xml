@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Bitacora" table="bitacora" lazy="false">
+		<id name="idBitacora" column="idBitacora" type="integer" unsaved-value="0">
+			<generator class="sequence">
+				<param name="sequence">seq_bitacora</param>
+			</generator>
+		</id>
+		<property name="titulo" column="titulo" type="string" length="20" not-null="true" lazy="false"/>
+		<property name="texto" column="texto" type="string" length="250" not-null="true" lazy="false"/>
+		<many-to-one name="idContacto" cascade="lock" column="idContacto" class="orm.Contacto" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

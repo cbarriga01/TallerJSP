@@ -1,11 +1,16 @@
 package capanegocio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.Restrictions;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import orm.ContactoCriteria;
 import taller.servlet.TallerServlet;
 
 /*
@@ -500,6 +505,7 @@ public class Contacto {
 	public List<Contacto> busquedaSimpleCont(String busqueda) throws PersistentException {
         List<Contacto> listaContacto = new ArrayList<Contacto>();
         List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();
+        /*
         if (busqueda != null || !busqueda.equals("")) {
             
             listaContactos = orm.ContactoDAO.queryContacto("Contacto.run='"+busqueda
@@ -514,8 +520,24 @@ public class Contacto {
             		+"'" ,null); 
  
         }
+        */
+        
         //if (listaContactos != null) {
         	
+        ContactoCriteria ccr = new ContactoCriteria();
+        Criterion run = Restrictions.ilike("run", busqueda.toLowerCase());
+        Criterion nombreContacto = Restrictions.ilike("nombreContacto", busqueda.toLowerCase());
+        Criterion apellidoContacto = Restrictions.ilike("apellidoContacto", busqueda.toLowerCase());
+        Criterion mailContacto = Restrictions.ilike("mailContacto", busqueda.toLowerCase());
+        Criterion telefonoContacto = Restrictions.ilike("telefonoContacto", busqueda.toLowerCase());
+        Criterion paisContacto = Restrictions.ilike("paisContacto", busqueda.toLowerCase());
+        Criterion regionContacto = Restrictions.ilike("regionContacto", busqueda.toLowerCase());
+        Criterion ciudadContacto = Restrictions.ilike("ciudadContacto", busqueda.toLowerCase());
+        Criterion direccion = Restrictions.ilike("direccion", busqueda.toLowerCase());
+        Disjunction or=Restrictions.or(run, nombreContacto, apellidoContacto, mailContacto, 
+        		telefonoContacto, paisContacto, regionContacto, ciudadContacto, direccion);
+        ccr.add(or);
+        listaContactos= Arrays.asList(orm.ContactoDAO.listContactoByCriteria(ccr));
         	
             for (orm.Contacto contactoOrm : listaContactos) {
                 Contacto contactoNegocio = new Contacto();
