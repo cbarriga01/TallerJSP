@@ -56,7 +56,8 @@ public class ServletLogin extends HttpServlet {
         Usuario usuario=new Usuario();
         usuario.setUsuario(usu);
         usuario.setPassword(pass);
-        String msg = "";        
+        String msg = "";    
+        
         try {
 			if(usuario.validarUsuario(usuario)){
 				RequestDispatcher rs = request.getRequestDispatcher("Menu.jsp");
