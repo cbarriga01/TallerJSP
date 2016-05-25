@@ -20,6 +20,7 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
+			<h3>${msg}</h3>
 			<h3>Lista de Empresas</h3>
 			<table class="table table-bordered table-hover table-responsive">
 			<tr class="success">
@@ -59,7 +60,7 @@
 								</td>
 								<td>
 								<form action="EliminarEmpresa" method="post">
-									<input type="hidden" value="${empresa.idEmpresa}" name="idUsuario">
+									<input type="hidden" value="${empresa.idEmpresa}" name="idEmpresaEl">
 									<input type="submit" value="Eliminar" class="btn btn-danger">	
 								</form>
 								</td>

@@ -21,12 +21,13 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
+			<h3>${msg}</h3>
 			<h3>Eliminar Contacto</h3>
 			<form action="ServletEliminar" id="ServletEliminar" method="post" class="form-horizontal mitad" action="#">
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Id</label>
 				<div class="col-lg-3">
-					<input type="text" class="form-control" name="id" required>
+					<input type="text" class="form-control" name="idContactoEl" required>
 					<br>
 				</div>
 			</div>

@@ -17,6 +17,7 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
+			<h3>${msg}</h3>
 			<h3>Actualizar Usuario</h3>
 			<form action="ServletActualizarUsuario" id="ServletActualizarUsuario" method="post" class="form-horizontal mitad" action="#">
 			<div class="form-group">

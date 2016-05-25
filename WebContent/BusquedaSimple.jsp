@@ -22,6 +22,7 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
+			<h3>${msg}</h3>
 			<h3>Búsqueda Simple de Contacto</h3>
 			<form action="ServletBuscadorSimpleCont" id="ServletBuscadorSimpleCont" method="post" 
 				class="form-horizontal mitad">
@@ -52,6 +53,7 @@
 					<th>Ciudad</th>
 					<th>Dirección</th>
 					<th>Imagen</th>
+					<th>Empresa</th>
 				</thead>
 			</tr>
 			<tbody>
@@ -68,7 +70,32 @@
 						<td>${contacto.direccion}</td>
 						<td id="imgContainer" onLoad="decodeImageURLAsFile();">
 							<img src="${contacto.imagen}" width="100px" class = "thumbnail">
-						</td>		
+						</td>
+						<td>${contacto.empresa.nombreEmpresa}</td>
+						<td>
+							<table>
+								<tr>
+									<td><form action="ActualizarUsuario.jsp" method="post">
+										<input type="hidden" value="${contacto.idContacto}" name="idUsuario">
+										<input type="submit" value="Editar" class="btn btn-primary">	
+									</form>
+									</td>
+									<td>
+									<form action="ServletEliminar" method="post">
+										<input type="hidden" value="${contacto.idContacto}" name="idContactoEl">
+										<input type="submit" value="Eliminar" class="btn btn-danger">	
+									</form>
+									</td>
+									<td>
+									<form action="IngresarBitacora.jsp" method="post">
+										<input type="hidden" value="${contacto.idContacto}" name="idContacto">
+										<input type="submit" value="Ingresar Bitacora" class="btn btn-danger">	
+									</form>
+									</td>
+								</tr>
+							</table>
+						</td>	
+								
 					</tr>
 				</i:forEach>
 			</tbody>

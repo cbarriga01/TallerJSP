@@ -26,8 +26,8 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
+			<h3>${msg}</h3>
 			<h3>Ingresar Contacto</h3>
-			<h3>{$msg}</h3>
 			<form action="TallerServlet" id="TallerServlet" method="post" class="form-horizontal mitad">
 			
 			<div class="form-group">

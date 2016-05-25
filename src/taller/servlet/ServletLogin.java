@@ -56,23 +56,7 @@ public class ServletLogin extends HttpServlet {
         Usuario usuario=new Usuario();
         usuario.setUsuario(usu);
         usuario.setPassword(pass);
-        /*
-        try {
-			usuario=Usuario.busquedaUsuario(usuario);
-			if(!usuario.getUsuario().equals("")){
-	        	sesion.setAttribute("usuario", "password");
-	        	response.sendRedirect("Menu.jsp");
-	        }else{
-	        	response.sendRedirect("Login.jsp");
-	        }
-			
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}catch(NullPointerException e){
-			e.printStackTrace();
-		}*/
-        
+        String msg = "";        
         try {
 			if(usuario.validarUsuario(usuario)){
 				RequestDispatcher rs = request.getRequestDispatcher("Menu.jsp");
@@ -80,7 +64,7 @@ public class ServletLogin extends HttpServlet {
 				rs.forward(request, response);
 			}else{				
 				RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
-				request.setAttribute("LoginStatus",	"Error en los datos ingresados");
+				request.setAttribute("msg",	"Error en los datos ingresados...");
 				rs.forward(request, response);
 			}
 		} catch (PersistentException e) {

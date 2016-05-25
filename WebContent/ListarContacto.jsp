@@ -20,6 +20,7 @@
 <body>
 	<div class="jumbotron vertical-center">
 		<div class="container">
+			<h3>${msg}</h3>
 			<h3>Lista de Contactos</h3>
 			<table class="table table-bordered table-hover table-responsive">
 			<tr class="success">
@@ -40,7 +41,6 @@
 			<tbody>
 				<i:forEach items="${listaContacto}" var="contacto">
 					<tr>
-						<td>${contacto.idContacto}</td>
 						<td>${contacto.run}</td>
 						<td>${contacto.nombre}</td>	
 						<td>${contacto.apellido}</td>
@@ -63,8 +63,8 @@
 								</form>
 								</td>
 								<td>
-								<form action="EliminarUsuario" method="post">
-									<input type="hidden" value="${contacto.idContacto}" name="idUsuario">
+								<form action="ServletEliminar" method="post">
+									<input type="hidden" value="${contacto.idContacto}" name="idContactoEl">
 									<input type="submit" value="Eliminar" class="btn btn-danger">	
 								</form>
 								</td>

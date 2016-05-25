@@ -20,6 +20,7 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
+			<h3>${msg}</h3>
 			<h3>Actualizar Empresa</h3>
 			<form action="ServletActualizarEmpresa" id="ServletActualizarEmpresa" method="post" class="form-horizontal mitad">
 			<div class="form-group">

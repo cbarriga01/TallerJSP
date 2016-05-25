@@ -22,6 +22,7 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
+			<h3>${msg}</h3>
 			<h3>Búsqueda Avanzada de Contacto</h3>
 			<form action="ServletBuscadorAvCont" id="ServletBuscadorAvCont" method="post" 
 				class="form-horizontal mitad">

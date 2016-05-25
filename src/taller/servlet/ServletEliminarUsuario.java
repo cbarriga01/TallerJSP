@@ -40,7 +40,7 @@ public class ServletEliminarUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int id= Integer.parseInt(request.getParameter("id"));
-		
+		String msg = "";
 		ServletEliminarUsuario borrar = new ServletEliminarUsuario();
 		borrar.validarId(id);
 		Usuario eliminar = new Usuario();
@@ -51,7 +51,10 @@ public class ServletEliminarUsuario extends HttpServlet {
 			eliminar.setIdusuario(id);
 			try {
 				Usuario.borrar(eliminar);
-				RequestDispatcher rs = request.getRequestDispatcher("EliminarUsuario.jsp");
+				msg = "Usuario eliminado exitosamente";
+				RequestDispatcher rs = request.getRequestDispatcher("BusquedaSimple.jsp");
+				request.setAttribute("msg", msg);
+				rs.forward(request, response);
 			} catch (PersistentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,7 +63,7 @@ public class ServletEliminarUsuario extends HttpServlet {
 	}
 
 	/**
-	 * Método que permite validar si el campo ingresado en id es entero
+	 * Mï¿½todo que permite validar si el campo ingresado en id es entero
 	 * @param id id = campo ingresado en id
 	 * @return
 	 */

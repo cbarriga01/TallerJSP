@@ -9,9 +9,9 @@ import org.orm.PersistentTransaction;
 import taller.servlet.TallerServlet;
 
 /*
- * @author: C�sar Barriga I.
+ * @author: César Barriga I.
  * 
- * Clase relacionada a la l�gica de negocio de la aplicaci�n referente a Contactos
+ * Clase relacionada a la lógica de negocio de la aplicación referente a Contactos
  * Se encarga de enviar transacciones a la Base de Datos
  * 
  */
@@ -44,6 +44,8 @@ public class Contacto {
 	private String imagen;
 	
 	private Empresa empresa; //cambiar nombre
+	
+	private ArrayList<Bitacora> bitacora = new ArrayList<>();
 
 	/**
 	 * 
@@ -238,9 +240,17 @@ public class Contacto {
 	}
 
 	/**
-	 * M�todo que permite ingresar un contacto a la Base de Datos
+	 * Metodo que permite el ingreso de una bitacora al ArrayList Bitacora
+	 * @param bitacora
+	 */
+	public void agregarBitacora(Bitacora bitacora){
+		this.bitacora.add(bitacora);
+	}
+	
+	/**
+	 * Método que permite ingresar un contacto a la Base de Datos
 	 * @param Contacto contacto, objeto que contiene los datos a ingresar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Contacto contacto) throws PersistentException {
@@ -309,6 +319,8 @@ public class Contacto {
 					e.printStackTrace();
 				}	
 				
+				
+  				
 				msg = "Ingreso Exitoso";
 				orm.ContactoDAO.save(lormContacto);
 				t.commit();
@@ -324,9 +336,9 @@ public class Contacto {
 	}
 	
 	/**
-	 * M�todo que permite actualizar un contacto en la Base de Datos
+	 * Método que permite actualizar un contacto en la Base de Datos
 	 * @param Contacto contacto, objeto que contiene los datos a actualizar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Contacto contacto) throws PersistentException {
@@ -407,9 +419,9 @@ public class Contacto {
 	}
 	
 	/**
-	 * M�todo que permite eliminar un contacto de la Base de Datos
+	 * Método que permite eliminar un contacto de la Base de Datos
 	 * @param Contacto contacto, objeto que contiene los datos a eliminar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String borrar(Contacto contacto) throws PersistentException {
@@ -433,7 +445,7 @@ public class Contacto {
 	}
 	
 	/**
-	 * M�todo que permite listar los contactos almacenados en la Base de Datos
+	 * Método que permite listar los contactos almacenados en la Base de Datos
 	 * @return List <Contacto> listaContacto, lista con contactos almacenados en la Base de Datos
 	 * @throws PersistentException
 	 */
@@ -480,9 +492,9 @@ public class Contacto {
 	}
 	
 	/**
-	 * M�todo de busqueda simple de contacto empresarial
+	 * Método de busqueda simple de contacto empresarial
 	 * @param busqueda de tipo String que es el criterio a buscar
-	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la b�squeda
+	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la búsqueda
 	 * @throws PersistentException
 	 */
 	public List<Contacto> busquedaSimpleCont(String busqueda) throws PersistentException {
@@ -542,9 +554,9 @@ public class Contacto {
     }
 	
 	/**
-	 * M�todo de busqueda simple de contacto empresarial
+	 * Método de busqueda simple de contacto empresarial
 	 * @param contacto de tipo Contacto
-	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la b�squeda
+	 * @return listaContacto de tipo List<Contacto>, que es el resultado de la búsqueda
 	 * @throws PersistentException
 	 */
 	public List<Contacto> busquedaAvanzadaCont(Contacto contacto) throws PersistentException {
