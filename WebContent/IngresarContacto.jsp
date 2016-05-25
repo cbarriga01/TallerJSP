@@ -103,7 +103,7 @@
 			</div>
 			
 			<div class="form-group">
-	  			<label  class="col-lg-3 control-label">Imagen:</label>
+	  			<label class="col-lg-3 control-label">Imagen</label>
 	  			<div class="col-lg-3">
 	  				<input id="inputImagen" name="inputImagen" type="file" multiple accept='image/*' onchange="encodeImageFileAsURL();" />	  			
 	  				<br>

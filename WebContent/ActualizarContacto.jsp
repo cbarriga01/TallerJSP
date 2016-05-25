@@ -104,8 +104,11 @@
 			</div>
 			
 			<div class="form-group">
-	  			<label for="foto">Imagen:</label>
-	  			<input id="inputImagen" name="inputImagen" type="file" multiple accept='image/*' onchange="encodeImageFileAsURL();" />	  			
+	  			<label class="col-lg-3 control-label">Imagen</label>
+	  			<div class="col-lg-3">
+	  				<input id="inputImagen" name="inputImagen" type="file" multiple accept='image/*' onchange="encodeImageFileAsURL();" />	  			
+	  				<br>
+	  			</div>
 	  		</div>
 	  		<div class="form-group">
             	<textarea id="textArea" name="textArea" class="form-control textbox" style="display:none;"></textarea>

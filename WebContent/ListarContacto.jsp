@@ -71,7 +71,7 @@
 								<td>
 								<form action="IngresarBitacora.jsp" method="post">
 									<input type="hidden" value="${contacto.idContacto}" name="idContacto">
-									<input type="submit" value="Ingresar Bitacora" class="btn btn-danger">	
+									<input type="submit" value="Ingresar Bitacora" class="btn btn-primary">	
 								</form>
 								</td>
 							</tr>
