@@ -36,10 +36,10 @@ public class ServletLogin extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
         HttpSession sesion = request.getSession();
-        if(sesion.getAttribute("usuario")!= null){
-            sesion.invalidate();
-            response.sendRedirect("Login.jsp");
-        }
+        sesion.invalidate();
+        RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+		request.setAttribute("msg",	"Sesión Finalizada");
+		rs.forward(request, response);
 	}
 
 	/**

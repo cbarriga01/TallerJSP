@@ -216,4 +216,14 @@
     <servlet-name>ServletVerPerfil</servlet-name>
     <url-pattern>/ServletVerPerfil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletActualizarContactoIntermedio</display-name>
+    <servlet-name>ServletActualizarContactoIntermedio</servlet-name>
+    <servlet-class>taller.servlet.ServletActualizarContactoIntermedio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarContactoIntermedio</servlet-name>
+    <url-pattern>/ServletActualizarContactoIntermedio</url-pattern>
+  </servlet-mapping>
 </web-app>

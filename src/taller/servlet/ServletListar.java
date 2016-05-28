@@ -5,11 +5,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.orm.PersistentException;
 
@@ -35,6 +37,12 @@ public class ServletListar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		/*HttpSession session = request.getSession();
+		session.invalidate();
+		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
+		rs.forward(request, response);*/
+		
 		List<Contacto> lista = new ArrayList<>();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		try {
@@ -65,7 +73,7 @@ public class ServletListar extends HttpServlet {
 		}
 		request.setAttribute("listaContacto", lista);
 		request.getRequestDispatcher("/ListarContacto.jsp").forward(request, response);
-	
+		
 	}
 
 	/**
@@ -73,6 +81,7 @@ public class ServletListar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 	}
 
 	/**

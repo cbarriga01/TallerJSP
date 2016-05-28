@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.orm.PersistentException;
 
@@ -35,9 +36,11 @@ public class ServletBuscadorSimpleCont extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("BusquedaSimple.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		session.invalidate();
+		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
+		rs.forward(request, response);
 	}
 
 	/**
@@ -48,11 +51,22 @@ public class ServletBuscadorSimpleCont extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String textoBusqueda = request.getParameter("textoBusqueda");
+		String textoBusqueda;
+
+		try{
+			textoBusqueda = request.getParameter("textoBusqueda");
+		}catch(NullPointerException e){
+			textoBusqueda="";
+		}
 		Contacto contacto = new Contacto();
 		List<Contacto> lista = new ArrayList<Contacto>();
 		try {
 			lista = contacto.busquedaSimpleCont(textoBusqueda);
+			if (lista.isEmpty()){
+				request.setAttribute("msg", "La búsqueda no arrojó resultados");
+			}else{
+				request.setAttribute("msg", "Resultado de la búsqueda");
+			}
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

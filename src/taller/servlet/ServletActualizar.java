@@ -2,6 +2,8 @@ package taller.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
@@ -40,6 +43,26 @@ public class ServletActualizar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		/*HttpSession session = request.getSession();
+		session.invalidate();
+		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
+		rs.forward(request, response);*/
+		List<Empresa> listaEmpresa = new ArrayList<>();
+		Empresa empresa = new Empresa();
+		
+		try {
+			
+			listaEmpresa = empresa.listarEmpresa();
+			request.setAttribute("listaEmpresa", listaEmpresa);
+			
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		request.getRequestDispatcher("/ActualizarContacto.jsp").forward(request, response);
 	}
 
 	/**

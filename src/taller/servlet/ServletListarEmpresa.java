@@ -5,10 +5,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.orm.PersistentException;
 
@@ -34,6 +36,18 @@ public class ServletListarEmpresa extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.invalidate();
+		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
+		rs.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		List<Empresa> lista = new ArrayList<>();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		try {
@@ -57,13 +71,6 @@ public class ServletListarEmpresa extends HttpServlet {
 		}
 		request.setAttribute("listaEmpresa", lista);
 		request.getRequestDispatcher("/ListarEmpresa.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**

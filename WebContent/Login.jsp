@@ -22,7 +22,6 @@
 	<div class="container">
 
       <form class="form-signin" role="form" action="ServletLogin" id="ServletLogin" method="post">
-      	<h2>${msg}</h2>
         <h2 class="form-signin-heading">Ingrese sus datos</h2>
         <div class="form-group">
         	<input type="text" class="form-control" name="user" placeholder="Nombre de usuario" required>
@@ -36,6 +35,7 @@
       </form>
 
     </div>
+    <div class="text-danger"><h3>${msg}</h3></div>
 	
 	
 </body>

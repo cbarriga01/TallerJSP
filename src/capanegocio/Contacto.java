@@ -759,7 +759,9 @@ public class Contacto {
 		
 		Contacto contacto=new Contacto();
 	    orm.Contacto contactoOrm = orm.ContactoDAO.loadContactoByORMID(idContacto);
-	   
+	    Empresa empresaNegocio = new Empresa();
+        orm.Empresa empresaOrm = orm.EmpresaDAO.loadEmpresaByORMID(contactoOrm.getIdEmpresa().getIdEmpresa());
+        
 	    contacto.setIdContacto(contactoOrm.getIdContacto());
         contacto.setRun(contactoOrm.getRun());
         contacto.setNombre(contactoOrm.getNombreContacto());
@@ -771,6 +773,20 @@ public class Contacto {
         contacto.setCiudad(contactoOrm.getCiudadContacto());
         contacto.setDireccion(contactoOrm.getDireccion());
         contacto.setImagen(contactoOrm.getImagen());
+        
+        empresaNegocio.setIdEmpresa(empresaOrm.getIdEmpresa());
+        empresaNegocio.setRut(empresaOrm.getRut());
+        empresaNegocio.setRazonSocial(empresaOrm.getRazonSocial());
+        empresaNegocio.setNombreEmpresa(empresaOrm.getNombreEmpresa());
+        empresaNegocio.setRepresentante(empresaOrm.getRepresentante());
+        empresaNegocio.setMailEmpresa(empresaOrm.getMailEmpresa());
+        empresaNegocio.setTelefonoEmpresa(empresaOrm.getTelefonoEmpresa());
+        empresaNegocio.setPaisEmpresa(empresaOrm.getPaisEmpresa());
+        empresaNegocio.setRegionEmpresa(empresaOrm.getRegionEmpresa());
+        empresaNegocio.setCiudadEmpresa(empresaOrm.getCiudadEmpresa());
+        empresaNegocio.setDomicilio(empresaOrm.getDomicilio());
+        
+        contacto.setEmpresa(empresaNegocio);			
 	    
 	    return contacto;
 	}

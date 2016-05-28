@@ -50,7 +50,7 @@
 		<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li role="presentation"><a href="Menu.jsp">Home</a></li>
-					<li role="presentation"><a href="IngresarContacto.jsp">Ingresar Contacto</a></li>
+					<li role="presentation"><a href="TallerServlet">Ingresar Contacto</a></li>
 					<li role="presentation"><a href="ActualizarContacto.jsp">Actualizar Contacto</a></li>
 					<li role="presentation"><a href="ServletListar">Listar Contactos</a></li>
 					<li role="presentation"><a href="IngresarEmpresa.jsp">Ingresar Empresa</a></li>
@@ -58,7 +58,7 @@
 					<li role="presentation"><a href="BusquedaSimple.jsp">Busqueda Simple</a></li>
 					<li role="presentation"><a href="BusquedaAvanzada.jsp">Busqueda Avanzada</a></li>
 					
-					<li role="presentation"><form action="Login" id="Login" method="get" class="form-horizontal mitad">
+					<li role="presentation"><form action="ServletLogin" id="Login" method="get" class="form-horizontal mitad">
 							<div class="form-group">
 								<div class="col-lg-9 col-lg-offset-3">
 									<button type="submit" class="btn btn-primary navbar-btn">Logout</button>

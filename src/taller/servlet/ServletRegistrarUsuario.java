@@ -35,6 +35,11 @@ public class ServletRegistrarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.invalidate();
+		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
+		rs.forward(request, response);
 	}
 
 	/**

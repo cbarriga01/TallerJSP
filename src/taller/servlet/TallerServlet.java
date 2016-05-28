@@ -47,20 +47,19 @@ public class TallerServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		List<Empresa> listaEmpresa = new ArrayList<>();
+		Empresa empresa = new Empresa();
 		
 		try {
-			listaEmpresa=Empresa.listarEmpresa();
-			PrintWriter out = response.getWriter();
-			for(Empresa empresa:listaEmpresa){
-				out.println("idempresa: " + empresa.getIdEmpresa());
-				out.println("Nombre: " + empresa.getNombreEmpresa());
-			}
+			
+			listaEmpresa = empresa.listarEmpresa();
+			request.setAttribute("listaEmpresa", listaEmpresa);
+			
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("listaEmpresa", listaEmpresa);
+		
 		request.getRequestDispatcher("/IngresarContacto.jsp").forward(request, response);
 		
 		

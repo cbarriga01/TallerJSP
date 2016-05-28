@@ -5,10 +5,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.orm.PersistentException;
 
@@ -34,23 +36,11 @@ public class ServletListarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Usuario> lista = new ArrayList<>();
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		try {
-			lista=Usuario.listar();
-			PrintWriter out = response.getWriter();
-			for(Usuario usuario:lista){
-				out.println("User: " + usuario.getUsuario());
-				out.println("Password: " + usuario.getPassword());
-			}
-			//capanegocio.Usuario user = new capanegocio.Usuario();
-			//lista = user.listar();
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("user", lista);
-		request.getRequestDispatcher("/ListarUsuario.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		session.invalidate();
+		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
+		rs.forward(request, response);
 	}
 
 	/**

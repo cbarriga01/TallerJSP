@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
@@ -34,6 +35,11 @@ public class ServletActualizarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.invalidate();
+		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+		request.setAttribute("msg",	" Error en sesiÃ³n, debe ingresar sus datos de usuario.");
+		rs.forward(request, response);
 	}
 
 	/**
@@ -67,7 +73,7 @@ public class ServletActualizarUsuario extends HttpServlet {
 					actualizar.setPassword(password);
 					try {
 						Usuario.actualizar(actualizar);
-						msg = "Actualización exitosa";
+						msg = "Actualizaciï¿½n exitosa";
 						RequestDispatcher rs = request.getRequestDispatcher("ActualizarUsuario.jsp");
 						request.setAttribute("msg", msg);
 						rs.forward(request, response);
@@ -83,7 +89,7 @@ public class ServletActualizarUsuario extends HttpServlet {
 	}
 
 	/**
-	 * Método que permite validar si el campo ingresado en id es entero
+	 * Mï¿½todo que permite validar si el campo ingresado en id es entero
 	 * @param id= campo ingresado en id
 	 * @return
 	 */

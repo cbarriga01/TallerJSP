@@ -16,12 +16,54 @@
     <script type="text/javascript" src="./js/validador.js"></script>
     <script type="text/javascript" src="./js/cargarImg.js"></script>
     
-    <jsp:include page="Menu.jsp"></jsp:include>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">    
+    <link href="./css/estiloMenu.css" rel="stylesheet" />
+    
 <title>Búsqueda simple</title>
 </head>
 <body>
-	<div class="jumbotron">
-		<div class="container">
+
+	<div class="container">
+    <div class="row">
+    	<div class="col-sm-3 col-md-3">
+    		
+    		<div class="nav-side-menu navbar-fixed">
+		    <div class="brand">Brand Logo</div>
+		    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+		        <div class="menu-list">
+		            <ul id="menu-content" class="menu-content collapse out">
+		                <li>
+		                  <a href="index.jsp"><i class="fa fa-home fa-lg"></i>Home</a>
+		                </li>
+		                <li data-toggle="collapse" data-target="#contacto" class="collapsed active">
+		                  <a href="#"><i class="fa fa-edit fa-lg"></i> Contacto Empresarial <span class="arrow"></span></a>
+		                </li>
+			                <ul class="sub-menu collapse" id="contacto">
+			                    <li><a href="TallerServlet">Ingresar Contacto</a></li>
+			                    <li><a href="ServletListar">Listar Contactos</a></li>
+			                </ul>
+			            <li data-toggle="collapse" data-target="#busqueda" class="collapsed">
+		                  <a href="#"><i class="fa fa-book fa-lg"></i> Búsquedas <span class="arrow"></span></a>
+		                </li>  
+		                <ul class="sub-menu collapse" id="busqueda">
+		                  <li><a href="BusquedaSimple.jsp">Búsqueda Simple</a></li>
+			              <li><a href="BusquedaAvanzada.jsp">Búsqueda Avanzada</a></li>
+		                </ul>
+		               	<li>
+		                  	<a href="BusquedaAvanzada.jsp">
+		                  	<i class="fa fa-sign-out fa-lg"></i> Logout
+		                  	</a>
+		              	</li>
+		            </ul>
+		    	</div>
+			</div>
+    	
+    	</div> <!-- Fin div primer col -->
+    	
+    	<div class="col-sm-9 col-md-9">
+            <div class="jumbotron">
+            
+            	
 			<h3>${msg}</h3>
 			<h3>Búsqueda Simple de Contacto</h3>
 			<form action="ServletBuscadorSimpleCont" id="ServletBuscadorSimpleCont" method="post" 
@@ -33,12 +75,18 @@
 					<br>
 				</div>
 			</div>
+			
 			<div class="form-group">
 				<div class="col-lg-9 col-lg-offset-3">
 					<button type="submit" class="btn btn-success left">Enviar</button>
 				</div>
 			</div>
 			</form>
+			
+			<%try{
+				request.getAttribute("busqueda").toString();
+			
+			%>
 			
 			<table class="table table-bordered table-hover table-responsive">
 			<tr class="success">
@@ -75,8 +123,17 @@
 						<td>
 							<table>
 								<tr>
-									<td><form action="ActualizarUsuario.jsp" method="post">
-										<input type="hidden" value="${contacto.idContacto}" name="idUsuario">
+									<td><form action="ServletActualizarContactoIntermedio" method="post">
+										<input type="hidden" value="${contacto.idContacto}" name="id">
+										<input type="hidden" value="${contacto.run}" name="run">
+										<input type="hidden" value="${contacto.nombre}" name="nombre">
+										<input type="hidden" value="${contacto.apellido}" name="apellido">
+										<input type="hidden" value="${contacto.mail}" name="mail">
+										<input type="hidden" value="${contacto.telefono}" name="telefono">
+										<input type="hidden" value="${contacto.pais}" name="pais">
+										<input type="hidden" value="${contacto.region}" name="region">
+										<input type="hidden" value="${contacto.ciudad}" name="ciudad">
+										<input type="hidden" value="${contacto.direccion}" name="direccion">
 										<input type="submit" value="Editar" class="btn btn-primary">	
 									</form>
 									</td>
@@ -92,6 +149,12 @@
 										<input type="submit" value="Ingresar Bitacora" class="btn btn-primary">	
 									</form>
 									</td>
+									<td>
+									<form action="ServletVerPerfil" method="post">
+										<input type="hidden" value="${contacto.idContacto}" name="idContactoPer">
+										<input type="submit" value="Ver Perfil" class="btn btn-primary">	
+									</form>
+									</td>
 								</tr>
 							</table>
 						</td>	
@@ -100,7 +163,17 @@
 				</i:forEach>
 			</tbody>
 			</table>
-		</div>
-	</div>	
+			
+			<%
+			}catch(NullPointerException e){
+			
+			}%>
+            
+            </div> <!-- fin div well -->
+        </div> <!-- Fin div segundo col -->
+    </div> <!-- Fin div row -->
+    </div> <!-- Fin div container -->
+
+	
 </body>
 </html>

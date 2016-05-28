@@ -13,13 +13,55 @@
     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
     
     <script type="text/javascript" src="./js/cargarImg.js"></script>
-    <jsp:include page="Menu.jsp"></jsp:include>
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<link href="./css/estiloMenu.css" rel="stylesheet" />
     
 <title>Lista de contactos</title>
 </head>
 <body>
-	<div class="jumbotron vertical-center">
-		<div class="container">
+	<div class="container">
+    <div class="row">
+    	<div class="col-sm-3 col-md-3">
+    		
+    		<div class="nav-side-menu navbar-fixed">
+		    <div class="brand">Brand Logo</div>
+		    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+		        <div class="menu-list">
+		            <ul id="menu-content" class="menu-content collapse out">
+		                <li>
+		                  <a href="index.jsp"><i class="fa fa-home fa-lg"></i>Home</a>
+		                </li>
+		                <li data-toggle="collapse" data-target="#contacto" class="collapsed active">
+		                  <a href="#"><i class="fa fa-edit fa-lg"></i> Contacto Empresarial <span class="arrow"></span></a>
+		                </li>
+			                <ul class="sub-menu collapse" id="contacto">
+			                    <li><a href="TallerServlet">Ingresar Contacto</a></li>
+			                    <li><a href="ServletListar">Listar Contactos</a></li>
+			                </ul>
+			            <li data-toggle="collapse" data-target="#busqueda" class="collapsed">
+		                  <a href="#"><i class="fa fa-book fa-lg"></i> Búsquedas <span class="arrow"></span></a>
+		                </li>  
+		                <ul class="sub-menu collapse" id="busqueda">
+		                  <li><a href="BusquedaSimple.jsp">Búsqueda Simple</a></li>
+			              <li><a href="BusquedaAvanzada.jsp">Búsqueda Avanzada</a></li>
+		                </ul>
+		               	<li>
+		                  	<a href="BusquedaAvanzada.jsp">
+		                  	<i class="fa fa-sign-out fa-lg"></i> Logout
+		                  	</a>
+		              	</li>
+		            </ul>
+		    	</div>
+			</div>
+    	
+    	</div> <!-- Fin div primer col -->
+    	
+    	<div class="col-sm-9 col-md-9">
+            <div class="jumbotron">
+            
+            	
 			<h3>${msg}</h3>
 			<h3>Lista de Contactos</h3>
 			<table class="table table-bordered table-hover table-responsive">
@@ -57,8 +99,19 @@
 						<td>
 						<table>
 							<tr>
-								<td><form action="ActualizarUsuario.jsp" method="post">
+								<td><form action="ServletActualizarContactoIntermedio" method="post">
 									<input type="hidden" value="${contacto.idContacto}" name="idUsuario">
+									<input type="hidden" value="${contacto.run}" name="run">
+									<input type="hidden" value="${contacto.nombre}" name="nombre">
+									<input type="hidden" value="${contacto.apellido}" name="apellido">
+									<input type="hidden" value="${contacto.mail}" name="mail">
+									<input type="hidden" value="${contacto.telefono}" name="telefono">
+									<input type="hidden" value="${contacto.pais}" name="pais">
+									<input type="hidden" value="${contacto.region}" name="region">
+									<input type="hidden" value="${contacto.ciudad}" name="ciudad">
+									<input type="hidden" value="${contacto.direccion}" name="direccion">
+									<input type="hidden" value="${contacto.imagen}" name="imagen">
+									<input type="hidden" value="${contacto.empresa.nombreEmpresa}" name="empresa">
 									<input type="submit" value="Editar" class="btn btn-primary">	
 								</form>
 								</td>
@@ -81,6 +134,19 @@
 				</i:forEach>
 			</tbody>
 			</table>
+		
+            
+            </div> <!-- fin div well -->
+        </div> <!-- Fin div segundo col -->
+    </div> <!-- Fin div row -->
+    </div> <!-- Fin div container -->
+
+
+
+	<div class="jumbotron vertical-center">
+		<div class="container">
+			<h3>${msg}</h3>
+			
 		</div>
 	</div>
 </body>
