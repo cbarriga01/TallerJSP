@@ -48,7 +48,7 @@ public class ServletActualizar extends HttpServlet {
 		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
 		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
 		rs.forward(request, response);*/
-		List<Empresa> listaEmpresa = new ArrayList<>();
+		/*List<Empresa> listaEmpresa = new ArrayList<>();
 		Empresa empresa = new Empresa();
 		
 		try {
@@ -62,7 +62,7 @@ public class ServletActualizar extends HttpServlet {
 		}
 		
 		
-		request.getRequestDispatcher("/ActualizarContacto.jsp").forward(request, response);
+		request.getRequestDispatcher("/ActualizarContacto.jsp").forward(request, response);*/
 	}
 
 	/**
@@ -167,8 +167,8 @@ public class ServletActualizar extends HttpServlet {
 					}
 				}
 				
-			} else { //Else de validaci�n de rut, mail y entero
-				msg = "Error en el ingreso, datos inv�lidos";
+			} else { //Else de validación de rut, mail y entero
+				msg = "Error en el ingreso, datos inválidos";
 				RequestDispatcher rs = request.getRequestDispatcher("ActualizarContacto.jsp");
 				request.setAttribute("msg", msg);
 				rs.forward(request, response);
@@ -180,7 +180,7 @@ public class ServletActualizar extends HttpServlet {
 	}
 
 	/**
-	 * M�todo que permite validar el formato de un mail
+	 * Método que permite validar el formato de un mail
 	 * @param email, String , variable con el mail recibido
 	 * @return booleano que representra true si esta bueno o false si esta malo
 	 */
@@ -196,7 +196,7 @@ public class ServletActualizar extends HttpServlet {
     }
 	
 	/**
-	 * M�todo que permite validar que el formato de la cadena ingresada sea num�rico
+	 * Método que permite validar que el formato de la cadena ingresada sea numérico
 	 * @param cad = cadena ingresada
 	 * @return
 	 */
@@ -209,7 +209,7 @@ public class ServletActualizar extends HttpServlet {
 	 }
 	
 	/**
-	 * M�todo que permite validar si el campo ingresado en id es entero
+	 * Método que permite validar si el campo ingresado en id es entero
 	 * @param id = campo ingresado en id
 	 * @return
 	 */
@@ -223,7 +223,7 @@ public class ServletActualizar extends HttpServlet {
 	}
 	
 	/**
-	 * M�todo que permite validar si el run ingresado es v�lido
+	 * Método que permite validar si el run ingresado es válido
 	 * @param String run del contacto a validar
 	 * @return boolean validacion, indica si el run es valido o no
 	 */

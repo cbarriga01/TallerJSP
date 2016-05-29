@@ -70,12 +70,6 @@
 					<th>Run</th>
 					<th>Nombre</th>
 					<th>Apellido</th>
-					<th>Mail</th>
-					<th>Teléfono</th>
-					<th>País</th>
-					<th>Región</th>
-					<th>Ciudad</th>
-					<th>Dirección</th>
 					<th>Imagen</th>
 					<th>Empresa</th>
 				</thead>
@@ -86,12 +80,6 @@
 						<td>${contacto.run}</td>
 						<td>${contacto.nombre}</td>	
 						<td>${contacto.apellido}</td>
-						<td>${contacto.mail}</td>
-						<td>${contacto.telefono}</td>
-						<td>${contacto.pais}</td>
-						<td>${contacto.region}</td>
-						<td>${contacto.ciudad}</td>
-						<td>${contacto.direccion}</td>
 						<td id="imgContainer" onLoad="decodeImageURLAsFile();">
 							<img src="${contacto.imagen}" width="100px" class = "thumbnail">
 						</td>
@@ -100,7 +88,7 @@
 						<table>
 							<tr>
 								<td><form action="ServletActualizarContactoIntermedio" method="post">
-									<input type="hidden" value="${contacto.idContacto}" name="idUsuario">
+									<input type="hidden" value="${contacto.idContacto}" name="id">
 									<input type="hidden" value="${contacto.run}" name="run">
 									<input type="hidden" value="${contacto.nombre}" name="nombre">
 									<input type="hidden" value="${contacto.apellido}" name="apellido">
@@ -122,9 +110,11 @@
 								</form>
 								</td>
 								<td>
-								<form action="IngresarBitacora.jsp" method="post">
+								<form action="ServletRegistrarBitacoraIntermedio" method="post">
 									<input type="hidden" value="${contacto.idContacto}" name="idContacto">
-									<input type="submit" value="Ingresar Bitacora" class="btn btn-primary">	
+									<input type="hidden" value="${contacto.nombre}" name="nombre">
+									<input type="hidden" value="${contacto.apellido}" name="apellido">
+									<input type="submit" value="Ingresar Bitacora" class="btn btn-warning">	
 								</form>
 								</td>
 							</tr>

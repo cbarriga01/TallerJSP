@@ -447,7 +447,6 @@ private static final int ROW_COUNT = 100;
 			empresa.setIdEmpresa(empresaOrm.getIdEmpresa());
 			empresa.setNombreEmpresa(empresaOrm.getNombreEmpresa());
 			listaEmpresa.add(empresa);
-			System.out.println("lista: " + listaEmpresa);
 		}
 		
 		return listaEmpresa;

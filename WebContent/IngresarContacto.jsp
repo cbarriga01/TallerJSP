@@ -70,7 +70,7 @@
             	
 			<h3>${msg}</h3>
 			<h3>Ingresar Contacto</h3>
-			<form action="TallerServlet" id="TallerServlet" method="get" class="form-horizontal mitad">
+			<form action="TallerServlet" id="TallerServlet" method="post" class="form-horizontal mitad">
 			
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Run</label>
@@ -162,7 +162,6 @@
 				<label class="col-lg-3 control-label">Empresa</label>
 				<div class="col-lg-3">
 					<select class="form-control" name="empresa" id="empresa">
-							
 						<i:forEach items="${listaEmpresa}" var="empresa">	
 							
 							<option value="${empresa.idEmpresa}">${empresa.nombreEmpresa}</option>

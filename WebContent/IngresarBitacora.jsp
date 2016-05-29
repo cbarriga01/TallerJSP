@@ -23,12 +23,12 @@
 <title>Ingresar Bitácora a Contacto</title>
 </head>
 <body>
-	<% String idContacto = request.getParameter("idContacto"); %>
+	
 	<div class="jumbotron">
 		<div class="container">
 			<h3>Ingresar Bitacora de Anotaciones</h3>
 			<h3>${msg}</h3>
-			<form action="ServletRegistrarBitacora" id="TallerRegistrarBitacora" method="POST" class="form-horizontal mitad">
+			<form action="ServletRegistrarBitacora" id="ServletRegistrarBitacora" method="POST" class="form-horizontal mitad">
 			
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Titulo</label>
@@ -49,7 +49,7 @@
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Contacto</label>
 				<div class="col-lg-3">
-					<input type="text" class="form-control" name="idContacto" value="<%=idContacto%>" required>
+					<input type="text" class="form-control" name="idContacto" value="${idContacto}" required>
 					<br>
 				</div>
 			</div>

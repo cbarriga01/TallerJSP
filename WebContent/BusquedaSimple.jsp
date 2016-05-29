@@ -144,8 +144,10 @@
 									</form>
 									</td>
 									<td>
-									<form action="IngresarBitacora.jsp" method="post">
+									<form action="ServletRegistrarBitacoraIntermedio" method="post">
 										<input type="hidden" value="${contacto.idContacto}" name="idContacto">
+										<input type="hidden" value="${contacto.nombre}" name="nombre">
+										<input type="hidden" value="${contacto.apellido}" name="apellido">
 										<input type="submit" value="Ingresar Bitacora" class="btn btn-primary">	
 									</form>
 									</td>

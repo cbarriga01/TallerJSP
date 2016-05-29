@@ -60,7 +60,6 @@ public class ServletRegistrarBitacora extends HttpServlet {
 		titulo = request.getParameter("titulo");
 		texto = request.getParameter("texto");
 		contacto = request.getParameter("idContacto");
-		System.out.println("idContacto = " + contacto);
 		int idContacto = Integer.parseInt(contacto);
 		
 		if ((titulo.length() <= 20) && (texto.length() <= 250)){
@@ -87,7 +86,7 @@ public class ServletRegistrarBitacora extends HttpServlet {
 				r=Bitacora.ingresarBitacora(ingresar);
 				msg = "Ingreso exitoso";
 				System.out.println("Ingresado...");
-				RequestDispatcher rs = request.getRequestDispatcher("IngresarBitacora.jsp");
+				RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
 				request.setAttribute("msg", msg);
 				rs.forward(request, response);
 			} catch (PersistentException e) {

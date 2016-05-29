@@ -38,7 +38,6 @@
 		                </li>
 			                <ul class="sub-menu collapse" id="contacto">
 			                    <li><a href="TallerServlet">Ingresar Contacto</a></li>
-			                    <li><a href="ActualizarContacto.jsp">Actualizar Contacto</a></li>
 			                    <li><a href="ServletListar">Listar Contactos</a></li>
 			                </ul>
 			            <li data-toggle="collapse" data-target="#busqueda" class="collapsed">
@@ -161,19 +160,7 @@
        
         	<div class="form-group" id="imgContainer"></div>
 			
-			<div class="form-group">
-				<label class="col-lg-3 control-label">Empresa</label>
-				<div class="col-lg-3">
-					<select class="form-control" name="empresa" id="empresa">
-						<i:forEach items="${listaEmpresa}" var="empresa">	
-							
-							<option value="${empresa.idEmpresa}">${empresa.nombreEmpresa}</option>
-							
-						</i:forEach>
-					</select> 
-					<br>
-				</div>
-			</div>		
+			${LISTA} 
 			
 			
 			<div class="form-group">

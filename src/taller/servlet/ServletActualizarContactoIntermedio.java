@@ -34,11 +34,27 @@ public class ServletActualizarContactoIntermedio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		session.invalidate();
 		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
 		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
-		rs.forward(request, response);
+		rs.forward(request, response);*/
+
+		/*
+		List<Empresa> listaEmpresa = new ArrayList<>();
+		Empresa empresa = new Empresa();
+		
+		try {
+			
+			listaEmpresa = empresa.listarEmpresa();
+			request.setAttribute("listaEmpresa", listaEmpresa);
+			
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.getRequestDispatcher("/ActualizarContacto.jsp").forward(request, response);*/
 	}
 
 	/**
@@ -46,7 +62,7 @@ public class ServletActualizarContactoIntermedio extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
 		String idContacto = request.getParameter("id");
 		String run = request.getParameter("run");
 		String nombre = request.getParameter("nombre");
@@ -71,19 +87,37 @@ public class ServletActualizarContactoIntermedio extends HttpServlet {
 		request.setAttribute("region", region);
 		request.setAttribute("ciudad", ciudad);
 		request.setAttribute("direccion", direccion);
+		request.setAttribute("imagen", imagen);
+		request.setAttribute("empresa", empresa);
 		
-		List<Empresa> listaEmpresa = new ArrayList<>();
+		List<Empresa> listaEmpresa = null;
 		Empresa empresaNegocio = new Empresa();
 		
 		try {
-			
 			listaEmpresa = empresaNegocio.listarEmpresa();
-			request.setAttribute("listaEmpresa", listaEmpresa);
-			request.getRequestDispatcher("/ActualizarContacto.jsp").forward(request, response);
+			if (listaEmpresa.isEmpty()){
+				rs.forward(request, response);
+			}else{
+				request.setAttribute("listaEmpresa", listaEmpresa);
+				String salida = "<div class='form-group'><label class='col-lg-3 control-label'>Empresa</label>"
+						+ "<div class='col-lg-3'><select class='form-control' name='empresa'>'";
+				for (Empresa emp: listaEmpresa){
+					if (emp.getNombreEmpresa().equals(empresa)){
+						salida += "<option value='"+emp.getIdEmpresa()+"' selected>" + emp.getNombreEmpresa()+"</option>";
+					}else{
+						salida += "<option value='"+emp.getIdEmpresa()+"'>"
+								+emp.getNombreEmpresa()+"</option>";
+					}
+				}
+				salida += "</select><br></div></div>";
+				request.setAttribute("LISTA", salida);
+				request.getRequestDispatcher("/ActualizarContacto.jsp").forward(request, response);
+			}
 			
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			rs.forward(request, response);
 		}
 		
 		rs.forward(request, response);

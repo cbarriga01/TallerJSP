@@ -226,4 +226,24 @@
     <servlet-name>ServletActualizarContactoIntermedio</servlet-name>
     <url-pattern>/ServletActualizarContactoIntermedio</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletRegistrarBitacoraIntermedio</display-name>
+    <servlet-name>ServletRegistrarBitacoraIntermedio</servlet-name>
+    <servlet-class>taller.servlet.ServletRegistrarBitacoraIntermedio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarBitacoraIntermedio</servlet-name>
+    <url-pattern>/ServletRegistrarBitacoraIntermedio</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletListarBitacora</display-name>
+    <servlet-name>ServletListarBitacora</servlet-name>
+    <servlet-class>taller.servlet.ServletListarBitacora</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletListarBitacora</servlet-name>
+    <url-pattern>/ServletListarBitacora</url-pattern>
+  </servlet-mapping>
 </web-app>

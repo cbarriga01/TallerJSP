@@ -174,14 +174,14 @@ public class TallerServlet extends HttpServlet {
 						e.printStackTrace();
 					}
 				} else {
-					msg = "Error en el ingreso, datos inv�lidos";
+					msg = "Error en el ingreso, datos inválidos";
 					RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
 					request.setAttribute("msg", msg);
 					rs.forward(request, response);
 				}
 					
-			} else { //Else de validaci�n de rut, mail y entero
-				msg = "Error en el ingreso, datos inv�lidos";
+			} else { //Else de validación de rut, mail y entero
+				msg = "Error en el ingreso, datos inválidos";
 				RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
 				request.setAttribute("msg", msg);
 				rs.forward(request, response);
@@ -194,7 +194,7 @@ public class TallerServlet extends HttpServlet {
 	}
 
 	/**
-	 * M�todo que permite validar el formato de un mail
+	 * Método que permite validar el formato de un mail
 	 * @param email = cadena con el mail recibido
 	 * @return
 	 */

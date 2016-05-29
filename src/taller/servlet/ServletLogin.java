@@ -60,7 +60,7 @@ public class ServletLogin extends HttpServlet {
         
         try {
 			if(usuario.validarUsuario(usuario)){
-				RequestDispatcher rs = request.getRequestDispatcher("Menu.jsp");
+				RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
 				sesion.setAttribute("usu", usuario);
 				rs.forward(request, response);
 			}else{				

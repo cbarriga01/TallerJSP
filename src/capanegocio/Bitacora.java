@@ -1,5 +1,8 @@
 package capanegocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -125,6 +128,42 @@ public class Bitacora {
 		}
 		
 		return msg;
+	}
+	
+	/**
+	 * Método que permite listar las bitácoras almacenadas en la Base de Datos
+	 * @return List <Bitacora> listaBitacora, lista con bitácoras almacenadas en la Base de Datos
+	 * @throws PersistentException
+	 */
+	public static List <Bitacora> listar() throws PersistentException {
+		List <orm.Bitacora> listaBitacoraOrm = orm.BitacoraDAO.queryBitacora(null, null);
+		List <Bitacora> listaBitacora = new ArrayList<>();
+		
+		for (orm.Bitacora bitacoraOrm:listaBitacoraOrm) {
+			Bitacora bitacora = new Bitacora();
+			Contacto contactoNegocio= new Contacto();
+			
+			orm.Contacto contactoOrm = orm.ContactoDAO.loadContactoByORMID(bitacoraOrm.getIdBitacora());
+			bitacora.setIdBitacora(bitacoraOrm.getIdBitacora());
+			bitacora.setTitulo(bitacoraOrm.getTitulo());
+			bitacora.setTexto(bitacoraOrm.getTexto());
+			
+			contactoNegocio.setIdContacto(contactoOrm.getIdContacto());
+			contactoNegocio.setRun(contactoOrm.getRun());
+			contactoNegocio.setNombre(contactoOrm.getNombreContacto());
+			contactoNegocio.setApellido(contactoOrm.getApellidoContacto());
+			contactoNegocio.setMail(contactoOrm.getMailContacto());
+			contactoNegocio.setTelefono(contactoOrm.getTelefonoContacto());
+			contactoNegocio.setPais(contactoOrm.getPaisContacto());
+			contactoNegocio.setRegion(contactoOrm.getRegionContacto());
+			contactoNegocio.setCiudad(contactoOrm.getCiudadContacto());
+			contactoNegocio.setDireccion(contactoOrm.getDireccion());
+			contactoNegocio.setImagen(contactoOrm.getImagen());
+			
+			bitacora.setContacto(contactoNegocio);
+			listaBitacora.add(bitacora);			
+		}
+		return listaBitacora;
 	}
 	
 }

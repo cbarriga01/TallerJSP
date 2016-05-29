@@ -28,15 +28,18 @@
    <ns2:parameter qname="ns1:password" type="xsd:string"/>
    <ns3:fault class="org.orm.PersistentException" qname="ns1:fault" type="ns2:PersistentException" xmlns:ns2="http://orm.org" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
   </ns2:operation>
-  <ns1:operation name="busquedaAvanzada" qname="ns3:busquedaAvanzada" returnQName="ns3:busquedaAvanzadaReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://webservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns3:busquedaAvanzada" type="xsd:string"/>
-   <ns1:fault class="org.orm.PersistentException" qname="ns3:fault" type="ns4:PersistentException" xmlns:ns4="http://orm.org"/>
+  <ns1:operation name="verPerfil" qname="ns3:verPerfil" returnQName="ns3:verPerfilReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://webservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:idContacto" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="busquedaSimpleCont" qname="ns5:busquedaSimpleCont" returnQName="ns5:busquedaSimpleContReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://webservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns5:busqueda" type="xsd:string"/>
-   <ns1:fault class="org.orm.PersistentException" qname="ns5:fault" type="ns6:PersistentException" xmlns:ns6="http://orm.org"/>
+  <ns1:operation name="busquedaSimpleCont" qname="ns4:busquedaSimpleCont" returnQName="ns4:busquedaSimpleContReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://webservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:busqueda" type="xsd:string"/>
+   <ns1:fault class="org.orm.PersistentException" qname="ns4:fault" type="ns5:PersistentException" xmlns:ns5="http://orm.org"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="comprobarUsuario busquedaAvanzada busquedaSimpleCont"/>
+  <ns1:operation name="busquedaAvanzada" qname="ns6:busquedaAvanzada" returnQName="ns6:busquedaAvanzadaReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://webservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:busquedaAvanzada" type="xsd:string"/>
+   <ns1:fault class="org.orm.PersistentException" qname="ns6:fault" type="ns7:PersistentException" xmlns:ns7="http://orm.org"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="comprobarUsuario busquedaAvanzada busquedaSimpleCont verPerfil"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="WebServiceProveedor"/>
   <ns1:parameter name="className" value="webservice.WebServiceProveedor"/>
@@ -44,7 +47,7 @@
   <ns1:parameter name="schemaQualified" value="http://webservice,http://orm.org"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://webservice"/>
   <ns1:parameter name="wsdlServiceElement" value="WebServiceProveedorService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns7:PersistentException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.orm.PersistentException" xmlns:ns7="http://orm.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns8:PersistentException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.orm.PersistentException" xmlns:ns8="http://orm.org"/>
  </ns1:service>
  <ns1:service name="AdminService" provider="java:MSG">
   <ns1:parameter name="allowedMethods" value="AdminService"/>
