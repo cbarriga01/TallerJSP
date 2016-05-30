@@ -29,7 +29,7 @@ public class ServletLogin extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * Metodo encargado de cerrar la seci�n del usuario
+	 * Metodo encargado de cerrar la sesión del usuario
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

@@ -54,7 +54,7 @@
 			              <li><a href="BusquedaAvanzada.jsp">Búsqueda Avanzada</a></li>
 		                </ul>
 		               	<li>
-		                  	<a href="BusquedaAvanzada.jsp">
+		                  	<a href="ServletLogin">
 		                  	<i class="fa fa-sign-out fa-lg"></i> Logout
 		                  	</a>
 		              	</li>

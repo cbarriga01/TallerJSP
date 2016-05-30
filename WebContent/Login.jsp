@@ -33,10 +33,8 @@
         	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </div>
       </form>
-
+	  <div class="text-danger"><h3>${msg}</h3></div>
     </div>
-    <div class="text-danger"><h3>${msg}</h3></div>
-	
-	
+    
 </body>
 </html>

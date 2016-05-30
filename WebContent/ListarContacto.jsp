@@ -48,7 +48,7 @@
 			              <li><a href="BusquedaAvanzada.jsp">Búsqueda Avanzada</a></li>
 		                </ul>
 		               	<li>
-		                  	<a href="BusquedaAvanzada.jsp">
+		                  	<a href="ServletLogin">
 		                  	<i class="fa fa-sign-out fa-lg"></i> Logout
 		                  	</a>
 		              	</li>
@@ -72,6 +72,7 @@
 					<th>Apellido</th>
 					<th>Imagen</th>
 					<th>Empresa</th>
+					<th>Opciones</th>
 				</thead>
 			</tr>
 			<tbody>
@@ -100,13 +101,13 @@
 									<input type="hidden" value="${contacto.direccion}" name="direccion">
 									<input type="hidden" value="${contacto.imagen}" name="imagen">
 									<input type="hidden" value="${contacto.empresa.nombreEmpresa}" name="empresa">
-									<input type="submit" value="Editar" class="btn btn-primary">	
+									<input type="submit" value="Editar" class="btn btn-primary btn-sm">	
 								</form>
 								</td>
 								<td>
 								<form action="ServletEliminar" method="post">
 									<input type="hidden" value="${contacto.idContacto}" name="idContactoEl">
-									<input type="submit" value="Eliminar" class="btn btn-danger">	
+									<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">	
 								</form>
 								</td>
 								<td>
@@ -114,7 +115,13 @@
 									<input type="hidden" value="${contacto.idContacto}" name="idContacto">
 									<input type="hidden" value="${contacto.nombre}" name="nombre">
 									<input type="hidden" value="${contacto.apellido}" name="apellido">
-									<input type="submit" value="Ingresar Bitacora" class="btn btn-warning">	
+									<input type="submit" value="Notas" class="btn btn-warning btn-sm">	
+								</form>
+								</td>
+								<td>
+								<form action="ServletVerPerfil" method="post">
+									<input type="hidden" value="${contacto.idContacto}" name="idContactoPer">
+									<input type="submit" value="Ver Perfil" class="btn btn-primary btn-sm">	
 								</form>
 								</td>
 							</tr>
