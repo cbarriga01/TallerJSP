@@ -48,7 +48,7 @@ public class Contacto {
 	
 	private String imagen;
 	
-	private Empresa empresa; //cambiar nombre
+	private Empresa empresa;
 	
 	private ArrayList<Bitacora> bitacora = new ArrayList<>();
 
@@ -261,14 +261,12 @@ public class Contacto {
 	public static String ingresar(Contacto contacto) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "";
-		//try{
+
 			try {
 				Empresa empresaNegocio = new Empresa();
 				orm.Contacto lormContacto = orm.ContactoDAO.createContacto();
 				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(contacto.getEmpresa().getIdEmpresa());
-				//Validar datos que no sean nulos...
-				
-				// Initialize the properties of the persistent object here
+
 				try{
 					lormContacto.setIdEmpresa(lormEmpresa);
 				}catch (NullPointerException e) {
@@ -322,9 +320,7 @@ public class Contacto {
 					lormContacto.setIdEmpresa(lormEmpresa);
 				}catch (NullPointerException e){
 					e.printStackTrace();
-				}	
-				
-				
+				}					
   				
 				msg = "Ingreso Exitoso";
 				orm.ContactoDAO.save(lormContacto);
@@ -333,9 +329,6 @@ public class Contacto {
 			catch (Exception e) {
 				t.rollback();
 			}
-		//} catch (NullPointerException e){
-		//	e.printStackTrace();
-		//}
 		return msg;
 		
 	}
@@ -349,12 +342,10 @@ public class Contacto {
 	public static String actualizar(Contacto contacto) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "Ingreso fallido de contacto";
-		//try{
 			try {
 				Empresa empresaNegocio = new Empresa();
 				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(contacto.getEmpresa().getIdEmpresa());
-				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.getIdContacto());  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
-				// Update the properties of the persistent object
+				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.getIdContacto());
 				try{
 					lormContacto.setRun(contacto.getRun());
 				}catch (NullPointerException e){
@@ -416,9 +407,6 @@ public class Contacto {
 			catch (Exception e) {
 				t.rollback();
 			}
-		//} catch (NullPointerException e){
-		//	e.printStackTrace();
-		//}
 		return msg;
 		
 	}
@@ -435,7 +423,6 @@ public class Contacto {
 		try{
 			try {
 				orm.Contacto lormContacto = orm.ContactoDAO.loadContactoByORMID(contacto.getIdContacto());
-				// Delete the persistent object<
 				msg="Dato eliminado...";
 				orm.ContactoDAO.delete(lormContacto);
 				t.commit();
@@ -474,7 +461,6 @@ public class Contacto {
 			contacto.setCiudad(contactoOrm.getCiudadContacto());
 			contacto.setDireccion(contactoOrm.getDireccion());
 			contacto.setImagen(contactoOrm.getImagen());
-			//contacto.setEmpresa(contactoOrm.getIdEmpresa());
 			
 			 empresaNegocio.setIdEmpresa(empresaOrm.getIdEmpresa());
              empresaNegocio.setRut(empresaOrm.getRut());
@@ -505,24 +491,6 @@ public class Contacto {
 	public List<Contacto> busquedaSimpleCont(String busqueda) throws PersistentException {
         List<Contacto> listaContacto = new ArrayList<Contacto>();
         List<orm.Contacto> listaContactos = new ArrayList<orm.Contacto>();
-        /*
-        if (busqueda != null || !busqueda.equals("")) {
-            
-            listaContactos = orm.ContactoDAO.queryContacto("Contacto.run='"+busqueda
-            		+"' OR Contacto.nombreContacto='" + busqueda 
-            		+"' OR Contacto.apellidoContacto='"+ busqueda
-            		+"' OR Contacto.mailContacto='" + busqueda 
-            		+"' OR Contacto.telefonoContacto='"+ busqueda
-            		+"' OR Contacto.paisContacto='"+busqueda
-            		+"' OR Contacto.regionContacto='"+busqueda
-            		+"' OR Contacto.ciudadContacto='"+busqueda
-            		+"' OR Contacto.direccion='"+busqueda
-            		+"'" ,null); 
- 
-        }
-        */
-        
-        //if (listaContactos != null) {
         	
         ContactoCriteria ccr = new ContactoCriteria();
         Criterion run = Restrictions.ilike("run", busqueda.toLowerCase());
@@ -571,7 +539,6 @@ public class Contacto {
                 
                 listaContacto.add(contactoNegocio);
             }
-        //}
         return listaContacto;
     }
 	
@@ -593,124 +560,47 @@ public class Contacto {
         	ccr.add(Restrictions.ilike("run", contacto.getRun().toLowerCase()));
 			query += "Contacto.run='"+contacto.getRun()+"' ";
 		}
-		/*
-		if((contacto.getRun()!= null && !contacto.getRun().trim().equals(""))
-				&& (contacto.getNombre()!=null && !contacto.getNombre().equals(""))){
-			query += "AND ";
-		}*/
         
 		if (contacto.getNombre()!=null && !contacto.getNombre().trim().equals("")){
 			ccr.add(Restrictions.ilike("nombreContacto", contacto.getNombre().toLowerCase()));
 			query += "Contacto.nombreContacto='"+contacto.getNombre()+"' ";
 		}
 		
-		/*
-		if(((contacto.getRun()!=null && !contacto.getRun().trim().equals(""))
-				|| (contacto.getNombre()!=null && !contacto.getNombre().trim().equals("")))
-				&& (contacto.getApellido()!=null && !contacto.getApellido().trim().equals(""))){
-			query += "AND ";
-		}*/
-		
 		if(contacto.getApellido()!=null && !contacto.getApellido().trim().equals("")){
 			ccr.add(Restrictions.ilike("apellidoContacto", contacto.getApellido().toLowerCase()));
 			query += "Contacto.apellidoContacto='"+contacto.getApellido()+"' ";
 		}
-		
-		/*
-		if((contacto.getRun()!=null && !contacto.getRun().equals("")
-				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
-				|| contacto.getApellido()!=null && !contacto.getApellido().equals(""))
-				&& (contacto.getMail() != null && !contacto.getMail().equals(""))){
-			query += "AND ";
-		}*/
 		
 		if(contacto.getMail() != null && !contacto.getMail().trim().equals("")){
 			ccr.add(Restrictions.ilike("mailContacto", contacto.getMail().toLowerCase()));
 			query += "Contacto.mailContacto='"+contacto.getMail()+"' ";
 		}
 		
-		/*
-		if((contacto.getRun()!=null && !contacto.getRun().equals("")
-				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
-				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
-				||contacto.getMail() != null && !contacto.getMail().equals(""))
-				&& (contacto.getTelefono() != null && !contacto.getTelefono().equals(""))){
-			query += "AND ";
-		}*/
-		
 		if(contacto.getTelefono() != null && !contacto.getTelefono().trim().equals("")){
 			ccr.add(Restrictions.ilike("telefonoContacto", contacto.getTelefono().toLowerCase()));
 			query += "Contacto.telefonoContacto='"+contacto.getTelefono()+ "' ";
 		}
-		
-		/*
-		if((contacto.getRun()!=null && !contacto.getRun().equals("")
-				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
-				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
-				|| contacto.getMail() != null && !contacto.getMail().equals("")
-				|| contacto.getTelefono() != null && !contacto.getTelefono().equals(""))
-				&& (contacto.getPais() != null && !contacto.getPais().equals(""))){
-			query += "AND ";
-		}*/
 		
 		if(contacto.getDireccion() != null && !contacto.getPais().trim().equals("")){
 			ccr.add(Restrictions.ilike("paisContacto", contacto.getPais().toLowerCase()));
 			query += "Contacto.paisContacto='"+contacto.getPais()+ "' ";
 		}
 		
-		/*
-		if((contacto.getRun()!=null && !contacto.getRun().equals("")
-				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
-				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
-				|| contacto.getMail() != null && !contacto.getMail().equals("")
-				|| contacto.getTelefono() != null && !contacto.getTelefono().equals("")
-				|| contacto.getPais() != null && !contacto.getPais().equals(""))
-				&& (contacto.getRegion() != null && !contacto.getRegion().equals(""))){
-			query += "AND ";
-		}*/
-		
 		if(contacto.getRegion() != null && !contacto.getRegion().trim().equals("")){
 			ccr.add(Restrictions.ilike("regionContacto", contacto.getRegion().toLowerCase()));
 			query += "Contacto.regionContacto='"+contacto.getRegion()+ "' ";
-		}		
-        
-		/*
-		if((contacto.getRun()!=null && !contacto.getRun().equals("")
-				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
-				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
-				|| contacto.getMail() != null && !contacto.getMail().equals("")
-				|| contacto.getTelefono() != null && !contacto.getTelefono().equals("")
-				|| contacto.getPais() != null && !contacto.getPais().equals("")
-				|| contacto.getRegion() != null && !contacto.getRegion().equals(""))
-				&& (contacto.getCiudad() != null && !contacto.getCiudad().equals(""))){
-			query += "AND ";
-		}*/
+		}	
 				
 		if(contacto.getCiudad() != null && !contacto.getCiudad().trim().equals("")){
 			ccr.add(Restrictions.ilike("ciudadContacto", contacto.getCiudad().toLowerCase()));
 			query += "Contacto.ciudadContacto='"+contacto.getCiudad()+ "' ";
 		}	
-
-		/*
-		if((contacto.getRun()!=null && !contacto.getRun().equals("")
-				|| contacto.getNombre()!=null && !contacto.getNombre().equals("")
-				|| contacto.getApellido()!=null && !contacto.getApellido().equals("")
-				|| contacto.getMail() != null && !contacto.getMail().equals("")
-				|| contacto.getTelefono() != null && !contacto.getTelefono().equals("")
-				|| contacto.getPais() != null && !contacto.getPais().equals("")
-				|| contacto.getRegion() != null && !contacto.getRegion().equals("")
-				|| contacto.getCiudad() != null && !contacto.getCiudad().equals(""))
-				&& (contacto.getDireccion() != null && !contacto.getDireccion().equals(""))){
-			query += "AND ";
-		}*/
 				
 		if(contacto.getDireccion() != null && !contacto.getDireccion().trim().equals("")){
 			ccr.add(Restrictions.ilike("direccion", contacto.getDireccion().toLowerCase()));
 			query += "Contacto.direccion='"+contacto.getDireccion()+ "' ";
 		}	
 
-		
-		
         listaContactos = Arrays.asList(orm.ContactoDAO.listContactoByCriteria(ccr));
        
         if (!listaContactos.isEmpty()) {
@@ -732,9 +622,6 @@ public class Contacto {
                 empresaBuscar.setCiudadEmpresa(empresaOrm.getCiudadEmpresa());
                 empresaBuscar.setDomicilio(empresaOrm.getDomicilio());
                 
-                
-        
-             //   contactoNegocio.setEmpresa(empresaNegocio);
                 contactoNegocio.setIdContacto(contactoOrm.getIdContacto());
                 contactoNegocio.setRun(contactoOrm.getRun());
                 contactoNegocio.setNombre(contactoOrm.getNombreContacto());
@@ -755,6 +642,12 @@ public class Contacto {
         return listaContacto;
     }
 	
+	/**
+	 * Método encargado de mostrar un perfil de contacto
+	 * @param idContacto
+	 * @return
+	 * @throws PersistentException
+	 */
 	public static Contacto verPerfilContacto(int idContacto) throws PersistentException{
 		
 		Contacto contacto=new Contacto();

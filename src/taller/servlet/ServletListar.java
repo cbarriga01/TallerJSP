@@ -37,11 +37,6 @@ public class ServletListar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*HttpSession session = request.getSession();
-		session.invalidate();
-		RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
-		request.setAttribute("msg",	" Error en sesión, debe ingresar sus datos de usuario.");
-		rs.forward(request, response);*/
 		
 		List<Contacto> lista = new ArrayList<>();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -59,13 +54,8 @@ public class ServletListar extends HttpServlet {
 				out.println("Region: " + contacto.getRegion());
 				out.println("Ciudad: " + contacto.getCiudad());
 				out.println("Direccion " + contacto.getDireccion());
-				//out.println("Imagen " + contacto.getImagen());
 				out.println("Empresa " + contacto.getEmpresa().getNombreEmpresa());
-				System.out.println("Empresa " + contacto.getEmpresa().getNombreEmpresa());
 				
-				//int id=contacto.getEmpresa().getIdEmpresa();
-				//request.setAttribute("idContacto", id);
-				//request.getRequestDispatcher("/IngresarBitacora.jsp").forward(request, response);
 			}
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block

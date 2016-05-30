@@ -45,24 +45,17 @@ public class TallerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		List<Empresa> listaEmpresa = new ArrayList<>();
 		Empresa empresa = new Empresa();
 		
 		try {
-			
 			listaEmpresa = empresa.listarEmpresa();
 			request.setAttribute("listaEmpresa", listaEmpresa);
-			
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		request.getRequestDispatcher("/IngresarContacto.jsp").forward(request, response);
-		
-		
 	}
 
 	/**
@@ -97,7 +90,7 @@ public class TallerServlet extends HttpServlet {
 			ciudad= request.getParameter("ciudad");
 			direccion= request.getParameter("direccion");
 			imagen= request.getParameter("textArea");
-			//Obtener request de la empresa
+	
 			empresa= request.getParameter("empresa");
 			int idEmpresa = Integer.parseInt(empresa);
 
@@ -112,7 +105,6 @@ public class TallerServlet extends HttpServlet {
 						&& mail.length() <=20 && telefono.length() <= 20 
 						&& pais.length() <= 20 && region.length() <= 20 
 						&& ciudad.length() <= 20 && direccion.length() <= 30){
-					out.println(" Hola tu nombre es "+ nombre+ ". Saludos!!!");
 						
 					Empresa emp = new Empresa();
 	 				Contacto ingresar = new Contacto();
@@ -185,11 +177,7 @@ public class TallerServlet extends HttpServlet {
 				RequestDispatcher rs = request.getRequestDispatcher("IngresarContacto.jsp");
 				request.setAttribute("msg", msg);
 				rs.forward(request, response);
-			}
-		//}catch(NullPointerException e){
-		//	e.printStackTrace();
-		//}
-		
+			}	
 		
 	}
 
@@ -210,7 +198,7 @@ public class TallerServlet extends HttpServlet {
     }
 	
 	/**
-	 * M�todo que permite validar que el formato de la cadena ingresada sea num�rico
+	 * Método que permite validar que el formato de la cadena ingresada sea numérico
 	 * @param cad = cadena ingresada
 	 * @return
 	 */
@@ -223,9 +211,9 @@ public class TallerServlet extends HttpServlet {
 	}
 	
 	/**
-	 * M�todo que permite validar si el run ingresado es v�lido
+	 * Método que permite validar si el run ingresado es valido
 	 * @param String run del contacto a validar
-	 * @return boolean validacion, indica si el run es valido o no
+	 * @return boolean validación, indica si el run es valido o no
 	 */
 	public static boolean validarRun(String run) {
 		 

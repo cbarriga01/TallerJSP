@@ -77,7 +77,7 @@ public class ServletActualizarContactoIntermedio extends HttpServlet {
 		String empresa = request.getParameter("empresa");
 		
 		RequestDispatcher rs = request.getRequestDispatcher("/ActualizarContacto.jsp");
-		request.setAttribute("id", idContacto);
+		request.setAttribute("idP", idContacto);
 		request.setAttribute("run", run);
 		request.setAttribute("nombre", nombre);
 		request.setAttribute("apellido", apellido);
@@ -110,7 +110,7 @@ public class ServletActualizarContactoIntermedio extends HttpServlet {
 					}
 				}
 				salida += "</select><br></div></div>";
-				request.setAttribute("LISTA", salida);
+				request.setAttribute("lista", salida);
 				request.getRequestDispatcher("/ActualizarContacto.jsp").forward(request, response);
 			}
 			

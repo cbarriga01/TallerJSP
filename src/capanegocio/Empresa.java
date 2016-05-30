@@ -11,9 +11,9 @@ import taller.servlet.TallerServlet;
 
 /**
  * 
- * @author C�sar Barriga I.
+ * @author César Barriga I.
  * 
- * Clase relacionada a la l�gica de negocio de la aplicaci�n referente a Empresas
+ * Clase relacionada a la lógica de negocio de la aplicación referente a Empresas
  * Se encarga de enviar transacciones a la Base de Datos
  * 
  */
@@ -224,18 +224,17 @@ private static final int ROW_COUNT = 100;
 	}
 
 	/**
-	 * M�todo que permite ingresar una empresa a la Base de Datos
+	 * Método que permite ingresar una empresa a la Base de Datos
 	 * @param Empresa empresa, objeto que contiene los datos a ingresar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Empresa empresa) throws PersistentException{
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "Ingreso fallido de empresa";
-		//try{
+
 			try {
 				orm.Empresa lormEmpresa = orm.EmpresaDAO.createEmpresa();
-				// Initialize the properties of the persistent object here
 				try{
 					lormEmpresa.setRut(empresa.getRut());
 				}catch (NullPointerException e){
@@ -294,25 +293,20 @@ private static final int ROW_COUNT = 100;
 			catch (Exception e) {
 				t.rollback();
 			}
-		//} catch (NullPointerException e){
-		//	e.printStackTrace();
-		//}
 		return msg;
 	}
 	
 	/**
-	 * M�todo que permite actualizar una empresa en la BD
+	 * Método que permite actualizar una empresa en la BD
 	 * @param Empresa empresa, objeto que contiene los datos a actualizar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Empresa empresa) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "Error de conexion";
-		//try{
 			try {
 				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.getIdEmpresa());  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
-				// Update the properties of the persistent object
 				try{
 					lormEmpresa.setRut(empresa.getRut());
 				}catch (NullPointerException e){
@@ -370,17 +364,14 @@ private static final int ROW_COUNT = 100;
 			catch (Exception e) {
 				t.rollback();
 			}
-		//} catch (NullPointerException e){
-		//	e.printStackTrace();
-		//}
 		return msg;
 		
 	}
 	
 	/**
-	 * M�todo que permite eliminar un contacto de la Base de Datos
+	 * Método que permite eliminar un contacto de la Base de Datos
 	 * @param Empresa empresa, objeto que contiene los datos a eliminar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String borrar(Empresa empresa) throws PersistentException {
@@ -389,7 +380,6 @@ private static final int ROW_COUNT = 100;
 		try{
 			try {
 				orm.Empresa lormEmpresa = orm.EmpresaDAO.loadEmpresaByORMID(empresa.getIdEmpresa());
-				// Delete the persistent object<
 				msg="Dato eliminado...";
 				orm.EmpresaDAO.delete(lormEmpresa);
 				t.commit();
@@ -404,7 +394,7 @@ private static final int ROW_COUNT = 100;
 	}
 	
 	/**
-	 * M�todo que permite listar las empresas almacenadas en la Base de Datos
+	 * Método que permite listar las empresas almacenadas en la Base de Datos
 	 * @return List <Empresa> listaEmpresa, lista con los datos de empresa almacenados
 	 * @throws PersistentException
 	 */
@@ -431,7 +421,7 @@ private static final int ROW_COUNT = 100;
 		return listaEmpresa;
 	}
 	/**
-	 * Metodo que permite listar las empresas almacenadas en la Base de Datos
+	 * Método que permite listar las empresas almacenadas en la Base de Datos
 	 * para su posterior muestra en select de ingreso y edición
 	 * @return List <Empresa> listaEmpresa, lista con los datos de empresa almacenados
 	 * @throws PersistentException

@@ -73,7 +73,7 @@ public class ServletEliminar extends HttpServlet {
 	}
 
 	/**
-	 * M�todo que permite validar si el campo ingresado en id es entero
+	 * Método que permite validar si el campo ingresado en id es entero
 	 * @param id = campo ingresado en id
 	 * @return
 	 */

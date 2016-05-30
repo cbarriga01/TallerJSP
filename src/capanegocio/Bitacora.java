@@ -8,7 +8,7 @@ import org.orm.PersistentTransaction;
 
 /**
  * 
- * @author kal-el
+ * @author César Barriga I.
  *
  * Clase relacionada a la lógica de negocio de la aplicación referente a Bitacoras
  * Se encarga de enviar transacciones a la Base de Datos

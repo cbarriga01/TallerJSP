@@ -31,7 +31,7 @@
     	<div class="col-sm-3 col-md-3">
     		
     		<div class="nav-side-menu navbar-fixed">
-		    <div class="brand">Brand Logo</div>
+		    <div class="brand">PDS - CRM</div>
 		    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 		        <div class="menu-list">
 		            <ul id="menu-content" class="menu-content collapse out">
@@ -72,7 +72,7 @@
 			
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Titulo</label>
-				<div class="col-lg-3">
+				<div class="col-lg-6">
 					<input type="text" class="form-control" name="titulo" required>
 					<br>
 				</div>
@@ -80,7 +80,7 @@
 			
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Texto</label>
-				<div class="col-lg-3">
+				<div class="col-lg-6">
 					<textarea class="form-control" id="texto" name="texto" required></textarea>
 					<br>
 				</div>
@@ -88,7 +88,7 @@
 			
 			<div class="form-group">
 				<label class="col-lg-3 control-label"></label>
-				<div class="col-lg-3">
+				<div class="col-lg-6">
 					<input type="hidden" class="form-control" name="idContacto" value="${idContacto}" required>
 					<br>
 				</div>

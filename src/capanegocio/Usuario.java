@@ -10,9 +10,9 @@ import taller.servlet.TallerServlet;
 
 /**
  * 
- * @author C�sar Barriga I.
+ * @author César Barriga I.
  * 
- * Clase relacionada a la l�gica de negocio de la aplicaci�n referente a Usuarios
+ * Clase relacionada a la lógica de negocio de la aplicación referente a Usuarios
  * Se encarga de enviar transacciones a la Base de Datos
  *
  */
@@ -74,18 +74,16 @@ public class Usuario {
 	}
 	
 	/**
-	 * M�todo que permite ingresar un usuario de la BD
+	 * Método que permite ingresar un usuario de la BD
 	 * @param Usuario usuario, objeto que contiene los datos a ingresar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String ingresar(Usuario usuario) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "Ingreso fallido de usuario";
-		//try{
 			try {
 				orm.Usuario lormUsuario = orm.UsuarioDAO.createUsuario();
-				// Initialize the properties of the persistent object here
 				try{
 					lormUsuario.setUsuario(usuario.getUsuario());
 				}catch (NullPointerException e){
@@ -99,30 +97,25 @@ public class Usuario {
 				
 				orm.UsuarioDAO.save(lormUsuario);
 				t.commit();
-				msg = "Ingreso exitoso de empresa";
+				msg = "Ingreso exitoso de usuario";
 			}
 			catch (Exception e) {
 				t.rollback();
 			}
-		//} catch (NullPointerException e){
-		//	e.printStackTrace();
-		//}
 		return msg;		
 	}
 	
 	/**
-	 * M�todo que permite actualizar un usuario de la Base de Datos
+	 * Método que permite actualizar un usuario de la Base de Datos
 	 * @param Usuario usuario, objeto que contiene los datos a actualizar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String actualizar(Usuario usuario) throws PersistentException {
 		PersistentTransaction t = orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		String msg = "";
-		//try{
 			try {
-				orm.Usuario lormUsuario = orm.UsuarioDAO.loadUsuarioByORMID(usuario.getIdusuario());  //orm.ContactoDAO.loadContactoByQuery("Contacto.nombre='victor'", null);
-				// Update the properties of the persistent object
+				orm.Usuario lormUsuario = orm.UsuarioDAO.loadUsuarioByORMID(usuario.getIdusuario());
 				try{
 					lormUsuario.setUsuario(usuario.getUsuario());
 				}catch (NullPointerException e){
@@ -140,17 +133,14 @@ public class Usuario {
 			catch (Exception e) {
 				t.rollback();
 			}
-		//} catch (NullPointerException e){
-		//	e.printStackTrace();
-		//}
 		return msg;
 		
 	}
 	
 	/**
-	 * M�todo que permite eliminar un usuario de la Base de Datos
+	 * Método que permite eliminar un usuario de la Base de Datos
 	 * @param Usuario usuario, objeto que contiene los datos a eliminar
-	 * @return String msg, mensaje que informa el estado de la transacci�n
+	 * @return String msg, mensaje que informa el estado de la transacción
 	 * @throws PersistentException
 	 */
 	public static String borrar(Usuario usuario) throws PersistentException {
@@ -159,7 +149,6 @@ public class Usuario {
 		try{
 			try {
 				orm.Usuario lormUsario = orm.UsuarioDAO.loadUsuarioByORMID(usuario.getIdusuario());
-				// Delete the persistent object<
 				msg="Dato eliminado...";
 				orm.UsuarioDAO.delete(lormUsario);
 				t.commit();
@@ -174,7 +163,7 @@ public class Usuario {
 	}
 	
 	/**
-	 * M�todo que permite listar los usuarios almacenados en la Base de Datos
+	 * Método que permite listar los usuarios almacenados en la Base de Datos
 	 * @return List <Usuario> listaUsuario, lista con los datos de usuario almacenados
 	 * @throws PersistentException
 	 */
@@ -193,44 +182,19 @@ public class Usuario {
 		return listaUsuario;
 	}
 	
-	public static List <Usuario> buscarUsuario() throws PersistentException {
-		Usuario usuario = new Usuario();
-		List <orm.Usuario> listaUsuarioOrm = orm.UsuarioDAO.queryUsuario("Usuario.usuario='"+usuario.getUsuario()+"'& Usuario.password='"+usuario.getPassword()+"'", null);
-		List <Usuario> listaUsuario = new ArrayList<>();
-		
-		for (orm.Usuario usuarioOrm:listaUsuarioOrm) {
-			//Usuario usuario= new Usuario();
-			usuario.setUsuario(usuarioOrm.getUsuario());
-			usuario.setPassword(usuarioOrm.getPassword());
-			listaUsuario.add(usuario);
-		}
-		
-		return listaUsuario;
-	}
-
-	public static Usuario busquedaUsuario(Usuario usuarioRec) throws PersistentException {
-		Usuario usuario=new Usuario();
-		try{
-		orm.Usuario usuarioOrm = orm.UsuarioDAO.loadUsuarioByQuery("Usuario.usuario='"+usuarioRec.getUsuario()+"'AND Usuario.password='"+usuarioRec.getPassword()+"'", null);
-		
-			usuario.setUsuario(usuarioOrm.getUsuario());
-			usuario.setPassword(usuarioOrm.getPassword());
-		
-		System.out.println(" record(s) retrieved.");
-		return usuario;
-		}catch(NullPointerException e){
-			e.printStackTrace();
-			
-			return usuario;
-		}
-	}
-	
+	/**
+	 * Método que valida si un usuario existe o no en la BD
+	 * @param usuario
+	 * @return
+	 * @throws PersistentException
+	 */
 	public boolean validarUsuario(Usuario usuario) throws PersistentException{
 		orm.Taller1MagisterInformaticaPersistentManager.instance().getSession().beginTransaction();
 		boolean validador = false;
 		
 		orm.Usuario[] usuarioQ; 
-		usuarioQ = orm.UsuarioDAO.listUsuarioByQuery("Usuario.usuario = '"+usuario.getUsuario()+"' AND Usuario.password = '"+usuario.getPassword()+"'", null);
+		usuarioQ = orm.UsuarioDAO.listUsuarioByQuery("Usuario.usuario = '"+usuario.getUsuario()
+			+"' AND Usuario.password = '"+usuario.getPassword()+"'", null);
 		
 		if(usuarioQ.length > 0){
 			validador = true;
